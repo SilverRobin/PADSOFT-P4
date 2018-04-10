@@ -1,7 +1,7 @@
 package app;
 
 /**
- * Antonio Oliva
+ * 
  * @author Antonio Oliva
  *
  */
