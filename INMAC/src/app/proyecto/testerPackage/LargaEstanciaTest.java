@@ -35,16 +35,15 @@ public class LargaEstanciaTest {
 	@Test
 	public void testModificarOferta() {
 		l.rectificar();
-		FechaSimulada fecha = new FechaSimulada();
-		assertEquals(fecha.getHoy(), l.getInicio().getHoy());
-		fecha.retrasarDias(3);
-		assertTrue(l.modificarOferta("fechainicio", 0, fecha));
-		assertEquals(fecha.getHoy(), l.getInicio().getHoy());
-		assertEquals(2, l.getMinimaEstancia());
+		assertEquals("Error en getFianza()", 100, l.getFianza());
+		assertEquals("Error en getInicio()", FechaSimulada.getHoy(), l.getInicio());
+		assertTrue(l.modificarOferta("fechainicio", 0, FechaSimulada.retrasarDias(3)));
+		assertEquals("Error al modificar la fecha", FechaSimulada.getHoy(), l.getInicio());
+		assertEquals("Error en getMinimaEstancia()", 2, l.getMinimaEstancia());
 		l.modificarOferta("minimaestancia", 3, null);
-		assertEquals(3, l.getMinimaEstancia());
-		assertTrue(l.modificarOferta("fianza", 150, null));
-		assertEquals(150, l.getFianza());
+		assertEquals("Error al modificar la minima estancia", 3, l.getMinimaEstancia());
+		assertTrue("Error al modificar el precio (proceso incompleto)", l.modificarOferta("fianza", 150, null));
+		assertEquals("Error al modificar el precio (valor no actualizado)", 150, l.getFianza());
 		assertTrue(l.modificarOferta("precio", 400, null));
 		assertEquals(400, l.getPrecio());
 		l.aprobarOferta();

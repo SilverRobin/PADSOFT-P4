@@ -54,6 +54,9 @@ public class Demandante implements Serializable{
 	 * @return true o false
 	 */
 	public boolean addReserva(Reserva r) {
+		
+		r.setDemandante(this);
+		
 		if(limiteAlcanzado()) {
 			return false;
 		}if(reservas.isEmpty()) {

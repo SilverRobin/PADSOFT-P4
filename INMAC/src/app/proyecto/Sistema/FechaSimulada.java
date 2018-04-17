@@ -11,7 +11,7 @@ import java.time.LocalDate;
  * @author Antonio Oliva Hernandez
  *
  */
-public class FechaSimulada {
+public abstract class FechaSimulada {
 
 	private static LocalDate fecha = LocalDate.now();
 	
@@ -29,14 +29,21 @@ public class FechaSimulada {
 	 * dias pasado por argumento
 	 * 
 	 * @param dias Dias a adelantar
+	 * @return Fecha resultante
 	 */
-	public static void avanzarDias(int dias) {
-		fecha = fecha.plusDays(dias);
-		return;
+	public static LocalDate avanzarDias(int dias) {
+		return fecha.plusDays(dias);
 	}
 	
-	public static void retrasarDias(int dias) {
-		fecha = fecha.minusDays(dias);
+	/**
+	 * Retrasa la fecha un numero de dias
+	 * pasado por argumento
+	 * 
+	 * @param dias Dias a retrasar
+	 * @return Fecha resultante
+	 */
+	public static LocalDate retrasarDias(int dias) {
+		return fecha.minusDays(dias);
 	}
 	
 	/**

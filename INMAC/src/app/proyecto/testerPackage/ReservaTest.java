@@ -23,7 +23,7 @@ public class ReservaTest {
 
 	@Before
 	public void setUp() throws Exception {
-		l = new LargaEstancia(200, 100, new FechaSimulada(), 2);
+		l = new LargaEstancia(200, 100, FechaSimulada.getHoy(), 2);
 		r = new Reserva(l);
 		c = new Cliente("Fulano", "00000000U", "sopadefideos", "0000111122223333");
 		c.addDemandante();
@@ -31,15 +31,15 @@ public class ReservaTest {
 
 	@Test
 	public void testGetFecha() {
-		assertEquals(new FechaSimulada().getHoy(), r.getFecha().getHoy());
+		assertEquals(FechaSimulada.getHoy(), r.getFecha());
 	}
 
 	@Test
 	public void testSetFecha() {
-		FechaSimulada f = new FechaSimulada();
-		f.retrasarDias(5);
-		r.setFecha(f);
-		assertEquals(f.getHoy(), r.getFecha().getHoy());
+		r.setFecha(FechaSimulada.retrasarDias(5));
+		assertTrue("Error al retrasar dias", FechaSimulada.getHoy().plusDays(-5).isEqual(r.getFecha()));
+		r.setFecha(FechaSimulada.avanzarDias(5));
+		assertTrue("Error al avanzar dias", FechaSimulada.getHoy().plusDays(5).isEqual(r.getFecha()));
 	}
 
 	@Test

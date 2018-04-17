@@ -15,19 +15,17 @@ import app.proyecto.Sistema.FechaSimulada;
  *
  */
 public class FechaSimuladaTest {
-		
-	FechaSimulada f1;
+	
 	
 	@Before
 	public void setup() {
-		f1 = new FechaSimulada();
 	}
 	
 	@Test
 	public void TesterMetodosFecha() {
 		
 		Assert.assertEquals("Error en la inicializacion de FechaSimulada (constructor)",
-				f1.getHoy().getDayOfYear(),
+				FechaSimulada.getHoy().getDayOfYear(),
 				LocalDate.now().getDayOfYear());
 		
 		int i=5;
