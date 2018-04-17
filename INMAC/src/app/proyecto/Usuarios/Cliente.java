@@ -74,8 +74,8 @@ public class Cliente implements Serializable{
 	 * Comprueba la validez de la tarjeta de credito
 	 * @return true si la tarjeta es valida o false en caso contrario
 	 */
-	public boolean comprobarTarjeta() {	
-		return TeleChargeAndPaySystem.isValidCardNumber(creditCard);
+	public static boolean comprobarTarjeta(String cc) {
+		return TeleChargeAndPaySystem.isValidCardNumber(cc);
 	}
 	
 	public String getNIF() {
@@ -130,13 +130,29 @@ public class Cliente implements Serializable{
 	}
 	
 	/**
-	 * Cambia el numero de tarjeta
-	 * @param tarjeta nueva tarjeta
+	 * Cambia el numero de tarjeta a una pasada por argumento si
+	 * se trata de una tarjeta valida
+	 * 
+	 * @param tarjeta Nueva tarjeta
+	 * @return true si se cambia con exito, false si no
 	 */
-	public void cambiarTarjeta(String tarjeta) {
-		this.creditCard = tarjeta;
+	public boolean cambiarTarjeta(String tarjeta) {
+		if(Cliente.comprobarTarjeta(tarjeta)) {
+			this.creditCard = tarjeta;
+			return true;
+		}
+		return false;
 	}
 	
+	/**
+	 * Carga un pago (negativo o positivo) de magnitud
+	 * pasada por argumento a la tarjeta del cliente con
+	 * motivo pasado por argumento
+	 * 
+	 * @param cantidad Cantidad a cobrar/ingresar
+	 * @param subject Motivo de la transaccion
+	 * @return
+	 */
 	public boolean realizarPago(Double cantidad, String subject) {
 		int cont = 0;
 		int maxIntentos = 4;

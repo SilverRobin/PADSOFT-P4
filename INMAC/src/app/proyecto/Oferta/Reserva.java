@@ -4,6 +4,7 @@
 package app.proyecto.Oferta;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import app.proyecto.Sistema.FechaSimulada;
 import app.proyecto.Usuarios.Cliente;
@@ -22,26 +23,29 @@ public class Reserva implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private FechaSimulada fecha;
+	private LocalDate fecha;
 	private Oferta oferta;
 	
 		public Reserva(Oferta oferta){
-			fecha = new FechaSimulada();
+			fecha = FechaSimulada.getHoy();
 			this.oferta = oferta;
+		}
+		
+		public void setDemandante(Demandante d) {
 		}
 		
 		/**
 		 * Obtiene la fecha 
 		 * @return fecha
 		 */
-		public FechaSimulada getFecha() {
+		public LocalDate getFecha() {
 			return fecha;
 		}
 		/**
 		 * Establece una nueva fecha
 		 * @param fecha nueva
 		 */
-		public void setFecha(FechaSimulada fecha) {
+		public void setFecha(LocalDate fecha) {
 			this.fecha = fecha;
 		}
 		

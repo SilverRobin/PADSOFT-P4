@@ -25,9 +25,9 @@ public class ClienteTest {
 
 	@Test
 	public void test() {
-		assertTrue(c.comprobarTarjeta());
+		assertTrue(Cliente.comprobarTarjeta(c.getCreditCard()));
 		c.cambiarTarjeta("a");
-		assertFalse(c.comprobarTarjeta());
+		assertFalse(Cliente.comprobarTarjeta(c.getCreditCard()));
 		assertTrue(c.getAvisos().isEmpty());
 		c.addAviso("Holo");
 		assertFalse(c.getAvisos().isEmpty());

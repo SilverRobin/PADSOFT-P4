@@ -1,9 +1,12 @@
 package app.proyecto.Oferta;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import app.proyecto.Sistema.FechaSimulada;
+import app.proyecto.Valorables.ElementoValorable;
 import app.proyecto.Valorables.Valoracion;
 
 /**
@@ -19,21 +22,21 @@ public abstract class Oferta implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int precio;
 	private int fianza;
-	private FechaSimulada fechaInicio;
+	private LocalDate fechaInicio;
 	private EstadoOferta visibilidad;
-	private ArrayList<Valoracion> valoraciones;
+	private ArrayList<ElementoValorable> valorables;
 	
 	/**
 	 * @param nP Precio
 	 * @param nF Fianza
 	 * @param nD Fecha
 	 */
-	public Oferta (int nP, int nF, FechaSimulada nD) {
+	public Oferta (int nP, int nF, LocalDate nD) {
 		this.precio = nP;
 		this.fianza = nF;
 		this.fechaInicio = nD;
 		visibilidad = EstadoOferta.NO_APROBADA;
-		valoraciones = new ArrayList<Valoracion>();
+		valorables = new ArrayList<>();
 	}
 	
 	/**
@@ -46,20 +49,21 @@ public abstract class Oferta implements Serializable{
 	
 	
 	/** 
-	 * Obtiene la lista de valoraciones de la oferta
-	 * @return valoraciones
+	 * Obtiene la lista de comentarios y valoraciones de la oferta
+	 * @return Comentarios y valoraciones
 	 */
-	public ArrayList<Valoracion> getValoraciones(){
-		return valoraciones;
+	public List<ElementoValorable> getValorables(){
+		return valorables;
 	}
 	
 	/**
-	 * Añade una nueva valoracion
-	 * @param v valoracion
-	 * @return true si lo ha añadido bien
+	 * Añade un nuevo comentario o valoracion a la oferta
+	 * 
+	 * @param v Comentario o valoracion
+	 * @return true si lo añade, false si no
 	 */
-	public boolean addValoracion(Valoracion v) {
-		return valoraciones.add(v);
+	public boolean addValorable(ElementoValorable v) {
+		return valorables.add(v);
 	}
 	
 	/**
@@ -82,14 +86,14 @@ public abstract class Oferta implements Serializable{
 	 * Obtiene la fecha de inicio
 	 * @return fecha de inicio
 	 */
-	public FechaSimulada getInicio() {
+	public LocalDate getInicio() {
 		return fechaInicio;
 	}
 	/**
 	 * Establece la fecha de inicio
 	 * @param fecha nueva fecha
 	 */
-	public void setInicio(FechaSimulada fecha) {
+	public void setInicio(LocalDate fecha) {
 		this.fechaInicio = fecha;
 	}
 	
@@ -131,11 +135,21 @@ public abstract class Oferta implements Serializable{
 	 * @return media de valoraciones
 	 */
 	public double calcularMediaValoraciones() {
-		int i, suma = 0;
-		for(i=0; i<valoraciones.size(); i++) {
-			suma += valoraciones.get(i).getValor();
+		
+		int i, suma = 0, counter=0;
+		ElementoValorable aux;
+		
+		for(i=0; i<valorables.size(); i++) {
+			aux = valorables.get(i);
+			if(aux instanceof Valoracion) {
+				counter++;
+				suma += ((Valoracion) aux).getValor();
+			}
 		}
-		return suma/valoraciones.size();
+		if(counter == 0)
+			return 0;
+		
+		return suma/counter;
 	}
 	
 	/**
@@ -145,7 +159,7 @@ public abstract class Oferta implements Serializable{
 	 * @param fecha nueva o null si no se va a cambiar
 	 * @return true o false
 	 */
-	public abstract boolean modificarOferta(String dato, int precio, FechaSimulada fecha);
+	public abstract boolean modificarOferta(String dato, int precio, LocalDate fecha);
 	
 	/**
 	 * Reserva una oferta
@@ -171,5 +185,14 @@ public abstract class Oferta implements Serializable{
 	 */
 	public void rectificar() {
 		visibilidad = EstadoOferta.A_MODIFICAR;
+	}
+	
+	/**
+	 * Devuelve false salvo que se trate de una oferta vacacional
+	 * 
+	 * @return false
+	 */
+	public boolean hasExpired() {
+		return false;
 	}
 }

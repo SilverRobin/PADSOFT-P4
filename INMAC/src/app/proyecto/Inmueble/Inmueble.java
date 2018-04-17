@@ -1,5 +1,6 @@
 package app.proyecto.Inmueble;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,10 @@ import app.proyecto.Oferta.Oferta;
  * @author Antonio Oliva
  *
  */
-public class Inmueble {
+public class Inmueble implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	private static int GLOBAL_ID = 0;
 
 	private String descripcion;
@@ -129,8 +132,18 @@ public class Inmueble {
 	 * @return true o false
 	 */
 	public boolean addOferta(Oferta e) {
-		
 		return ofertas.add(e);
+	}
+	
+	/**
+	 * Elimina una oferta pasada por parametro y devuelve
+	 * true si estaba en la lista de ofertas
+	 * 
+	 * @param e Oferta a eliminar
+	 * @return true si se ha eliminado, false si no
+	 */
+	public boolean removeOferta(Oferta e) {
+		return ofertas.remove(e);
 	}
 	
 }

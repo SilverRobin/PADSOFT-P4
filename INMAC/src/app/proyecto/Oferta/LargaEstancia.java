@@ -3,7 +3,7 @@
  */
 package app.proyecto.Oferta;
 
-import app.proyecto.Sistema.FechaSimulada;
+import java.time.LocalDate;
 
 /**
  * @author Laura Ramirez
@@ -21,7 +21,7 @@ public class LargaEstancia extends Oferta {
 	 * @param nD Fecha de inicio
 	 * @param minimaEstancia meses de estancia
 	 */
-	public LargaEstancia(int nP, int nF, FechaSimulada nD, int minimaEstancia) {
+	public LargaEstancia(int nP, int nF, LocalDate nD, int minimaEstancia) {
 		super(nP, nF, nD);
 		this.minimaEstancia = minimaEstancia;
 	}
@@ -30,7 +30,7 @@ public class LargaEstancia extends Oferta {
 	 * @see Oferta.Oferta#modificarOferta(java.lang.String, int, Sistema.FechaSimulada)
 	 */
 	@Override
-	public boolean modificarOferta(String dato, int precio, FechaSimulada fecha) {
+	public boolean modificarOferta(String dato, int precio, LocalDate fecha) {
 		if(this.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
 			return false;
 		}

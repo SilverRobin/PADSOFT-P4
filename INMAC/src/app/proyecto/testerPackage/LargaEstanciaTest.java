@@ -26,7 +26,7 @@ public class LargaEstanciaTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		l = new LargaEstancia(200, 100, new FechaSimulada(), 2);
+		l = new LargaEstancia(200, 100, FechaSimulada.getHoy(), 2);
 	}
 
 	/**
