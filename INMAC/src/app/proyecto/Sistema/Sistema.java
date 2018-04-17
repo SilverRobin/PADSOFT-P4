@@ -33,19 +33,27 @@ public class Sistema implements Serializable{
 	protected static String gerPass;
 	protected static String gerID;
 	
-	public Sistema singleton;
+	public static Sistema singleton = new Sistema("admin","admin");
 	
 	/**
 	 * @param id id del admin	
 	 * @param pass pass del admin
 	 */
-	protected Sistema(String id, String pass) {
+	private Sistema(String id, String pass) {
 		gerID = id;
 		gerPass = pass;
 		clientes = new ArrayList<Cliente>();
 		inmuebles = new ArrayList<Inmueble>();
 		logeado = null;
 		tipolog = TipoCliente.NULL;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public static Sistema getSistema() {
+		return singleton;
 	}
 	
 	/**

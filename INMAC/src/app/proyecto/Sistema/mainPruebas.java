@@ -23,7 +23,7 @@ public class mainPruebas {
 	 * @param args argumentos
 	 */
 	public static void main(String[] args) {
-		Sistema apli = new Sistema("admin", "admin");
+		Sistema apli = Sistema.getSistema();
 		Cliente dummy = Cliente.generarClienteTest();
 		
 		
@@ -38,7 +38,7 @@ public class mainPruebas {
 			apli.guardarCliente(c);
 		}
 		
-		apli = new Sistema("admin", "admin"); //Reiniciamos la aplicacion
+		apli = Sistema.getSistema(); //Reiniciamos la aplicacion
 		
 		try {
 			apli.recuperarClientes(); //Cargamos los clientes de las carpetas

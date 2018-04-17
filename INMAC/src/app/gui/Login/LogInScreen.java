@@ -1,5 +1,8 @@
 package app.gui.Login;
 
+import java.awt.CardLayout;
+import java.awt.Frame;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,7 +19,7 @@ import javax.swing.BoxLayout;
  * @author Antonio Oliva
  *
  */
-public class LogInScreen extends JFrame{
+public class LogInScreen extends JPanel{
 	
 	static final long serialVersionUID = 1;
 	
@@ -27,10 +30,13 @@ public class LogInScreen extends JFrame{
 	private JPanel panel;
 	private JPanel paneltop;
 	private JPanel panelbot;
+	private static CardLayout cardlayout = new CardLayout();
+	private static JPanel cards = new JPanel(cardlayout);
 	
 	public LogInScreen() {
 		super();
-		this.setTitle("Iniciar Sesion");
+		
+		//((JFrame) this.getParent()).setTitle("Iniciar Sesion");
 		volver = new JButton("Volver");
 		login = new JButton("Iniciar sesion");
 		passfield = new JPasswordField("Password...");
