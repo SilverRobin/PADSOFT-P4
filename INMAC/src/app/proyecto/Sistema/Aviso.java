@@ -1,6 +1,7 @@
 package app.proyecto.Sistema;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * 
@@ -13,14 +14,14 @@ public class Aviso implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String texto;
-	private FechaSimulada fecha;
+	private LocalDate fecha;
 	
 	
 	/**
 	 * @param texto texto
 	 * @param fecha fecha de emision
 	 */
-	public Aviso(String texto, FechaSimulada fecha) {
+	public Aviso(String texto, LocalDate fecha) {
 		this.texto = texto;
 		this.fecha = fecha;
 	}
@@ -37,7 +38,7 @@ public class Aviso implements Serializable{
 	 * Obtiene la fecha
 	 * @return fecha
 	 */
-	public FechaSimulada getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 	
@@ -46,7 +47,7 @@ public class Aviso implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		return texto + ". Enviado el " + fecha.getHoy();
+		return texto + ". Enviado el " + fecha;
 		
 	}
 	

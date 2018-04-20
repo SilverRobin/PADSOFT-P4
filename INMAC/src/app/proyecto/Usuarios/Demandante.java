@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import app.proyecto.Oferta.Reserva;
+import app.proyecto.Sistema.FechaSimulada;
 
 /**
  * @author Laura Ramirez
@@ -104,7 +105,7 @@ public class Demandante implements Serializable{
 	public void eliminarReservaCaducada() {
 		int i;
 		for(i = 0; i<reservas.size(); i++) {
-			if(reservas.get(i).getFecha().hanPasado5dias()) {
+			if(reservas.get(i).getFecha().isBefore(FechaSimulada.retrasarDias(5))) {
 				eliminarReserva(reservas.get(i));
 			}
 		}

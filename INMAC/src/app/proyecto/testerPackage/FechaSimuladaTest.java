@@ -30,12 +30,12 @@ public class FechaSimuladaTest {
 		
 		int i=5;
 		
-		while(f1.getHoy().plusDays(i).getDayOfYear()
-				<= f1.getHoy().getDayOfYear()) {
+		while(FechaSimulada.getHoy().plusDays(i).getDayOfYear()
+				<= FechaSimulada.getHoy().getDayOfYear()) {
 			i--;
 		}
 		
-		f1.avanzarDias(i);
+		FechaSimulada.avanzarDias(i);
 			
 		Assert.assertEquals("Error en avanzarDias()",
 				f1.getHoy().getDayOfYear(),

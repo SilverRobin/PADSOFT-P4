@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.proyecto.Sistema.FechaSimulada;
 import app.proyecto.Valorables.ElementoValorable;
 import app.proyecto.Valorables.Valoracion;
 
@@ -25,11 +24,12 @@ public abstract class Oferta implements Serializable{
 	private LocalDate fechaInicio;
 	private EstadoOferta visibilidad;
 	private ArrayList<ElementoValorable> valorables;
+	private String rectificacion;
 	
 	/**
 	 * @param nP Precio
 	 * @param nF Fianza
-	 * @param nD Fecha
+	 * @param nD Fecha 
 	 */
 	public Oferta (int nP, int nF, LocalDate nD) {
 		this.precio = nP;
@@ -37,6 +37,7 @@ public abstract class Oferta implements Serializable{
 		this.fechaInicio = nD;
 		visibilidad = EstadoOferta.NO_APROBADA;
 		valorables = new ArrayList<>();
+		rectificacion = null;
 	}
 	
 	/**
@@ -45,6 +46,23 @@ public abstract class Oferta implements Serializable{
 	 */
 	public int getPrecio() {
 		return precio;
+	}
+	
+	/**
+	 * Asigna un nuevo mensaje de rectificacion
+	 * @param nR Mensaje a asignar
+	 */
+	public void setRectificacion(String nR) {
+		rectificacion = nR;
+		return;
+	}
+	
+	/**
+	 * Devuelve el mensaje de rectificacion, si lo hay
+	 * @return Mensaje de rectificacion
+	 */
+	public String getRectificacion() {
+		return rectificacion;
 	}
 	
 	

@@ -6,6 +6,7 @@ import java.util.List;
 
 import app.proyecto.Oferta.EstadoOferta;
 import app.proyecto.Oferta.Oferta;
+import app.proyecto.Usuarios.Cliente;
 
 /**
  * 
@@ -23,18 +24,30 @@ public class Inmueble implements Serializable{
 	private List<Caracteristica> caracteristicas;
 	private Direccion direccion;
 	private ArrayList<Oferta> ofertas;
+	private Cliente ofertante;
 	
 	/**
 	 * @param nD Descripcion
 	 * @param nDir Direccion
 	 */
-	public Inmueble(String nD, Direccion nDir) {
+	public Inmueble(String nD, Direccion nDir, Cliente nO) {
 		this.descripcion = nD;
 		this.id = GLOBAL_ID+1;
 		GLOBAL_ID++;
 		this.caracteristicas = new ArrayList<>();
 		this.direccion = nDir;
 		this.ofertas = new ArrayList<Oferta>();
+		ofertante = nO;
+	}
+	
+	
+	/**
+	 * Devuelve el duenio de la vivienda
+	 * 
+	 * @return Duenio de la vivienda
+	 */
+	public Cliente getOfertante() {
+		return ofertante;
 	}
 	
 	/**

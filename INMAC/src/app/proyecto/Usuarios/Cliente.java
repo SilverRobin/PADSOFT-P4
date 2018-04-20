@@ -106,7 +106,7 @@ public class Cliente implements Serializable{
 	 * @param mensaje contenido del aviso
 	 */
 	public void addAviso(String mensaje) {
-		Aviso aviso = new Aviso(mensaje, new FechaSimulada());
+		Aviso aviso = new Aviso(mensaje, FechaSimulada.getHoy());
 		avisos.add(aviso);
 	}
 

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -120,11 +121,11 @@ public class Sistema implements Serializable{
 	 * @param f2 fecha 2
 	 * @return ofertas entre esas fechas
 	 */
-	public ArrayList<Oferta> busquedaFecha(FechaSimulada f1, FechaSimulada f2){
+	public ArrayList<Oferta> busquedaFecha(LocalDate f1, LocalDate f2){
 		ArrayList<Oferta> ofertas = getDisponibles();
 		
 		for(Oferta o : ofertas) {
-			if(o.getInicio().getHoy().isAfter(f1.getHoy()) && o.getInicio().getHoy().isBefore(f2.getHoy())) {
+			if(o.getInicio().isAfter(f1) && o.getInicio().isBefore(f2)) {
 				ofertas.add(o);
 			}
 		}
@@ -386,7 +387,7 @@ public class Sistema implements Serializable{
 	public void recuperarClientes() throws ClassNotFoundException, IOException {
 		this.clientes.addAll(cargarClientes());
 		for(Cliente c : this.clientes) {
-			if(c.getOfertante() != null && c.getOfertante().getInmuebles().isEmpty() == false) {
+			if(c.getOfertante() != null && !(c.getOfertante().getInmuebles().isEmpty())) {
 				this.inmuebles.addAll(c.getOfertante().getInmuebles());
 			}
 		}
