@@ -1,8 +1,10 @@
-package app.gui.Login;
+package app.gui.Vista;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Frame;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -47,13 +49,19 @@ public class LogInScreen extends JPanel{
 		
 		paneltop = new JPanel();
 		paneltop.setLayout(new BoxLayout(paneltop, BoxLayout.Y_AXIS));
+		paneltop.add(niffield);
+		paneltop.add(passfield);
 		panelbot = new JPanel();
 		panelbot.setLayout(new BoxLayout(panelbot, BoxLayout.X_AXIS));
 		panelbot.add(volver);
 		panelbot.add(login);
+
 		
 		panel.add(paneltop);
 		panel.add(panelbot);
+		
+		this.add(panel);
+		this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 	}
 	
 
