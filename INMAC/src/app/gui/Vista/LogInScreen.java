@@ -1,17 +1,10 @@
 package app.gui.Vista;
 
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Frame;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.BoxLayout;
+import javax.swing.*;
+import javax.swing.border.*;
 
 
 /**
@@ -32,27 +25,34 @@ public class LogInScreen extends JPanel{
 	private JPanel panel;
 	private JPanel paneltop;
 	private JPanel panelbot;
-	private static CardLayout cardlayout = new CardLayout();
-	private static JPanel cards = new JPanel(cardlayout);
+	private JLabel label1, labelpass;
+	
 	
 	public LogInScreen() {
 		super();
-		
 		//((JFrame) this.getParent()).setTitle("Iniciar Sesion");
+		this.setLayout(new GridBagLayout());
+
 		volver = new JButton("Volver");
 		login = new JButton("Iniciar sesion");
 		passfield = new JPasswordField("Password...");
 		niffield = new JTextField("NIF...");
-		
+		label1 = new JLabel("Número de Identificación");
+		label1.setLabelFor(niffield);
+		labelpass = new JLabel("Contraseña");
+		labelpass.setLabelFor(passfield);
 		panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		paneltop = new JPanel();
-		paneltop.setLayout(new BoxLayout(paneltop, BoxLayout.Y_AXIS));
+		paneltop.setLayout(new GridLayout(4, 1)); //Dos labels + dos jtwext field apilados en vertical
+		paneltop.setBorder(new EmptyBorder(0, 0, 10, 0));
+		paneltop.add(label1);
 		paneltop.add(niffield);
+		paneltop.add(labelpass);
 		paneltop.add(passfield);
 		panelbot = new JPanel();
-		panelbot.setLayout(new BoxLayout(panelbot, BoxLayout.X_AXIS));
+		panelbot.setLayout(new GridLayout(1, 2, 2, 0));//Espacios entre los botones para que quede mas bonico
 		panelbot.add(volver);
 		panelbot.add(login);
 
@@ -61,8 +61,10 @@ public class LogInScreen extends JPanel{
 		panel.add(panelbot);
 		
 		this.add(panel);
-		this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+		this.setBorder(BorderFactory.createTitledBorder("Inicio de sesión"));
 	}
+	
+
 	
 
 }

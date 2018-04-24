@@ -9,5 +9,10 @@
 	<classpathentry kind="lib" path="TeleChargeAndPaySystem-API.zip"/>
 	<classpathentry kind="lib" path="TeleChargeAndPaySystem.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="jcalendar-1.4.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/INMAC/jcalendar-1.4.zip!/doc/api"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
