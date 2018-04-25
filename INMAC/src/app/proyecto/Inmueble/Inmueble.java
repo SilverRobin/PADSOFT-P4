@@ -23,7 +23,7 @@ public class Inmueble implements Serializable{
 	private int id;
 	private List<Caracteristica> caracteristicas;
 	private Direccion direccion;
-	private ArrayList<Oferta> ofertas;
+	private List<Oferta> ofertas;
 	private Cliente ofertante;
 	
 	/**
@@ -62,7 +62,7 @@ public class Inmueble implements Serializable{
 	 * Obtiene las ofertas
 	 * @return ofertas
 	 */
-	public ArrayList<Oferta> getOfertas() {
+	public List<Oferta> getOfertas() {
 		return ofertas;
 	}
 	

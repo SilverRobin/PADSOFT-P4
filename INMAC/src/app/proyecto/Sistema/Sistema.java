@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import app.proyecto.Inmueble.*;
@@ -23,8 +24,8 @@ public class Sistema implements Serializable{
 		NULL, OFERTANTE, DEMANDANTE, GERENTE
 	}
 	
-	private ArrayList<Cliente> clientes;
-	private ArrayList<Inmueble> inmuebles;
+	private List<Cliente> clientes;
+	private List<Inmueble> inmuebles;
 	private Cliente logeado;
 	private TipoCliente tipolog;
 	private double cuentas;
@@ -61,7 +62,7 @@ public class Sistema implements Serializable{
 	 * Obtiene la lista de clientes
 	 * @return clientes
 	 */
-	public ArrayList<Cliente> getClientes(){
+	public List<Cliente> getClientes(){
 		return clientes;
 	}
 	
@@ -69,7 +70,7 @@ public class Sistema implements Serializable{
 	 * Obtiene la lista de inmuebles
 	 * @return inmuebles
 	 */
-	public ArrayList<Inmueble> getInmuebles(){
+	public List<Inmueble> getInmuebles(){
 		return inmuebles;
 	}
 	
@@ -155,9 +156,8 @@ public class Sistema implements Serializable{
 	public ArrayList<Oferta> busquedaVacacional(){
 		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
 		for(Oferta o : this.getDisponibles() ) {
-			if(o instanceof Vacacional) {
+			if(o.isVacacional())
 				ofertas.add(o);
-			}
 		}
 		return ofertas;
 	}
@@ -169,7 +169,7 @@ public class Sistema implements Serializable{
 	public ArrayList<Oferta> busquedaLE(){
 		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
 		for(Oferta o : this.getDisponibles() ) {
-			if(o instanceof LargaEstancia) {
+			if(!(o.isVacacional())) {
 				ofertas.add(o);
 			}
 		}
@@ -399,11 +399,11 @@ public class Sistema implements Serializable{
 	 * @throws IOException excepcion de E/S
 	 * @throws ClassNotFoundException excepcion de clase
 	 */
-	public ArrayList<Cliente> cargarClientes() throws IOException, ClassNotFoundException {
+	public List<Cliente> cargarClientes() throws IOException, ClassNotFoundException {
 		String path = System.getProperty("user.dir");
 		String barras = File.separator;
 		String directorio = path;
-		ArrayList<Cliente> aux = new ArrayList<Cliente>();
+		List<Cliente> aux = new ArrayList<Cliente>();
 		Cliente objeto = null;
 		FileInputStream fichero = null;
 		ObjectInputStream ois = null;
@@ -416,9 +416,9 @@ public class Sistema implements Serializable{
 		if(dirOfertantes.exists()) {
 			File[] verCarpetas = dirOfertantes.listFiles();
 			
-			for(int x = 0; x < verCarpetas.length; x++) {
+			for(File f : verCarpetas) {
 				String direccion = directorio;
-				direccion += verCarpetas[x].getName();
+				direccion += f.getName();
 				File carpe = new File(direccion);
 				File[] ficheros = carpe.listFiles();
 				

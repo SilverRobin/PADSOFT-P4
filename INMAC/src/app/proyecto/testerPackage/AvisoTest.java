@@ -21,7 +21,7 @@ public class AvisoTest {
 	
 	@Before
 	public void setup() {
-		f1 = new FechaSimulada();
+		f1 = FechaSimu;
 		f2 = new FechaSimulada();
 	}
 	

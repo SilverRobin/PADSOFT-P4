@@ -5,6 +5,7 @@ package app.proyecto.Usuarios;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import app.proyecto.Inmueble.Inmueble;
 
@@ -18,19 +19,18 @@ public class Ofertante implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Inmueble> inmuebles;
+	private List<Inmueble> inmuebles;
 
 
 	public Ofertante() {
-		// TODO Auto-generated constructor stub
-		inmuebles = new ArrayList<Inmueble>();
+		inmuebles = new ArrayList<>();
 	}
 	
 	/**
 	 * Obtiene la lista de inmuebles
 	 * @return inmuebles
 	 */
-	public ArrayList<Inmueble> getInmuebles() {
+	public List<Inmueble> getInmuebles() {
 		return inmuebles;
 	}
 	/**

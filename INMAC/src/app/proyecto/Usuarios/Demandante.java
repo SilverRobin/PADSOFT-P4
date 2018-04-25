@@ -5,6 +5,7 @@ package app.proyecto.Usuarios;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import app.proyecto.Oferta.Reserva;
 import app.proyecto.Sistema.FechaSimulada;
@@ -19,7 +20,7 @@ public class Demandante implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Reserva> reservas;
+	private List<Reserva> reservas;
 
 	
 	public Demandante() {
@@ -45,7 +46,7 @@ public class Demandante implements Serializable{
 	 * Obtiene la lista de reservas
 	 * @return reservas
 	 */
-	public ArrayList<Reserva> getReservas() {
+	public List<Reserva> getReservas() {
 		return reservas;
 	}
 	
@@ -103,10 +104,10 @@ public class Demandante implements Serializable{
 	 * Elimina las reservas caducadas
 	 */
 	public void eliminarReservaCaducada() {
-		int i;
-		for(i = 0; i<reservas.size(); i++) {
-			if(reservas.get(i).getFecha().isBefore(FechaSimulada.retrasarDias(5))) {
-				eliminarReserva(reservas.get(i));
+
+		for(Reserva r : reservas) {
+			if(r.getFecha().isBefore(FechaSimulada.retrasarDias(5))) {
+				eliminarReserva(r);
 			}
 		}
 	}

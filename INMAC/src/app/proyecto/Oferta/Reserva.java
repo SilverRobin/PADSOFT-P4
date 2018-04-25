@@ -54,7 +54,7 @@ public class Reserva implements Serializable{
 		 * @return true o false
 		 */
 		public Boolean isLargaEstancia (){
-			if(oferta instanceof LargaEstancia) {
+			if(!oferta.isVacacional()) {
 				return true;
 			}
 			return false;

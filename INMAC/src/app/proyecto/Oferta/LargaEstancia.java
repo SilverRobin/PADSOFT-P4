@@ -69,6 +69,11 @@ public class LargaEstancia extends Oferta {
 	public void setMinimaEstancia(int minimaEstancia) {
 		this.minimaEstancia = minimaEstancia;
 	}
+
+	@Override
+	public boolean isVacacional() {
+		return false;
+	}
 	
 	
 

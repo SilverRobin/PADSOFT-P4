@@ -23,7 +23,7 @@ public abstract class Oferta implements Serializable{
 	private int fianza;
 	private LocalDate fechaInicio;
 	private EstadoOferta visibilidad;
-	private ArrayList<ElementoValorable> valorables;
+	private List<ElementoValorable> valorables;
 	private String rectificacion;
 	
 	/**
@@ -154,14 +154,12 @@ public abstract class Oferta implements Serializable{
 	 */
 	public double calcularMediaValoraciones() {
 		
-		int i, suma = 0, counter=0;
-		ElementoValorable aux;
+		int suma = 0, counter=0;
 		
-		for(i=0; i<valorables.size(); i++) {
-			aux = valorables.get(i);
-			if(aux instanceof Valoracion) {
+		for(ElementoValorable e : valorables) {
+			if(e instanceof Valoracion) {
 				counter++;
-				suma += ((Valoracion) aux).getValor();
+				suma += ((Valoracion) e).getValor();
 			}
 		}
 		if(counter == 0)
@@ -169,6 +167,8 @@ public abstract class Oferta implements Serializable{
 		
 		return suma/counter;
 	}
+	
+	public abstract boolean isVacacional();
 	
 	/**
 	 * Modifica parametros de una oferta

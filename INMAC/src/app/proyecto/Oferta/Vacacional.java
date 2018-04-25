@@ -86,4 +86,8 @@ public class Vacacional extends Oferta {
 		
 		return false;
 	}
+	@Override
+	public boolean isVacacional() {
+		return true;
+	}
 }

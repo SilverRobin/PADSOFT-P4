@@ -2,6 +2,7 @@ package app.proyecto.Usuarios;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import es.uam.eps.padsof.telecard.*;
 import app.proyecto.Sistema.Aviso;
@@ -21,7 +22,7 @@ public class Cliente implements Serializable{
 	private Ofertante ofertante;
 	private Demandante demandante;
 	private String creditCard;
-	private ArrayList<Aviso> avisos;
+	private List<Aviso> avisos;
 	
 	/**
 	 * @param nombre nombre
@@ -114,7 +115,7 @@ public class Cliente implements Serializable{
 	 * Obtiene la lista de avisos
 	 * @return lista de avisos
 	 */
-	public ArrayList<Aviso> getAvisos() {
+	public List<Aviso> getAvisos() {
 		return avisos;
 	}
 	
@@ -122,9 +123,9 @@ public class Cliente implements Serializable{
 	 * Lee los avisos guardados
 	 */
 	public void leerAvisos() {
-		int i;
-		for (i=0;i<avisos.size();i++) {
-			System.out.println(avisos.get(i));
+
+		for (Aviso a : avisos) {
+			System.out.println(a);
 		}
 		avisos.clear(); //Limpiamos array porque ya se han leido todos
 	}
