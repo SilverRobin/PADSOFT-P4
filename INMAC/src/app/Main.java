@@ -18,10 +18,18 @@ public class Main {
 		Sistema app = Sistema.getSistema();
 		MainGUI ventana = new MainGUI(app);
 		
-		//Leemos fichero clientes
-		app.leerFichero("clientes.txt");
-		for(Cliente c : app.getClientes()) { //Cargamos los clientes
-			app.guardarCliente(c);
+		try {
+			app.recuperarClientes(); //Cargamos los clientes de las carpetas
+		} catch (ClassNotFoundException | IOException e) {
+			try {
+				app.leerFichero("clientes.txt"); //Leemos del fichero
+			}catch (IOException e1) {
+				System.out.println("Error en archivo");
+			}
+			
+			for(Cliente c : app.getClientes()) {
+				app.guardarCliente(c);
+			}
 		}
 		
 		ventana.addWindowListener(new java.awt.event.WindowAdapter() {

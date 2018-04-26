@@ -7,13 +7,18 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
 import javax.swing.text.MaskFormatter;
 
 import com.toedter.calendar.JDateChooser;
@@ -33,9 +38,14 @@ public class SearchScreen extends JPanel {
 	private JFormattedTextField cp;
 	private JDateChooser inicio;
 	private JDateChooser fin;
+	private JCheckBox vacButton;
+    private JCheckBox larButton;
+    private JPanel checkPanel;
 	private JPanel basico;
 	private JPanel fechas;
 	private JPanel codigo;
+	private JPanel slider;
+	private JSlider valoracion;
 	/**
 	 * 
 	 */
@@ -44,6 +54,8 @@ public class SearchScreen extends JPanel {
 		JLabel labelcp = new JLabel("Código postal");
 		JLabel labeli = new JLabel("Fecha de inicio:");
 		JLabel labelf = new JLabel("Fecha de fin:");
+		JLabel labelv = new JLabel("Valoración");
+		
 		this.setLayout(new BorderLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		basico = new JPanel();
@@ -60,6 +72,14 @@ public class SearchScreen extends JPanel {
 		cp.setAlignmentX(Component.CENTER_ALIGNMENT);
 		codigo.add(labelcp);
 		codigo.add(cp);
+		
+		//Botonera de seleccion de tipo de estancia
+		checkPanel = new JPanel(new GridLayout(1, 2));
+		larButton = new JCheckBox("Larga Estancia");
+		vacButton = new JCheckBox("Vacacional");
+		checkPanel.add(larButton);
+		checkPanel.add(vacButton);
+		checkPanel.setVisible(false);
 		
 		//Panel de seleccion de fechas
 		inicio = new JDateChooser(); 
@@ -80,12 +100,25 @@ public class SearchScreen extends JPanel {
 		c.gridy = 1;
 		c.gridx = 0;
 		c.weightx = 0.5;
-		fechas.add(inicio, c);//Selectores
+		
+		fechas.add(inicio, c);//Selectores de fechas
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridy = 1;
 		c.gridx = 2;
 		c.weightx = 0.5;
 		fechas.add(fin, c);
+		
+		//Selector de valoraciones
+		slider = new JPanel();
+		slider.setLayout(new BoxLayout(slider, BoxLayout.Y_AXIS));
+		valoracion = new JSlider(JSlider.HORIZONTAL, 0, 5, 3);
+		labelv.setAlignmentX(Component.CENTER_ALIGNMENT);
+		valoracion.setAlignmentX(Component.CENTER_ALIGNMENT);
+		valoracion.setMajorTickSpacing(1);
+		valoracion.setPaintLabels(true);
+		valoracion.setPaintTicks(true);
+		slider.add(labelv);
+		slider.add(valoracion);
 
 		//Panel Basico
 		basico.setLayout(new GridBagLayout());
@@ -99,10 +132,18 @@ public class SearchScreen extends JPanel {
 		c.gridy = 1;
 		c.gridwidth = 3;
 		basico.add(fechas,c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 2;
+		basico.add(checkPanel, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 3;
+		basico.add(slider,c);
 		c.fill = GridBagConstraints.NONE;
 		c.insets = new Insets(10,0,0,0);  //top padding
 		c.gridx = 1;
-		c.gridy = 2;
+		c.gridy = 4;
 		c.gridwidth = 1;
 		basico.add(buscar,c);
 		
@@ -111,8 +152,6 @@ public class SearchScreen extends JPanel {
 		this.setBorder(BorderFactory.createTitledBorder("Busqueda de inmuebles"));
 		
 		this.add(basico, BorderLayout.CENTER);
-		
-		
 	}
     /**
      * A convenience method for creating a MaskFormatter.
@@ -128,6 +167,10 @@ public class SearchScreen extends JPanel {
             System.exit(-1);
         }
         return formatter;
+    }
+    
+    public void desbloquearPanel() {
+    	this.checkPanel.setVisible(true);
     }
 
 }

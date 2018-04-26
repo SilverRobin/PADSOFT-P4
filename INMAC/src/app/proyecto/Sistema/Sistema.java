@@ -19,10 +19,7 @@ import app.proyecto.Usuarios.*;
 import app.proyecto.Oferta.*;
 
 public class Sistema implements Serializable{
-	
-	protected enum TipoCliente{
-		NULL, OFERTANTE, DEMANDANTE, GERENTE
-	}
+
 	
 	private List<Cliente> clientes;
 	private List<Inmueble> inmuebles;

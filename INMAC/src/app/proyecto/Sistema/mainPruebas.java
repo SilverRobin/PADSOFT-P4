@@ -53,7 +53,7 @@ public class mainPruebas {
 		System.out.println("\nIniciando sesion con cliente " + dummy.getNombre() + ".");
 		dummy.addDemandante();
 		apli.addNuevoCliente(dummy);
-		apli.logIn(dummy.getNIF(), dummy.getPassword(), Sistema.TipoCliente.DEMANDANTE);
+		apli.logIn(dummy.getNIF(), dummy.getPassword(), TipoCliente.DEMANDANTE);
 		System.out.print("Sesion iniciada con exito: ");
 		System.out.println(apli.getLogged() != null);
 		
@@ -62,12 +62,12 @@ public class mainPruebas {
 		System.out.print("Sesion cerrada con exito: ");
 		System.out.println(apli.getLogged() == null);
 		
-		apli.logIn("51999111X", "pezEspada", Sistema.TipoCliente.OFERTANTE);
+		apli.logIn("51999111X", "pezEspada", TipoCliente.OFERTANTE);
 		System.out.print("\nSesion iniciada con exito: ");
 		System.out.println(apli.getLogged() != null);
 		Inmueble i1;
 		System.out.println("Creando inmueble");
-		i1 = new Inmueble("Soleado en algun lado", Direccion.generarTestDir1());
+		i1 = new Inmueble("Soleado en algun lado", new Direccion("28325", "Pais de la Piruleta", "Calle de la gominola"), apli.getLogged());
 		apli.getInmuebles().add(i1);
 		i1.addCaracteristica(Caracteristica.generarTestCara1());
 		
@@ -95,7 +95,7 @@ public class mainPruebas {
 		apli.logOut();
 		
 		System.out.println("Iniciando sesion como demandante");
-		apli.logIn("55555111Z", "NoSeSaBe", Sistema.TipoCliente.DEMANDANTE);
+		apli.logIn("55555111Z", "NoSeSaBe", TipoCliente.DEMANDANTE);
 		
 		Oferta o1 = apli.getInmuebles().get(0).getOfertas().get(0);
 		Reserva r1 = new Reserva(o1);
