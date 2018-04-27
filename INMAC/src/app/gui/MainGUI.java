@@ -29,8 +29,8 @@ public class MainGUI extends JFrame{
 		super("INMAC");
 		app = sistema;
 		
-		height = tamanyo.height*80/100;
-		width = tamanyo.width*80/100;
+		height = tamanyo.height;
+		width = tamanyo.width;
 		BorderLayout layout = new BorderLayout();
 		this.setLayout(layout);
 		dcha = new LogInScreen(app);

@@ -1,5 +1,7 @@
 package app.gui.Vista;
 
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
@@ -38,13 +40,19 @@ public class LogInScreen extends JPanel{
 	public LogInScreen(Sistema app) {
 		super();
 		//((JFrame) this.getParent()).setTitle("Iniciar Sesion");
-		this.setLayout(new GridBagLayout());
+		this.setLayout(new BorderLayout());
+		GridBagConstraints c = new GridBagConstraints();
 
 		volver = new JButton("Volver");
 		login = new JButton("Iniciar sesion");
 		login.addActionListener(new ControladorInicioSesion(app, this));
 		passfield = new JPasswordField("Password...");
+		
 		niffield = new JTextField("NIF...");
+		niffield.setColumns(10);
+		niffield.setMaximumSize(niffield.getPreferredSize());
+		passfield.setColumns(10);
+		passfield.setMaximumSize(passfield.getPreferredSize());
 		label1 = new JLabel("Número de Identificación");
 		label1.setLabelFor(niffield);
 		labelpass = new JLabel("Contraseña");
@@ -63,7 +71,7 @@ public class LogInScreen extends JPanel{
 		panelmid.add(oButton);
 		
 		panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		panel.setLayout(new GridBagLayout());
 		
 		paneltop = new JPanel();
 		paneltop.setLayout(new GridLayout(4, 1)); //Dos labels + dos jtwext field apilados en vertical
@@ -77,13 +85,25 @@ public class LogInScreen extends JPanel{
 		panelbot.setLayout(new GridLayout(1, 2, 5, 0));//Espacios entre los botones para que quede mas bonico
 		panelbot.add(volver);
 		panelbot.add(login);
-
 		
-		panel.add(paneltop);
-		panel.add(panelmid);
-		panel.add(panelbot);
+		c.fill = GridBagConstraints.NONE;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 1;
+		panel.add(paneltop, c);
+		c.fill = GridBagConstraints.NONE;
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		panel.add(panelmid, c);
+		c.fill = GridBagConstraints.NONE;
+		c.gridx = 0;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		panel.add(panelbot, c);
 		
-		this.add(panel);
+		//this.add(panel);
+		this.add(panel, BorderLayout.CENTER);
 		this.setBorder(BorderFactory.createTitledBorder("Inicio de sesión"));
 	}
 	

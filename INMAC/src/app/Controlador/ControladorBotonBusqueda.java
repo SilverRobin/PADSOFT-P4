@@ -31,6 +31,7 @@ public class ControladorBotonBusqueda implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//TODO Wow very POO such work
+		
 		//Comprobar codigo postal
 		//Comprobar fecha inicio
 		//Comprobar fecha fin
