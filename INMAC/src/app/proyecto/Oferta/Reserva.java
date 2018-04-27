@@ -90,7 +90,7 @@ public class Reserva implements Serializable{
 		
 		/**
 		 * Cancela una reserva
-		 * @param d DEmandante que cancela 
+		 * @param d Demandante que cancela 
 		 * @return true o false
 		 */
 		public boolean cancelarReserva(Demandante d) {
@@ -100,6 +100,4 @@ public class Reserva implements Serializable{
 			}
 			return false;
 		}
-		
-		
 }

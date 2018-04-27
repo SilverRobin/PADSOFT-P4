@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.proyecto.Oferta.Oferta;
 import app.proyecto.Oferta.Reserva;
 import app.proyecto.Sistema.FechaSimulada;
 
@@ -21,10 +22,12 @@ public class Demandante implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private List<Reserva> reservas;
+	private Cliente cliente;
 
 	
-	public Demandante() {
+	public Demandante(Cliente nC) {
 		reservas = new ArrayList<Reserva>();
+		cliente = nC;
 	}
 	
 	/**
@@ -51,13 +54,16 @@ public class Demandante implements Serializable{
 	}
 	
 	/**
-	 * añade una nueva reserva
-	 * @param r reserva
-	 * @return true o false
+	 * Añade una nueva reserva al demandante si puede reservar una nueva oferta
+	 * @param r Reserva
+	 * @return true si se reserva con exito, false si no es posible hacer la operacion
 	 */
 	public boolean addReserva(Reserva r) {
 		
 		r.setDemandante(this);
+		
+		if(!(Cliente.comprobarTarjeta(cliente.getCreditCard())))
+			return false;
 		
 		if(limiteAlcanzado()) {
 			return false;
@@ -103,13 +109,18 @@ public class Demandante implements Serializable{
 	/**
 	 * Elimina las reservas caducadas
 	 */
-	public void eliminarReservaCaducada() {
+	public List<Oferta> eliminarReservaCaducada() {
 
+		List<Oferta> rets = new ArrayList<>();
+		
 		for(Reserva r : reservas) {
 			if(r.getFecha().isBefore(FechaSimulada.retrasarDias(5))) {
+				rets.add(r.getOferta());
 				eliminarReserva(r);
 			}
 		}
+		
+		return rets;
 	}
 	
 	

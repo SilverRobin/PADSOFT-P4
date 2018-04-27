@@ -1,5 +1,7 @@
 package app.proyecto.Sistema;
 
+import java.util.List;
+
 import app.proyecto.Usuarios.Cliente;
 
 /**
@@ -66,6 +68,10 @@ public class Pago {
 		estado = EstadoPago.PAGADO;
 		
 		return true;
+	}
+	
+	public Cliente getOfertantes() {
+		return ofertante;
 	}
 	
 	/**

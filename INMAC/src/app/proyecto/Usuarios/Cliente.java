@@ -7,6 +7,7 @@ import java.util.List;
 import es.uam.eps.padsof.telecard.*;
 import app.proyecto.Sistema.Aviso;
 import app.proyecto.Sistema.FechaSimulada;
+import app.proyecto.Sistema.Sistema;
 
 /**
  * @author Laura Ramirez
@@ -85,7 +86,7 @@ public class Cliente implements Serializable{
 	
 	
 	public void addDemandante() {
-		demandante = new Demandante();
+		demandante = new Demandante(this);
 		return;
 	}
 	
@@ -140,6 +141,7 @@ public class Cliente implements Serializable{
 	public boolean cambiarTarjeta(String tarjeta) {
 		if(Cliente.comprobarTarjeta(tarjeta)) {
 			this.creditCard = tarjeta;
+			Sistema.singleton.checkPagos(this);
 			return true;
 		}
 		return false;

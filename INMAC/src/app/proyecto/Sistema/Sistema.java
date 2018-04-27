@@ -12,7 +12,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 import app.proyecto.Inmueble.*;
 import app.proyecto.Usuarios.*;
@@ -21,10 +23,11 @@ import app.proyecto.Oferta.*;
 public class Sistema implements Serializable{
 
 	
-	private List<Cliente> clientes;
+	private Map<String, Cliente> clientes;
 	private List<Inmueble> inmuebles;
 	private Cliente logeado;
 	private TipoCliente tipolog;
+	private List<Pago> pagos;
 	private double cuentas;
 
 	
@@ -40,11 +43,21 @@ public class Sistema implements Serializable{
 	 */
 	private Sistema(String id, String pass) {
 		gerID = id;
+		pagos = new ArrayList<>();
 		gerPass = pass;
-		clientes = new ArrayList<Cliente>();
+		clientes = new TreeMap<>();
 		inmuebles = new ArrayList<Inmueble>();
 		logeado = null;
 		tipolog = TipoCliente.NULL;
+	}
+	
+	public void checkPagos(Cliente c) {
+		for(Pago p : pagos) {
+			if(p.getOfertantes().equals(c)) {
+				p.resolverPago("Pago congelado");
+				return;
+			}
+		}
 	}
 	
 	/**
@@ -60,7 +73,7 @@ public class Sistema implements Serializable{
 	 * @return clientes
 	 */
 	public List<Cliente> getClientes(){
-		return clientes;
+		return new ArrayList<>(clientes.values());
 	}
 	
 	/**
@@ -199,22 +212,22 @@ public class Sistema implements Serializable{
 	
 	public boolean logIn(String nif, String pass, TipoCliente tipo) {
 		
+		Cliente c=null;
+		
 		if(nif.equals(gerID) && pass.equals(gerPass)) {
 			tipolog = TipoCliente.GERENTE;
 			return true;
 		}
 		
-		for(Cliente c : clientes) {
-			if(c.getNIF().equals(nif)) {
-				if(c.getPassword().equals(pass) &&
-						((tipo == TipoCliente.DEMANDANTE && c.getDemandante() != null) ||
-								(tipo == TipoCliente.OFERTANTE && c.getOfertante() != null))) {
-					logeado = c;
-					tipolog = tipo;
-					return true;
-				}else {
-					return false;
-				}
+		c = clientes.get(nif);
+		if(c != null && c.getPassword().equals(pass)){
+			if((tipo == TipoCliente.DEMANDANTE && c.getDemandante() != null) ||
+							(tipo == TipoCliente.OFERTANTE && c.getOfertante() != null)) {
+				logeado = c;
+				tipolog = tipo;
+				return true;
+			}else {
+				return false;
 			}
 		}
 		return false;
@@ -236,14 +249,7 @@ public class Sistema implements Serializable{
 	 * @return Cliente
 	 */
 	public Cliente buscarCliente(String nif) {
-		if(nif == null) {
-			return null;
-		}
-		for(Cliente c : this.clientes) {
-			if(c.getNIF().equalsIgnoreCase(nif))
-				return c;
-		}
-			return null;
+		return clientes.get(nif);
 		
 	}
 	
@@ -256,15 +262,13 @@ public class Sistema implements Serializable{
 		if(c == null) {
 			return false;
 		}
-		if(this.clientes.contains(c)) {
+		if(this.clientes.containsKey(c.getNIF())) {
 			return false;
 		}
-		for(Cliente p : this.clientes) {
-			if(c.getNIF().equalsIgnoreCase(p.getNIF())) {
-				return false;
-			}
-		}
-		 return this.clientes.add(c);
+		
+		this.clientes.put(c.getNIF(), c);
+		
+		return true;
 	}
 	
 	/**
@@ -382,8 +386,10 @@ public class Sistema implements Serializable{
 	 * @throws IOException Excepcion
 	 */
 	public void recuperarClientes() throws ClassNotFoundException, IOException {
-		this.clientes.addAll(cargarClientes());
-		for(Cliente c : this.clientes) {
+		
+		for(Cliente c : cargarClientes())
+			clientes.put(c.getNIF(), c);
+		for(Cliente c : this.getClientes()) {
 			if(c.getOfertante() != null && !(c.getOfertante().getInmuebles().isEmpty())) {
 				this.inmuebles.addAll(c.getOfertante().getInmuebles());
 			}
@@ -430,5 +436,30 @@ public class Sistema implements Serializable{
 		}
 		
 		return aux;
+	}
+	
+	/**
+	 * Actualiza las ofertas y reservas del sistema
+	 * y elimina las que hayan expirado
+	 */
+	public void refresh() {
+		
+		List<Oferta> rets;
+		
+		for(Cliente c : this.getClientes()) {
+			rets = c.getDemandante().eliminarReservaCaducada();
+			for(Oferta r : rets) {
+				for(Inmueble i : inmuebles)
+					i.removeOferta(r);
+			}
+		}
+		
+		for(Inmueble i : inmuebles) {
+			rets = i.getOfertas();
+			for(Oferta r : rets) {
+				if(r.hasExpired())
+					i.removeOferta(r);
+			}
+		}
 	}
 }
