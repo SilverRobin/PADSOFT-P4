@@ -21,6 +21,7 @@ public abstract class Oferta implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int precio;
 	private int fianza;
+	private String descripcion;
 	private LocalDate fechaInicio;
 	private EstadoOferta visibilidad;
 	private List<ElementoValorable> valorables;
@@ -133,6 +134,10 @@ public abstract class Oferta implements Serializable{
 		return;
 	}
 	
+	public void setDescripcion(String s) {
+		this.descripcion = descripcion;
+	}
+	
 	/**
 	 * Nos dice si es oferta
 	 * @return true o false
@@ -213,4 +218,12 @@ public abstract class Oferta implements Serializable{
 	public boolean hasExpired() {
 		return false;
 	}
+	
+
+	@Override
+	public String toString() {
+		return this.descripcion + "- Precio: " + this.precio + " €";
+	}
+	
+	
 }

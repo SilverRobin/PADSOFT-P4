@@ -9,6 +9,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -172,5 +176,28 @@ public class SearchScreen extends JPanel {
     public void desbloquearPanel() {
     	this.checkPanel.setVisible(true);
     }
-
+    
+    public String getCP() {
+    	return this.cp.getText();
+    }
+    
+    public LocalDate getInicio() {
+    	return LocalDate.ofInstant(this.inicio.getDate().toInstant(), ZoneId.systemDefault());
+    }
+    
+    public LocalDate getFin() {
+    	return LocalDate.ofInstant(this.fin.getDate().toInstant(), ZoneId.systemDefault());
+    }
+    
+    public boolean isLESelected() {
+    	return this.larButton.isSelected();
+    }
+    
+    public boolean isVacSelected() {
+    	return this.vacButton.isSelected();
+    }
+    
+    public int valoracion() {
+    	return this.valoracion.getValue();
+    }
 }

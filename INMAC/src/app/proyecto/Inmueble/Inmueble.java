@@ -73,7 +73,7 @@ public class Inmueble implements Serializable{
 	public ArrayList<Oferta> getDisponibles(){
 		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
 		for(Oferta o : this.ofertas) {
-			if(o.getVisibilidad() == EstadoOferta.DISPONIBLE) {
+			if(o.getVisibilidad() == EstadoOferta.DISPONIBLE || o.getVisibilidad() == EstadoOferta.RESERVADA) {
 				ofertas.add(o);
 			}
 		}
@@ -145,6 +145,7 @@ public class Inmueble implements Serializable{
 	 * @return true o false
 	 */
 	public boolean addOferta(Oferta e) {
+		e.setDescripcion(this.direccion.getCalle() + "." + this.direccion.getLocalidad());
 		return ofertas.add(e);
 	}
 	

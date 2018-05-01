@@ -8,8 +8,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.*;
+
+import app.proyecto.Oferta.Oferta;
 
 /**
  * @author Laura Ramirez
@@ -54,6 +57,16 @@ public class ResultScreen extends JPanel {
 
 	public void reactivarVerOferta() {
 		breservar.setEnabled(true);
+	}
+	
+	public void addResultados(ArrayList<Oferta> lista) {
+		for(Oferta o : lista) {
+			listModel.addElement(o.toString());
+		}
+	}
+	
+	public void limpiarLista() {
+		listModel.clear();
 	}
 
 }

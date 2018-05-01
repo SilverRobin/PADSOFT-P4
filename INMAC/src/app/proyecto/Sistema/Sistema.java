@@ -18,6 +18,8 @@ import java.util.TreeMap;
 
 import app.proyecto.Inmueble.*;
 import app.proyecto.Usuarios.*;
+import app.proyecto.Valorables.ElementoValorable;
+import app.proyecto.Valorables.Valoracion;
 import app.proyecto.Oferta.*;
 
 public class Sistema implements Serializable{
@@ -181,6 +183,25 @@ public class Sistema implements Serializable{
 		for(Oferta o : this.getDisponibles() ) {
 			if(!(o.isVacacional())) {
 				ofertas.add(o);
+			}
+		}
+		return ofertas;
+	}
+	
+	/**
+	 * Funcion que devuelve una lista con las ofertas que tienen una valoracion igual o mayor a la especificada
+	 * @param valoracion numero entero que especifica la valoracion minima
+	 * @return lista de ofertas filtradas por valoracion
+	 */
+	public ArrayList<Oferta> busquedaValoracion(int valoracion){
+		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+		for(Oferta o : this.getDisponibles()) {
+			for(ElementoValorable v : o.getValorables()) {
+				if(v instanceof Valoracion) {
+					if(((Valoracion) v).getValor() >= valoracion) {
+						ofertas.add(o);
+					}
+				}
 			}
 		}
 		return ofertas;
