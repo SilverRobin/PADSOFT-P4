@@ -159,5 +159,13 @@ public class Inmueble implements Serializable{
 	public boolean removeOferta(Oferta e) {
 		return ofertas.remove(e);
 	}
+
+
+	@Override
+	public String toString() {
+		return this.getDireccion().getCP() + ", " + getDireccion().getLocalidad() + ". " + getDireccion().getCalle();
+	}
+	
+	
 	
 }

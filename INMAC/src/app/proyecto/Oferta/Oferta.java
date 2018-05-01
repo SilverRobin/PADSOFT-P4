@@ -222,8 +222,7 @@ public abstract class Oferta implements Serializable{
 
 	@Override
 	public String toString() {
-		return this.descripcion + "- Precio: " + this.precio + " €";
+		return this.descripcion + "		"+ this.precio + " €";
 	}
-	
 	
 }

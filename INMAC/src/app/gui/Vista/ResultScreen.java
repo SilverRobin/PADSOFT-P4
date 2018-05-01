@@ -61,7 +61,7 @@ public class ResultScreen extends JPanel {
 	
 	public void addResultados(ArrayList<Oferta> lista) {
 		for(Oferta o : lista) {
-			listModel.addElement(o.toString());
+			listModel.addElement(o);
 		}
 	}
 	

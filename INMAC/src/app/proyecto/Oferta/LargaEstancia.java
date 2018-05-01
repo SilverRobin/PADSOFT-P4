@@ -74,6 +74,13 @@ public class LargaEstancia extends Oferta {
 	public boolean isVacacional() {
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return "[Larga Estancia] " + this.getMinimaEstancia() + " meses. " + "Fianza: " + getFianza() + "€. Precio: " + getPrecio() + "€";
+	}
+	
+	
 	
 	
 
