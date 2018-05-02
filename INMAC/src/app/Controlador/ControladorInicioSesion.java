@@ -61,7 +61,7 @@ public class ControladorInicioSesion implements ActionListener {
 				cl = (CardLayout) ventana.getIzquierda().getLayout();
 				cl.show(ventana.getIzquierda(), "OLS");
 				
-				ventana.cambiaCentro(new OfertanteMScreen(), "OMS");
+				ventana.cambiaCentro(new OfertanteMScreen(app), "OMS");
 				cl = (CardLayout) ventana.getCentro().getLayout();
 				cl.show(ventana.getCentro(), "OMS");
 				

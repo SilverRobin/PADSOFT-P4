@@ -16,6 +16,9 @@ import java.awt.Toolkit;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import app.Controlador.ControladorAddInmueble;
+import app.proyecto.Sistema.Sistema;
+
 /**
  * @author Laura Ramirez
  * @author Antonio Oliva
@@ -33,7 +36,7 @@ public class OfertanteMScreen extends JPanel {
 	/**
 	 * 
 	 */
-	public OfertanteMScreen() {
+	public OfertanteMScreen(Sistema app) {
 		height = tamanyo.height;
 		width = tamanyo.width;
 		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 20);
@@ -49,6 +52,7 @@ public class OfertanteMScreen extends JPanel {
 		addOferta.setFont(f);
 		addVivienda = new JButton("Añadir inmueble");
 		addVivienda.setFont(f);
+		addVivienda.addActionListener(new ControladorAddInmueble(app, this));
 		modOferta = new JButton("Modificar oferta");
 		modOferta.setFont(f);
 		verAvisos = new JButton("Ver avisos");
@@ -71,7 +75,7 @@ public class OfertanteMScreen extends JPanel {
 		add(minipanel, BorderLayout.PAGE_START);
 		add(minipanel2, BorderLayout.CENTER);
 		
-		this.setBorder(BorderFactory.createTitledBorder("Lista de inmuebles"));
+		this.setBorder(BorderFactory.createTitledBorder("Menu"));
 		
 	}
 
