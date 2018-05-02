@@ -68,7 +68,9 @@ public class mainPruebas {
 		Inmueble i1;
 		System.out.println("Creando inmueble");
 		i1 = new Inmueble("Soleado en algun lado", new Direccion("28325", "Pais de la Piruleta", "Calle de la gominola"), apli.getLogged());
+		Inmueble i2 = new Inmueble("Casita de chocolate", new Direccion("02458", "Chuchelandia", "Calle del castillo. 25A"), apli.getLogged());
 		apli.getInmuebles().add(i1);
+		apli.getInmuebles().add(i2);
 		i1.addCaracteristica(Caracteristica.generarTestCara1());
 		
 		apli.getLogged().getOfertante().addInmueble(i1);

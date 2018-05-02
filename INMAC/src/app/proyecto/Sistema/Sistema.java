@@ -259,6 +259,7 @@ public class Sistema implements Serializable{
 	 * Logout del sistema
 	 */
 	public void logOut() {
+		this.guardarCliente(this.getLogged()); //Guardamos datos antes de salir
 		logeado = null;
 		tipolog = TipoCliente.NULL;
 		return;

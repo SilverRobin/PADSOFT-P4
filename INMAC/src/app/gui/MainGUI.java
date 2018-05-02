@@ -27,18 +27,27 @@ public class MainGUI extends JFrame{
 	
 	public MainGUI(Sistema sistema) {
 		super("INMAC");
-		app = sistema;
 		
+		app = sistema;
 		height = tamanyo.height;
 		width = tamanyo.width;
+		
+		dcha = new JPanel(new CardLayout());
+		dcha.setPreferredSize(new Dimension(width*20/100, height));
+		izqda = new JPanel(new CardLayout());
+		izqda.setPreferredSize(new Dimension(width*20/100, height));
+		centro = new JPanel(new CardLayout());
+		centro.setPreferredSize(new Dimension(width*60/100, height));
+		
 		BorderLayout layout = new BorderLayout();
 		this.setLayout(layout);
-		dcha = new LogInScreen(app);
-		dcha.setPreferredSize(new Dimension(width*20/100, height));
-		izqda = new SearchScreen();
-		izqda.setPreferredSize(new Dimension(width*20/100, height));
-		centro = new ResultScreen();
-		centro.setPreferredSize(new Dimension(width*60/100, height));
+
+		dcha.add(new LogInScreen(app), "LogIn");
+
+		izqda.add(new SearchScreen(), "Search");
+		
+		centro.add(new ResultScreen(), "Results");
+
 		this.add(izqda, BorderLayout.LINE_START);//Parte izquierda de la pantalla. Busqueda
 		this.add(centro, BorderLayout.CENTER);
 		this.add(dcha, BorderLayout.LINE_END); //Parte derecha de la pantalla. Login
@@ -74,26 +83,67 @@ public class MainGUI extends JFrame{
 	}
 	
 	/**
-	 * Cambia el panel del centro por uno nuevo
+	 * Incluye un panel en las cartas centrales
 	 * @param nuevo Nuevo panel central
+	 * @param nombre Nombre del panel. Debe ser unico
 	 */
-	public void cambiaCentro(JPanel nuevo) {
-		this.centro = nuevo;
+	public void cambiaCentro(JPanel nuevo, String nombre) {
+		this.centro.add(nuevo, nombre);
 	}
 	
 	/**
-	 * Cambia el panel derecho por uno nuevo
+	 * Añade un panel nuevo en las cartas de la derecha
 	 * @param nuevo Nuevo panel derecho
+	 * @param nombre Nombre del panel. Debe ser unico
 	 */
-	public void cambiaDerecha(JPanel nuevo) {
-		this.dcha = nuevo;
+	public void cambiaDerecha(JPanel nuevo, String nombre) {
+		this.dcha.add(nuevo, nombre);
+		this.validate();
 	}
 	
 	/**
-	 * Cambia el panel izquierdo por uno nuevo
+	 * Añade un panel nuevo a las cartas de la izquierda
 	 * @param nuevo Nuevo panel izquierdo
+	 * @param nombre Nombre del panel. Debe ser unico
 	 */
-	public void cambiaIzquierda(JPanel nuevo) {
-		this.izqda = nuevo;
+	public void cambiaIzquierda(JPanel nuevo, String nombre) {;
+		this.izqda.add(nuevo, nombre);
+		this.validate();
+	}
+	
+	/**
+	 * Obtiene la carta que se esta mostrando actualmente en el panel central
+	 * @return la carta que se esta mostrando
+	 */
+	public JPanel getCurrentCardC() {
+		JPanel card = null;
+		for (Component comp : centro.getComponents()) {
+			card = (JPanel) comp;
+		}
+		return card;
+	}
+	
+	/**
+	 * Obtiene la carta que se esta mostrando actualmente en el panel izquierdo
+	 * @return la carta que se esta mostrando
+	 */
+	public JPanel getCurrentCardL() {
+		JPanel card = null;
+		for (Component comp : izqda.getComponents()) {
+			card = (JPanel) comp;
+		}
+		return card;
+	}
+	
+	/**
+	 * Obtiene la carta que se esta mostrando actualmente en el panel derecho
+	 * @return la carta que se esta mostrando
+	 */
+	public JPanel getCurrentCardR() {
+		JPanel card = null;
+		for (Component comp : dcha.getComponents()) {
+			card = (JPanel) comp;
+		}
+		return card;
 	}
 }

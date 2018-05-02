@@ -3,6 +3,7 @@
  */
 package app.Controlador;
 
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -50,17 +51,31 @@ public class ControladorInicioSesion implements ActionListener {
 			tipo = TipoCliente.DEMANDANTE;
 		}
 		if(app.logIn(panel.getNIF(), panel.getPassword(), tipo)) {
+			CardLayout cl;
 			MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(panel); //Obtenemos la ventana en la que esta contenido el panel
 			if(tipo == TipoCliente.OFERTANTE) {
+				
 				OfertanteLScreen ols = new OfertanteLScreen();
 				ols.addInmuebles(app.getLogged().getOfertante().getInmuebles());
-				ventana.cambiaIzquierda(new OfertanteLScreen()); //Cambiamos pantalla izquierda para ofertante
-				ventana.cambiaCentro(new OfertanteMScreen());
-				ventana.cambiaDerecha(new OfertanteRScreen());
-			}
-			((ResultScreen) ventana.getCentro()).reactivarVerOferta(); //Reactivamos el boton
-			((SearchScreen) ventana.getIzquierda()).desbloquearPanel(); //Desbloqueamos el checkbox
+				ventana.cambiaIzquierda(ols, "OLS"); //Cambiamos pantalla izquierda para ofertante
+				cl = (CardLayout) ventana.getIzquierda().getLayout();
+				cl.show(ventana.getIzquierda(), "OLS");
+				
+				ventana.cambiaCentro(new OfertanteMScreen(), "OMS");
+				cl = (CardLayout) ventana.getCentro().getLayout();
+				cl.show(ventana.getCentro(), "OMS");
+				
+				ventana.cambiaDerecha(new OfertanteRScreen(), "ORS");
+				cl = (CardLayout) ventana.getDerecha().getLayout();
+				cl.show(ventana.getDerecha(), "ORS");
+				
+			}else {
+			cl = (CardLayout) ventana.getCentro().getLayout();
+			
+			((ResultScreen) ventana.getCurrentCardC()).reactivarVerOferta(); //Reactivamos el boton
+			((SearchScreen) ventana.getCurrentCardL()).desbloquearPanel(); //Desbloqueamos el checkbox
 			//Cambiamos de panel y listo. Necesitamos un panel nuevo con los menus
+			}
 			
 		}else {
 		JOptionPane.showMessageDialog(null,

@@ -1,9 +1,11 @@
 package app.gui.Vista;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -22,7 +24,6 @@ import app.proyecto.Sistema.Sistema;
 public class LogInScreen extends JPanel{
 	
 	static final long serialVersionUID = 1;
-	
 	private JButton volver;
 	private JButton login;
 	private JRadioButton dButton;
@@ -46,9 +47,9 @@ public class LogInScreen extends JPanel{
 		volver = new JButton("Volver");
 		login = new JButton("Iniciar sesion");
 		login.addActionListener(new ControladorInicioSesion(app, this));
-		passfield = new JPasswordField("Password...");
+		passfield = new JPasswordField("olvidame");
 		
-		niffield = new JTextField("NIF...");
+		niffield = new JTextField("54444111D");
 		niffield.setColumns(10);
 		niffield.setMaximumSize(niffield.getPreferredSize());
 		passfield.setColumns(10);
