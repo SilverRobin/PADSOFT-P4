@@ -46,7 +46,6 @@ public class ControladorInicioSesion implements ActionListener {
 		TipoCliente tipo;
 		if(panel.isOfertante()) {
 			tipo = TipoCliente.OFERTANTE;
-			
 		}else {
 			tipo = TipoCliente.DEMANDANTE;
 		}

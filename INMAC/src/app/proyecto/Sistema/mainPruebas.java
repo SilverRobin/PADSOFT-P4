@@ -76,7 +76,7 @@ public class mainPruebas {
 		apli.getLogged().getOfertante().addInmueble(i1);
 		
 		System.out.println("Creado inmueble llamado: " + i1.getDesc());
-		Oferta o = new LargaEstancia(200, 100, FechaSimulada.getHoy(), 2);
+		Oferta o = new LargaEstancia(200, 100, FechaSimulada.getHoy(), 2, i1);
 		i1.addOferta(o);
 		System.out.println("Estado de la oferta: " + o.getVisibilidad());
 		System.out.println("\nCerrando sesion.");

@@ -9,7 +9,7 @@ import app.proyecto.Usuarios.Cliente;
 
 /**
  * 
- * @author Antonio Oliva
+ * @author Laura Ramírez
  *
  */
 public class Main {

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.proyecto.Inmueble.Inmueble;
 import app.proyecto.Valorables.ElementoValorable;
 import app.proyecto.Valorables.Valoracion;
 
@@ -26,19 +27,21 @@ public abstract class Oferta implements Serializable{
 	private EstadoOferta visibilidad;
 	private List<ElementoValorable> valorables;
 	private String rectificacion;
+	private Inmueble in;
 	
 	/**
 	 * @param nP Precio
 	 * @param nF Fianza
 	 * @param nD Fecha 
 	 */
-	public Oferta (int nP, int nF, LocalDate nD) {
+	public Oferta (int nP, int nF, LocalDate nD, Inmueble nI) {
 		this.precio = nP;
 		this.fianza = nF;
 		this.fechaInicio = nD;
 		visibilidad = EstadoOferta.NO_APROBADA;
 		valorables = new ArrayList<>();
 		rectificacion = null;
+		in = nI;
 	}
 	
 	/**
@@ -47,6 +50,14 @@ public abstract class Oferta implements Serializable{
 	 */
 	public int getPrecio() {
 		return precio;
+	}
+	
+	/**
+	 * Devuelve el inmueble que hace esta oferta
+	 * @return Inmueble padre
+	 */
+	public Inmueble getInmueble() {
+		return in;
 	}
 	
 	/**

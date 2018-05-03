@@ -6,6 +6,8 @@ package app.proyecto.Oferta;
 
 import java.time.LocalDate;
 
+import app.proyecto.Inmueble.Inmueble;
+
 /**
  * Clase que comprueba el correcto funcionamiento de la clase Vacacional
  * 
@@ -26,8 +28,8 @@ public class Vacacional extends Oferta {
 	 * @param nD Fecha de inicio
 	 * @param fechaFin Fecha de fin
 	 */
-	public Vacacional(int nP, int nF, LocalDate nD, LocalDate fechaFin) {
-		super(nP, nF, nD);
+	public Vacacional(int nP, int nF, LocalDate nD, LocalDate fechaFin, Inmueble in) {
+		super(nP, nF, nD, in);
 		this.fechaFin = fechaFin;
 	}
 	/* (non-Javadoc)

@@ -5,6 +5,8 @@ package app.proyecto.Oferta;
 
 import java.time.LocalDate;
 
+import app.proyecto.Inmueble.Inmueble;
+
 /**
  * @author Laura Ramirez
  *
@@ -21,8 +23,8 @@ public class LargaEstancia extends Oferta {
 	 * @param nD Fecha de inicio
 	 * @param minimaEstancia meses de estancia
 	 */
-	public LargaEstancia(int nP, int nF, LocalDate nD, int minimaEstancia) {
-		super(nP, nF, nD);
+	public LargaEstancia(int nP, int nF, LocalDate nD, int minimaEstancia, Inmueble in) {
+		super(nP, nF, nD, in);
 		this.minimaEstancia = minimaEstancia;
 	}
 

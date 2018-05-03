@@ -120,8 +120,4 @@ public class LogInScreen extends JPanel{
 		}
 		return false;
 	}
-	
-
-	
-
 }
