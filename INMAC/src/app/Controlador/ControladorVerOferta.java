@@ -36,10 +36,10 @@ public class ControladorVerOferta implements ActionListener{
 		DOfertaMScreen oms = new DOfertaMScreen(app, panel.getOferta());
 		ventana.cambiaCentro(oms, "DOMS"); //Cambiamos pantalla centro para demandante
 		cl = (CardLayout) ventana.getCentro().getLayout();
-		cl.show(ventana.getIzquierda(), "DOMS");
+		cl.show(ventana.getCentro(), "DOMS");
 		
 		DOfertaRScreen ors = new DOfertaRScreen(app, panel.getOferta());
-		ventana.cambiaCentro(ors, "DORS"); //Cambiamos pantalla derecha para demandante
+		ventana.cambiaDerecha(ors, "DORS"); //Cambiamos pantalla derecha para demandante
 		cl = (CardLayout) ventana.getDerecha().getLayout();
 		cl.show(ventana.getDerecha(), "DORS");
 	}

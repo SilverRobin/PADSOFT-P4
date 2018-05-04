@@ -35,9 +35,9 @@ public class DOfertaMScreen extends JPanel{
 		JPanel horizontalhi = new JPanel();
 		horizontalhi.setLayout(new BoxLayout(horizontalhi, BoxLayout.X_AXIS));
 		JPanel hileft = new JPanel();
-		hileft.setLayout(new BoxLayout(hileft, BoxLayout.X_AXIS));
+		hileft.setLayout(new BoxLayout(hileft, BoxLayout.Y_AXIS));
 		JPanel hiright = new JPanel();
-		hiright.setLayout(new BoxLayout(hiright, BoxLayout.X_AXIS));
+		hiright.setLayout(new BoxLayout(hiright, BoxLayout.Y_AXIS));
 		JPanel horizontallow = new JPanel();
 		horizontallow.setLayout(new BoxLayout(horizontallow, BoxLayout.X_AXIS));
 		this.oferta = of;
