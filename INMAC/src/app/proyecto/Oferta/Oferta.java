@@ -230,6 +230,9 @@ public abstract class Oferta implements Serializable{
 		return false;
 	}
 	
+	public static Oferta generarOfertaTest() {
+		return new Vacacional(400, 30, LocalDate.now(), LocalDate.now(), Inmueble.generarInmuebleTest());
+	}
 
 	@Override
 	public String toString() {

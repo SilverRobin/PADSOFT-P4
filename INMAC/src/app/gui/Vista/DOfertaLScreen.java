@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -54,7 +55,11 @@ public class DOfertaLScreen extends JPanel{
 		for(Caracteristica c : cars) {
 			aux.add(c.getTitulo());
 		}
-		lcars = new JList<String>((String[]) aux.toArray());
+		DefaultListModel<String> model = new DefaultListModel<>();
+		for(Caracteristica c : cars) {
+			model.addElement(c.getTitulo());
+		}
+		lcars = new JList<String>(model);
 		lcars.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
 				cdesc.setText(cars.get(lcars.getSelectedIndex()).getDesc());
@@ -80,5 +85,6 @@ public class DOfertaLScreen extends JPanel{
 		right.add(cdesc);
 		mainpanel.add(left);
 		mainpanel.add(right);
+		this.add(mainpanel);
 	}
 }

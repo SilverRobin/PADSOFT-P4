@@ -45,7 +45,7 @@ public class MainGUI extends JFrame{
 
 		izqda.add(new SearchScreen(), "Search");
 		
-		centro.add(new ResultScreen(), "Results");
+		centro.add(new ResultScreen(sistema), "Results");
 
 		this.add(izqda, BorderLayout.LINE_START);//Parte izquierda de la pantalla. Busqueda
 		this.add(centro, BorderLayout.CENTER);
