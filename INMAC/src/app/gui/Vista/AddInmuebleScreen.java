@@ -4,6 +4,9 @@
 package app.gui.Vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -34,7 +37,7 @@ public class AddInmuebleScreen extends JPanel {
 	
 	private JTextArea descripcion;
 	
-	private JComboBox<String> selectorCaracteristica;
+	private JTextField nombreCaracteristica;
 	private JList lista;
 	private DefaultListModel listModel;
 	private JTextField descCaracteristica;
@@ -56,24 +59,36 @@ public class AddInmuebleScreen extends JPanel {
 		
 		/*PANEL DE DIRECCION */
 		panelDireccion = new JPanel();
+		panelDireccion.setBorder(BorderFactory.createTitledBorder("Dirección"));
 		panelDireccion.setLayout(new BoxLayout(panelDireccion, BoxLayout.Y_AXIS));
 		codigo = new JFormattedTextField(
 				createFormatter("#####"));
-		codigo.setColumns(10);
+		codigo.setColumns(5);
 		codigo.setMaximumSize(codigo.getPreferredSize());
-		panelDireccion.add(new JLabel("Código postal"));
+		
+		JLabel label1= new JLabel("Código postal");
+		label1.setAlignmentX(CENTER_ALIGNMENT);
+		panelDireccion.add(label1);
 		panelDireccion.add(codigo);
 		panelDireccion.add(Box.createVerticalGlue());
 		localidad = new JTextField();
+		localidad.setColumns(20);
+		localidad.setMaximumSize(localidad.getPreferredSize());
 		direccion = new JTextField();
-		panelDireccion.add(new JLabel("Localidad"));
+		direccion.setColumns(30);
+		JLabel label2= new JLabel("Localidad");
+		label2.setAlignmentX(CENTER_ALIGNMENT);
+		panelDireccion.add(label2);
 		panelDireccion.add(localidad);
 		panelDireccion.add(Box.createVerticalGlue());
-		panelDireccion.add(new JLabel("Direccion"));
+		JLabel label3 = new JLabel("Direccion");
+		label3.setAlignmentX(CENTER_ALIGNMENT);
+		panelDireccion.add(label3);
 		panelDireccion.add(direccion);
 		
 		/*PANEL DE CARACTERISTICAS*/
 		panelCaracteristicas = new JPanel();
+		panelCaracteristicas.setBorder(BorderFactory.createTitledBorder("Características"));
 		panelCaracteristicas.setLayout(new BoxLayout(panelCaracteristicas, BoxLayout.Y_AXIS));
 		listModel = new DefaultListModel();
 		lista = new JList(listModel);
@@ -82,21 +97,35 @@ public class AddInmuebleScreen extends JPanel {
         lista.setVisibleRowCount(10);
         lista.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 9)); //Nos quedamos con esta fuente, supongo
         JScrollPane listScrollPane = new JScrollPane(lista);
-        panelCaracteristicas.add(new JLabel("Lista de caracteristicas"));
+        listScrollPane.setAlignmentX(CENTER_ALIGNMENT);
+        JLabel label4 = new JLabel("Lista de caracteristicas"); 
+        label4.setAlignmentX(CENTER_ALIGNMENT);
+        panelCaracteristicas.add(label4);
         panelCaracteristicas.add(listScrollPane);
-        selectorCaracteristica = new JComboBox(caract);
-        panelCaracteristicas.add(new JLabel("Selecciona una caracteristica"));
-        panelCaracteristicas.add(selectorCaracteristica);
+        nombreCaracteristica = new JTextField();
+        nombreCaracteristica.setAlignmentX(CENTER_ALIGNMENT);
+        JLabel label5 = new JLabel("Selecciona una caracteristica"); 
+        label5.setAlignmentX(CENTER_ALIGNMENT);
+        panelCaracteristicas.add(label5);
+        panelCaracteristicas.add(nombreCaracteristica);
         descCaracteristica = new JTextField();
-        panelCaracteristicas.add(new JLabel("Descripción caracteristica"));
+        descCaracteristica.setAlignmentX(CENTER_ALIGNMENT);
+        JLabel label6 = new JLabel("Descripción caracteristica");
+        label6.setAlignmentX(CENTER_ALIGNMENT);
+        panelCaracteristicas.add(label6);
         panelCaracteristicas.add(descCaracteristica);
-        addCaracteristica = new JButton("Añadir característica");
+        addCaracteristica = new JButton("  Añadir característica ");
+        addCaracteristica.setAlignmentX(CENTER_ALIGNMENT);
         deleteCaracteristica = new JButton("Eliminar característica");
+        deleteCaracteristica.setAlignmentX(CENTER_ALIGNMENT);
+        panelCaracteristicas.add(Box.createRigidArea(new Dimension(2,8)));
         panelCaracteristicas.add(addCaracteristica);
+        panelCaracteristicas.add(Box.createRigidArea(new Dimension(2,4)));
         panelCaracteristicas.add(deleteCaracteristica);
         
 		/*PANEL DE DESCRIPCION*/
         panelDescripcion = new JPanel(new GridLayout());
+        panelDescripcion.setBorder(BorderFactory.createTitledBorder("Descripción"));
         descripcion = new JTextArea(30, 30);
         descripcion.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 10));
         panelDescripcion.add(descripcion);

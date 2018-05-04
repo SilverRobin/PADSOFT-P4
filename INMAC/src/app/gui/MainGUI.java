@@ -31,7 +31,6 @@ public class MainGUI extends JFrame{
 		app = sistema;
 		height = tamanyo.height;
 		width = tamanyo.width;
-		
 		dcha = new JPanel(new CardLayout());
 		dcha.setPreferredSize(new Dimension(width*20/100, height));
 		izqda = new JPanel(new CardLayout());
@@ -54,7 +53,8 @@ public class MainGUI extends JFrame{
 		this.pack();
 		this.setVisible(true);
 		this.setSize(width, height);
-		
+		this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	

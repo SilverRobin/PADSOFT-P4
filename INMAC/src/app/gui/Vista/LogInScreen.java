@@ -83,8 +83,8 @@ public class LogInScreen extends JPanel{
 		paneltop.add(passfield);
 		
 		panelbot = new JPanel();
-		panelbot.setLayout(new GridLayout(1, 2, 5, 0));//Espacios entre los botones para que quede mas bonico
-		panelbot.add(volver);
+		panelbot.setLayout(new GridLayout(1, 1, 5, 0));//Espacios entre los botones para que quede mas bonico
+		//panelbot.add(volver);
 		panelbot.add(login);
 		
 		c.fill = GridBagConstraints.NONE;
