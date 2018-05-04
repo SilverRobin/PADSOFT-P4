@@ -32,7 +32,7 @@ public class DOfertaRScreen extends JPanel{
 		this.setAlignmentX(JPanel.CENTER_ALIGNMENT);
 		
 		JPanel mainpanel = new JPanel();
-		mainpanel.setLayout(new BoxLayout(mainpanel, BoxLayout.X_AXIS));
+		mainpanel.setLayout(new BoxLayout(mainpanel, BoxLayout.Y_AXIS));
 		mainpanel.setAlignmentY(JPanel.CENTER_ALIGNMENT);
 		mainpanel.setAlignmentX(JPanel.CENTER_ALIGNMENT);
 		JPanel left = new JPanel();
@@ -45,9 +45,11 @@ public class DOfertaRScreen extends JPanel{
 		cofb = new JButton("Comentar oferta");
 		avalb = new JButton("Valorar comentario");
 		comarea = new JTextArea("");
+		comarea.setEditable(false);
 		ncomarea = new JTextArea("");
 		vall = new JLabel("Valoracion:");
 		valfield = new JTextField();
+		valfield.setEditable(false);
 		nvalfield = new JTextField();
 		
 		left.add(comarea);

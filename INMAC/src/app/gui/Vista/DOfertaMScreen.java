@@ -2,7 +2,9 @@ package app.gui.Vista;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -82,6 +84,7 @@ public class DOfertaMScreen extends JPanel{
 		reservar.addActionListener(new ControladorReservarOferta(app, this));
 		volver = new JButton("Volver");
 		
+		comfield.setEditable(false);
 		prefield.setEditable(false);
 		fifield.setEditable(false);
 		valfield.setEditable(false);
@@ -92,6 +95,7 @@ public class DOfertaMScreen extends JPanel{
 		if(of.isVacacional()) {
 			finfield = new JTextField(((Vacacional)of).getFin().toString());
 			finof = new JLabel("Fin de la oferta:");
+			finfield.setEditable(false);
 			hileft.add(finof, Component.CENTER_ALIGNMENT);
 			hileft.add(finfield, Component.CENTER_ALIGNMENT);
 		}
@@ -100,6 +104,7 @@ public class DOfertaMScreen extends JPanel{
 		hiright.add(fiof, Component.CENTER_ALIGNMENT);
 		hiright.add(fifield, Component.CENTER_ALIGNMENT);
 		horizontalhi.add(hileft, Component.CENTER_ALIGNMENT);
+		horizontalhi.add(Box.createRigidArea(new Dimension(10, 0)));
 		horizontalhi.add(hiright, Component.CENTER_ALIGNMENT);
 		mainpanel.add(toferta, Component.CENTER_ALIGNMENT);
 		mainpanel.add(tipofield, Component.CENTER_ALIGNMENT);
@@ -109,6 +114,7 @@ public class DOfertaMScreen extends JPanel{
 		mainpanel.add(nvalfield, Component.CENTER_ALIGNMENT);
 		mainpanel.add(anabutton, Component.CENTER_ALIGNMENT);
 		horizontallow.add(volver, Component.CENTER_ALIGNMENT);
+		horizontallow.add(Box.createRigidArea(new Dimension(10, 0)));
 		horizontallow.add(reservar, Component.CENTER_ALIGNMENT);
 		
 		mainpanel.add(horizontallow, BorderLayout.CENTER);
