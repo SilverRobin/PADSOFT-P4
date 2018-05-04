@@ -1,5 +1,7 @@
 package app.gui.Vista;
 
+import java.awt.Dimension;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -26,8 +28,13 @@ public class DOfertaRScreen extends JPanel{
 	
 	public DOfertaRScreen(Sistema app, Oferta of) {
 	
+		this.setAlignmentY(JPanel.CENTER_ALIGNMENT);
+		this.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+		
 		JPanel mainpanel = new JPanel();
 		mainpanel.setLayout(new BoxLayout(mainpanel, BoxLayout.X_AXIS));
+		mainpanel.setAlignmentY(JPanel.CENTER_ALIGNMENT);
+		mainpanel.setAlignmentX(JPanel.CENTER_ALIGNMENT);
 		JPanel left = new JPanel();
 		JPanel right = new JPanel();
 		JPanel rhorizontal = new JPanel();

@@ -19,11 +19,13 @@ public class ControladorAnadirValOferta implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+
 		double val = Double.parseDouble(panel.getVal());
 		if(val < 1 || val > 5)
 			return;
 		panel.getOferta().addValorable(new Valoracion(val, app.getLogged()));
 		panel.getAnadir().setEnabled(false);
+		panel.getAnadir().setText("Oferta valorada");
 		panel.getVals().setText(String.format("%.2f", panel.getOferta().calcularMediaValoraciones()));
 		return;
 	}

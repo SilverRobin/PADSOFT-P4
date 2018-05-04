@@ -1,11 +1,16 @@
 package app.gui.Vista;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import app.Controlador.ControladorAnadirValOferta;
+import app.Controlador.ControladorReservarOferta;
 import app.proyecto.Oferta.Oferta;
 import app.proyecto.Oferta.Vacacional;
 import app.proyecto.Sistema.Sistema;
@@ -42,6 +47,19 @@ public class DOfertaMScreen extends JPanel{
 		horizontallow.setLayout(new BoxLayout(horizontallow, BoxLayout.X_AXIS));
 		this.oferta = of;
 		
+		horizontalhi.setAlignmentX(Component.CENTER_ALIGNMENT);
+		horizontalhi.setAlignmentY(Component.CENTER_ALIGNMENT);
+		hileft.setAlignmentX(Component.CENTER_ALIGNMENT);
+		hileft.setAlignmentY(Component.CENTER_ALIGNMENT);
+		hiright.setAlignmentX(Component.CENTER_ALIGNMENT);
+		hiright.setAlignmentY(Component.CENTER_ALIGNMENT);
+		horizontallow.setAlignmentX(Component.CENTER_ALIGNMENT);
+		horizontallow.setAlignmentY(Component.CENTER_ALIGNMENT);
+		mainpanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		mainpanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+		this.setAlignmentY(Component.CENTER_ALIGNMENT);
+		this.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
 		if(of.isVacacional())
 			tipofield = new JTextField("Vacacional");
 		else
@@ -59,7 +77,9 @@ public class DOfertaMScreen extends JPanel{
 		valfield = new JTextField(String.format("%.2f", of.calcularMediaValoraciones()));
 		nvalfield = new JTextField("");
 		anabutton = new JButton("Añadir Valoracion");
+		anabutton.addActionListener(new ControladorAnadirValOferta(app, this));
 		reservar = new JButton("Reservar Oferta");
+		reservar.addActionListener(new ControladorReservarOferta(app, this));
 		volver = new JButton("Volver");
 		
 		prefield.setEditable(false);
@@ -67,31 +87,32 @@ public class DOfertaMScreen extends JPanel{
 		valfield.setEditable(false);
 		tipofield.setEditable(false);
 		
-		hileft.add(comof);
-		hileft.add(comfield);
+		hileft.add(comof, Component.CENTER_ALIGNMENT);
+		hileft.add(comfield, Component.CENTER_ALIGNMENT);
 		if(of.isVacacional()) {
 			finfield = new JTextField(((Vacacional)of).getFin().toString());
 			finof = new JLabel("Fin de la oferta:");
-			hileft.add(finof);
-			hileft.add(finfield);
+			hileft.add(finof, Component.CENTER_ALIGNMENT);
+			hileft.add(finfield, Component.CENTER_ALIGNMENT);
 		}
-		hiright.add(preof);
-		hiright.add(prefield);
-		hiright.add(fiof);
-		hiright.add(fifield);
-		horizontalhi.add(hileft);
-		horizontalhi.add(hiright);
-		mainpanel.add(toferta);
-		mainpanel.add(tipofield);
-		mainpanel.add(horizontalhi);
-		mainpanel.add(vaof);
-		mainpanel.add(valfield);
-		mainpanel.add(nvalfield);
-		mainpanel.add(anabutton);
-		horizontallow.add(volver);
-		horizontallow.add(reservar);
-		mainpanel.add(horizontallow);
-		this.add(mainpanel);
+		hiright.add(preof, Component.CENTER_ALIGNMENT);
+		hiright.add(prefield, Component.CENTER_ALIGNMENT);
+		hiright.add(fiof, Component.CENTER_ALIGNMENT);
+		hiright.add(fifield, Component.CENTER_ALIGNMENT);
+		horizontalhi.add(hileft, Component.CENTER_ALIGNMENT);
+		horizontalhi.add(hiright, Component.CENTER_ALIGNMENT);
+		mainpanel.add(toferta, Component.CENTER_ALIGNMENT);
+		mainpanel.add(tipofield, Component.CENTER_ALIGNMENT);
+		mainpanel.add(horizontalhi, Component.CENTER_ALIGNMENT);
+		mainpanel.add(vaof, Component.CENTER_ALIGNMENT);
+		mainpanel.add(valfield, Component.CENTER_ALIGNMENT);
+		mainpanel.add(nvalfield, Component.CENTER_ALIGNMENT);
+		mainpanel.add(anabutton, Component.CENTER_ALIGNMENT);
+		horizontallow.add(volver, Component.CENTER_ALIGNMENT);
+		horizontallow.add(reservar, Component.CENTER_ALIGNMENT);
+		
+		mainpanel.add(horizontallow, BorderLayout.CENTER);
+		this.add(mainpanel, BorderLayout.CENTER);
 	}
 	
 	public Oferta getOferta() {
@@ -113,5 +134,7 @@ public class DOfertaMScreen extends JPanel{
 	public JButton getRButton() {
 		return reservar;
 	}
+	
+	
 	
 }
