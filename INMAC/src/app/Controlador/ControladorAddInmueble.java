@@ -37,7 +37,9 @@ public class ControladorAddInmueble implements ActionListener {
 		//Nueva vista de añadir inmueble
 		ventana.getIzquierda().setVisible(false);
 		ventana.getDerecha().setVisible(false);
-		ventana.cambiaCentro(new AddInmuebleScreen(app), "AddInmuebleScreen");
+		AddInmuebleScreen is = new AddInmuebleScreen(app);
+		ventana.cambiaCentro(is, "AddInmuebleScreen");
+		
 		cl = (CardLayout) ventana.getCentro().getLayout();
 		cl.show(ventana.getCentro(), "AddInmuebleScreen");
 		//ventana.cambiaIzquierda(ols, "OLS"); //Cambiamos pantalla izquierda para ofertante

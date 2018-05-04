@@ -1,10 +1,16 @@
 package app.proyecto.Inmueble;
 
+import java.io.Serializable;
+
 /**
  * @author Antonio Oliva
  *
  */
-public class Direccion {
+public class Direccion implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String codigoPostal;
 	private String localidad;
 	private String calle;

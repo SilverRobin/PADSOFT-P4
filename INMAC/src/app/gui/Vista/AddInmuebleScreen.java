@@ -4,19 +4,16 @@
 package app.gui.Vista;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
-
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 
-import app.Controlador.ControladorAddInmueble;
+import app.Controlador.CtrlBAddInmuebleScreen;
+import app.proyecto.Inmueble.Caracteristica;
 import app.proyecto.Sistema.Sistema;
 
 /**
@@ -55,7 +52,6 @@ public class AddInmuebleScreen extends JPanel {
 		this.setLayout(new BorderLayout());
 		JPanel contenedor = new JPanel(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
-		String[] caract = { "Piscina", "Trastero", "Garaje", "Jardín", "Ascensor" };
 		
 		/*PANEL DE DIRECCION */
 		panelDireccion = new JPanel();
@@ -104,7 +100,7 @@ public class AddInmuebleScreen extends JPanel {
         panelCaracteristicas.add(listScrollPane);
         nombreCaracteristica = new JTextField();
         nombreCaracteristica.setAlignmentX(CENTER_ALIGNMENT);
-        JLabel label5 = new JLabel("Selecciona una caracteristica"); 
+        JLabel label5 = new JLabel("Nombre de caracteristica"); 
         label5.setAlignmentX(CENTER_ALIGNMENT);
         panelCaracteristicas.add(label5);
         panelCaracteristicas.add(nombreCaracteristica);
@@ -115,15 +111,18 @@ public class AddInmuebleScreen extends JPanel {
         panelCaracteristicas.add(label6);
         panelCaracteristicas.add(descCaracteristica);
         addCaracteristica = new JButton("  Añadir característica ");
+        addCaracteristica.addActionListener(new CtrlBAddInmuebleScreen(this, app));
+        addCaracteristica.setActionCommand("add");
         addCaracteristica.setAlignmentX(CENTER_ALIGNMENT);
         deleteCaracteristica = new JButton("Eliminar característica");
+        deleteCaracteristica.setActionCommand("delete");
+        deleteCaracteristica.addActionListener(new CtrlBAddInmuebleScreen(this, app));
         deleteCaracteristica.setAlignmentX(CENTER_ALIGNMENT);
         panelCaracteristicas.add(Box.createRigidArea(new Dimension(2,8)));
         panelCaracteristicas.add(addCaracteristica);
         panelCaracteristicas.add(Box.createRigidArea(new Dimension(2,4)));
         panelCaracteristicas.add(deleteCaracteristica);
         
-        /*git funciona?*/
 		/*PANEL DE DESCRIPCION*/
         panelDescripcion = new JPanel(new GridLayout());
         panelDescripcion.setBorder(BorderFactory.createTitledBorder("Descripción"));
@@ -134,7 +133,11 @@ public class AddInmuebleScreen extends JPanel {
 		/*PANEL CON BOTONES*/
         panelBotones = new JPanel(new GridLayout(1, 2, 10, 5));
         volver = new JButton("Volver");
+        volver.setActionCommand("volver");
+        volver.addActionListener(new CtrlBAddInmuebleScreen(this, app));
         addInmueble = new JButton("Añadir inmueble");
+        addInmueble.setActionCommand("addInm");
+        addInmueble.addActionListener(new CtrlBAddInmuebleScreen(this, app));
        
         panelBotones.add(volver);
 		panelBotones.add(addInmueble);
@@ -191,6 +194,45 @@ public class AddInmuebleScreen extends JPanel {
         }
         return formatter;
     }
+    
+    public DefaultListModel getListModel() {
+    	return this.listModel;
+    }
+    
+    public String getTituloC() {
+    	return this.nombreCaracteristica.getText();
+    }
+    
+    public String getDescC() {
+    	return this.descCaracteristica.getText();
+    }
+    
+    public JList getList() {
+    	return this.lista;
+    }
+    
+    public String getCP() {
+    	return this.codigo.getText();
+    }
+    
+    public String getLocalidad() {
+    	return this.localidad.getText();
+    }
+
+	/**
+	 * @return the direccion
+	 */
+	public String getDireccion() {
+		return direccion.getText();
+	}
+
+	/**
+	 * @return the descripcion
+	 */
+	public String getDescripcion() {
+		return descripcion.getText();
+	}
+    
 
 
 

@@ -3,12 +3,22 @@
  */
 package app.proyecto.Inmueble;
 
+import java.io.Serializable;
+
 /**
  * @author Antonio Oliva
  *
  */
 
-public class Caracteristica {
+public class Caracteristica implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3610818571708281799L;
+	/**
+	 * 
+	 */
+
 	private String titulo;
 	private String descripcion;
 	
@@ -93,4 +103,11 @@ public class Caracteristica {
 		
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return this.titulo + ". " + this.descripcion;
+	}
+	
+	
 }
