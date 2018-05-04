@@ -123,6 +123,7 @@ public class AddInmuebleScreen extends JPanel {
         panelCaracteristicas.add(Box.createRigidArea(new Dimension(2,4)));
         panelCaracteristicas.add(deleteCaracteristica);
         
+        /*git funciona?*/
 		/*PANEL DE DESCRIPCION*/
         panelDescripcion = new JPanel(new GridLayout());
         panelDescripcion.setBorder(BorderFactory.createTitledBorder("Descripción"));
