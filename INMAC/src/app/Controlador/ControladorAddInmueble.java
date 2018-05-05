@@ -7,11 +7,15 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import app.gui.MainGUI;
 import app.gui.Vista.AddInmuebleScreen;
+import app.gui.Vista.AddOferta;
+import app.gui.Vista.OfertanteLScreen;
 import app.gui.Vista.OfertanteMScreen;
+import app.proyecto.Inmueble.Inmueble;
 import app.proyecto.Sistema.Sistema;
 
 /**
@@ -34,18 +38,36 @@ public class ControladorAddInmueble implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		CardLayout cl;
 		MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(oms); //Obtenemos la ventana en la que esta contenido el panel
-		//Nueva vista de añadir inmueble
-		ventana.getIzquierda().setVisible(false);
-		ventana.getDerecha().setVisible(false);
-		AddInmuebleScreen is = new AddInmuebleScreen(app);
-		ventana.cambiaCentro(is, "AddInmuebleScreen");
+		String command = arg0.getActionCommand();
+		if(command.equals("addInmueble")) {
+			//Nueva vista de añadir inmueble
+			ventana.getIzquierda().setVisible(false);
+			ventana.getDerecha().setVisible(false);
+			AddInmuebleScreen is = new AddInmuebleScreen(app);
+			ventana.cambiaCentro(is, "AddInmuebleScreen");
+			
+			cl = (CardLayout) ventana.getCentro().getLayout();
+			cl.show(ventana.getCentro(), "AddInmuebleScreen");
+			//ventana.cambiaIzquierda(ols, "OLS"); //Cambiamos pantalla izquierda para ofertante
+			//cl = (CardLayout) ventana.getIzquierda().getLayout();
+			//cl.show(ventana.getIzquierda(), "OLS");
+			return;
+		}else if(command.equals("addOferta")) {
+			if(((OfertanteLScreen) ventana.getCurrentCardL()).getLista().getSelectedIndex() == -1) {
+				JOptionPane.showMessageDialog(null,
+						"Por favor, seleciona un inmueble para agregar una oferta",
+						"Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			((OfertanteLScreen) ventana.getCurrentCardL()).blockLista();
+			AddOferta addOfertaPanel = new AddOferta(app);
+			ventana.cambiaCentro(addOfertaPanel, "addOferta");
+			cl = (CardLayout) ventana.getCentro().getLayout();
+			cl.show(ventana.getCentro(), "addOferta");
+			return;
+		}
 		
-		cl = (CardLayout) ventana.getCentro().getLayout();
-		cl.show(ventana.getCentro(), "AddInmuebleScreen");
-		//ventana.cambiaIzquierda(ols, "OLS"); //Cambiamos pantalla izquierda para ofertante
-		//cl = (CardLayout) ventana.getIzquierda().getLayout();
-		//cl.show(ventana.getIzquierda(), "OLS");
-		//
 		
 	}
 

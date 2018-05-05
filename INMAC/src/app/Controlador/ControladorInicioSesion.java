@@ -54,19 +54,22 @@ public class ControladorInicioSesion implements ActionListener {
 			MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(panel); //Obtenemos la ventana en la que esta contenido el panel
 			if(tipo == TipoCliente.OFERTANTE) {
 				
-				OfertanteLScreen ols = new OfertanteLScreen();
-				ols.addInmuebles(app.getLogged().getOfertante().getInmuebles());
-				ventana.cambiaIzquierda(ols, "OLS"); //Cambiamos pantalla izquierda para ofertante
-				cl = (CardLayout) ventana.getIzquierda().getLayout();
-				cl.show(ventana.getIzquierda(), "OLS");
-				
 				ventana.cambiaCentro(new OfertanteMScreen(app), "OMS");
 				cl = (CardLayout) ventana.getCentro().getLayout();
 				cl.show(ventana.getCentro(), "OMS");
 				
+				if(app.getLogged().getOfertante().getInmuebles().isEmpty() == true) {
+					((OfertanteMScreen) ventana.getCurrentCardC()).getAddOferta().setEnabled(false);
+				}
 				ventana.cambiaDerecha(new OfertanteRScreen(), "ORS");
 				cl = (CardLayout) ventana.getDerecha().getLayout();
 				cl.show(ventana.getDerecha(), "ORS");
+				
+				OfertanteLScreen ols = new OfertanteLScreen(app);
+				//ols.addInmuebles(app.getLogged().getOfertante().getInmuebles());
+				ventana.cambiaIzquierda(ols, "OLS"); //Cambiamos pantalla izquierda para ofertante
+				cl = (CardLayout) ventana.getIzquierda().getLayout();
+				cl.show(ventana.getIzquierda(), "OLS");
 				
 			}else {
 				cl = (CardLayout) ventana.getDerecha().getLayout();
@@ -75,8 +78,7 @@ public class ControladorInicioSesion implements ActionListener {
 				cl = (CardLayout) ventana.getDerecha().getLayout();
 				cl.show(ventana.getDerecha(), "PDS");
 			
-				((SearchScreen) ventana.getCurrentCardL()).desbloquearPanel(true); //Desbloqueamos el checkbox
-				//Cambiamos de panel y listo. Necesitamos un panel nuevo con los menus
+				((SearchScreen) ventana.getCurrentCardL()).desbloquearPanel(true); 
 			}
 			
 		}else {

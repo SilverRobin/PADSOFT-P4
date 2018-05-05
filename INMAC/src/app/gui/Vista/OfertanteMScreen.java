@@ -51,8 +51,13 @@ public class OfertanteMScreen extends JPanel {
 
 		addOferta = new JButton("Añadir oferta");
 		addOferta.setFont(f);
+		addOferta.setActionCommand("addOferta");
+		if(app.getLogged().getOfertante().getInmuebles().isEmpty())
+			addOferta.setEnabled(false);
+		addOferta.addActionListener(new ControladorAddInmueble(app, this));
 		addVivienda = new JButton("Añadir inmueble");
 		addVivienda.setFont(f);
+		addVivienda.setActionCommand("addInmueble");
 		addVivienda.addActionListener(new ControladorAddInmueble(app, this));
 		modOferta = new JButton("Modificar oferta");
 		modOferta.setFont(f);
@@ -79,6 +84,13 @@ public class OfertanteMScreen extends JPanel {
 		
 		this.setBorder(BorderFactory.createTitledBorder("Menu"));
 		
+	}
+
+	/**
+	 * @return the addOferta
+	 */
+	public JButton getAddOferta() {
+		return addOferta;
 	}
 
 }

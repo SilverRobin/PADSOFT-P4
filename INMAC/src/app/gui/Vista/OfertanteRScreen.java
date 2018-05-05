@@ -68,4 +68,11 @@ public class OfertanteRScreen extends JPanel {
 		
 		return (Oferta) lista.getSelectedValue();
 	}
+	
+	public void cleanList() {
+		if(listModel.isEmpty() == false)
+			listModel.removeAllElements();
+	}
+	
+	
 }
