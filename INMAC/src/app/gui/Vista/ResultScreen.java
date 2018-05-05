@@ -47,19 +47,9 @@ public class ResultScreen extends JPanel {
         //lista.addListSelectionListener(this);
         lista.setVisibleRowCount(5);
         JScrollPane listScrollPane = new JScrollPane(lista);
-        
-        breservar = new JButton("Ver Oferta");
-        breservar.addActionListener(new ControladorVerOferta(app, this));
-        //breservar.setVisible(false);
-        breservar.setEnabled(false);
-        
-        add(listScrollPane, BorderLayout.CENTER);
-        add(breservar, BorderLayout.PAGE_END);
-        this.setBorder(BorderFactory.createTitledBorder("Resultados de busqueda"));
-	}
 
-	public void reactivarVerOferta() {
-		breservar.setEnabled(true);
+        add(listScrollPane, BorderLayout.CENTER);
+        this.setBorder(BorderFactory.createTitledBorder("Resultados de busqueda"));
 	}
 	
 	public void addResultados(ArrayList<Oferta> lista) {

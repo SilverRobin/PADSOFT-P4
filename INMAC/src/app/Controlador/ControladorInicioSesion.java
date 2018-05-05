@@ -14,11 +14,11 @@ import app.gui.Vista.LogInScreen;
 import app.gui.Vista.OfertanteLScreen;
 import app.gui.Vista.OfertanteMScreen;
 import app.gui.Vista.OfertanteRScreen;
+import app.gui.Vista.PanelDScreen;
 import app.gui.Vista.ResultScreen;
 import app.gui.Vista.SearchScreen;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Sistema.TipoCliente;
-import app.proyecto.Usuarios.Ofertante;
 
 /**
  * @author Laura Ramirez
@@ -69,11 +69,14 @@ public class ControladorInicioSesion implements ActionListener {
 				cl.show(ventana.getDerecha(), "ORS");
 				
 			}else {
-			cl = (CardLayout) ventana.getCentro().getLayout();
+				cl = (CardLayout) ventana.getDerecha().getLayout();
+				PanelDScreen pds = new PanelDScreen(app, (ResultScreen) ventana.getCurrentCardC());
+				ventana.cambiaDerecha(pds, "PDS"); //Cambiamos pantalla izquierda para ofertante
+				cl = (CardLayout) ventana.getDerecha().getLayout();
+				cl.show(ventana.getDerecha(), "PDS");
 			
-			((ResultScreen) ventana.getCurrentCardC()).reactivarVerOferta(); //Reactivamos el boton
-			((SearchScreen) ventana.getCurrentCardL()).desbloquearPanel(); //Desbloqueamos el checkbox
-			//Cambiamos de panel y listo. Necesitamos un panel nuevo con los menus
+				((SearchScreen) ventana.getCurrentCardL()).desbloquearPanel(true); //Desbloqueamos el checkbox
+				//Cambiamos de panel y listo. Necesitamos un panel nuevo con los menus
 			}
 			
 		}else {

@@ -173,8 +173,8 @@ public class SearchScreen extends JPanel {
         return formatter;
     }
     
-    public void desbloquearPanel() {
-    	this.checkPanel.setVisible(true);
+    public void desbloquearPanel(boolean b) {
+    	this.checkPanel.setVisible(b);
     }
     
     public String getCP() {

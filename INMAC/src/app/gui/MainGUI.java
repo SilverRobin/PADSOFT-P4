@@ -1,6 +1,16 @@
 package app.gui;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.Component;
+import java.awt.Toolkit;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,6 +28,7 @@ public class MainGUI extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private LinkedHashMap<String, JPanel> ld, li, lc;
 	private JPanel dcha;
 	private JPanel izqda;
 	private JPanel centro;
@@ -27,6 +38,10 @@ public class MainGUI extends JFrame{
 	
 	public MainGUI(Sistema sistema) {
 		super("INMAC");
+		
+		ld = new LinkedHashMap<>();
+		li = new LinkedHashMap<>();
+		lc = new LinkedHashMap<>();
 		
 		app = sistema;
 		height = tamanyo.height;
@@ -41,11 +56,10 @@ public class MainGUI extends JFrame{
 		BorderLayout layout = new BorderLayout();
 		this.setLayout(layout);
 
-		dcha.add(new LogInScreen(app), "LogIn");
-
-		izqda.add(new SearchScreen(), "Search");
-		
-		centro.add(new ResultScreen(sistema), "Results");
+		ResultScreen rs = new ResultScreen(sistema);
+		izqda.add(new SearchScreen(), "Search");		
+		centro.add(rs, "Results");
+		dcha.add(new LogInScreen(app, rs), "LogIn");
 
 		this.add(izqda, BorderLayout.LINE_START);//Parte izquierda de la pantalla. Busqueda
 		this.add(centro, BorderLayout.CENTER);
@@ -88,7 +102,14 @@ public class MainGUI extends JFrame{
 	 * @param nombre Nombre del panel. Debe ser unico
 	 */
 	public void cambiaCentro(JPanel nuevo, String nombre) {
+		if(lc.containsKey(nombre)){
+			this.centro.remove(nuevo);
+			this.centro.add(nuevo, nombre);
+			return;
+		}
 		this.centro.add(nuevo, nombre);
+		lc.put(nombre, nuevo);
+		this.validate();
 	}
 	
 	/**
@@ -97,7 +118,13 @@ public class MainGUI extends JFrame{
 	 * @param nombre Nombre del panel. Debe ser unico
 	 */
 	public void cambiaDerecha(JPanel nuevo, String nombre) {
+		if(ld.containsKey(nombre)) {
+			this.dcha.remove(nuevo);
+			this.dcha.add(nuevo, nombre);
+			return;
+		}
 		this.dcha.add(nuevo, nombre);
+		ld.put(nombre, nuevo);
 		this.validate();
 	}
 	
@@ -106,8 +133,14 @@ public class MainGUI extends JFrame{
 	 * @param nuevo Nuevo panel izquierdo
 	 * @param nombre Nombre del panel. Debe ser unico
 	 */
-	public void cambiaIzquierda(JPanel nuevo, String nombre) {;
+	public void cambiaIzquierda(JPanel nuevo, String nombre) {
+		if(li.containsKey(nombre)) {
+			this.izqda.remove(nuevo);
+			this.izqda.add(nuevo, nombre);
+			return;
+		}
 		this.izqda.add(nuevo, nombre);
+		li.put(nombre, nuevo);
 		this.validate();
 	}
 	
@@ -145,5 +178,50 @@ public class MainGUI extends JFrame{
 			card = (JPanel) comp;
 		}
 		return card;
+	}
+	
+	public void volver() {
+		JPanel p = (JPanel) dcha.getComponent(dcha.getComponents().length - 1);
+		for(String d : ld.keySet()) {
+			if(ld.get(d).equals(p))
+				ld.remove(d, ld.get(d));
+		}
+		dcha.remove(p);
+		p = (JPanel) izqda.getComponent(izqda.getComponents().length - 1);
+		for(String d : li.keySet()) {
+			if(li.get(d).equals(p))
+				li.remove(d, li.get(d));
+		}
+		izqda.remove(p);		
+		p = (JPanel) centro.getComponent(centro.getComponents().length - 1);
+		for(String d : lc.keySet()) {
+			if(lc.get(d).equals(p))
+				lc.remove(d, lc.get(d));
+		}
+		centro.remove(p);
+	}
+	
+	public String getDName() {
+		String s="";
+		for(String r : ld.keySet()) {
+			s = r;
+		}
+		return s;
+	}
+	
+	public String getIName() {
+		String s="";
+		for(String r : li.keySet()) {
+			s = r;
+		}
+		return s;
+	}
+	
+	public String getCName() {
+		String s="";
+		for(String r : lc.keySet()) {
+			s = r;
+		}
+		return s;
 	}
 }

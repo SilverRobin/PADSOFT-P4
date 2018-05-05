@@ -17,6 +17,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import app.Controlador.ControladorAddInmueble;
+import app.Controlador.ControladorCerrarSesion;
 import app.proyecto.Sistema.Sistema;
 
 /**
@@ -59,6 +60,7 @@ public class OfertanteMScreen extends JPanel {
 		verAvisos.setFont(f);
 		cerrarSesion = new JButton("Cerrar sesión");
 		cerrarSesion.setFont(f);
+		cerrarSesion.addActionListener(new ControladorCerrarSesion(app, this));
 		cerrarSesion.setPreferredSize(new Dimension(width*28/100,height*18/100));
 		
 		minipanel.add(addOferta);

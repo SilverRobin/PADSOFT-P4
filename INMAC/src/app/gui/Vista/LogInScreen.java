@@ -1,6 +1,7 @@
 package app.gui.Vista;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,6 +12,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import app.Controlador.ControladorInicioSesion;
+import app.Controlador.ControladorVerOferta;
 import app.proyecto.Sistema.Sistema;
 
 
@@ -24,7 +26,6 @@ import app.proyecto.Sistema.Sistema;
 public class LogInScreen extends JPanel{
 	
 	static final long serialVersionUID = 1;
-	private JButton volver;
 	private JButton login;
 	private JRadioButton dButton;
 	private JRadioButton oButton;
@@ -36,15 +37,17 @@ public class LogInScreen extends JPanel{
 	private JPanel panelbot;
 	private JPanel panelmid;
 	private JLabel label1, labelpass;
+	private JButton breservar;
 	
 	
-	public LogInScreen(Sistema app) {
+	public LogInScreen(Sistema app, ResultScreen rs) {
 		super();
+		JPanel pover = new JPanel();
+		pover.setLayout(new BoxLayout(pover, BoxLayout.Y_AXIS));
 		//((JFrame) this.getParent()).setTitle("Iniciar Sesion");
-		this.setLayout(new BorderLayout());
+		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
-		volver = new JButton("Volver");
 		login = new JButton("Iniciar sesion");
 		login.addActionListener(new ControladorInicioSesion(app, this));
 		passfield = new JPasswordField("olvidame");
@@ -58,6 +61,11 @@ public class LogInScreen extends JPanel{
 		label1.setLabelFor(niffield);
 		labelpass = new JLabel("Contraseña");
 		labelpass.setLabelFor(passfield);
+		
+		breservar = new JButton("Ver Oferta");
+        breservar.addActionListener(new ControladorVerOferta(app, rs));
+        //breservar.setVisible(false);
+        breservar.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		group = new ButtonGroup();
 		dButton = new JRadioButton("Soy demandante");
@@ -104,7 +112,9 @@ public class LogInScreen extends JPanel{
 		panel.add(panelbot, c);
 		
 		//this.add(panel);
-		this.add(panel, BorderLayout.CENTER);
+		pover.add(breservar);
+		pover.add(panel, BorderLayout.CENTER);
+		this.add(pover);
 		this.setBorder(BorderFactory.createTitledBorder("Inicio de sesión"));
 	}
 	
