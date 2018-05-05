@@ -1,7 +1,6 @@
 package app.Controlador;
 
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,8 +18,8 @@ public class ControladorVerOferta implements ActionListener{
 	private Sistema app;
 	private ResultScreen panel;
 	
-	public ControladorVerOferta(Sistema app, ResultScreen panel) {
-		this.panel = panel;
+	public ControladorVerOferta(Sistema app, ResultScreen rs) {
+		this.panel = rs;
 		this.app = app;
 	}
 	
