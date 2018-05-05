@@ -159,6 +159,13 @@ public class Inmueble implements Serializable{
 	public boolean removeOferta(Oferta e) {
 		return ofertas.remove(e);
 	}
+	
+	public static Inmueble generarInmuebleTest() {
+		Inmueble e = new Inmueble("Abierto y bien comunicado", Direccion.generarTestDir1(), Cliente.generarClienteTest());
+		e.addCaracteristica(Caracteristica.generarTestCara1());
+		e.addCaracteristica(Caracteristica.generarTestCara2());
+		return e;
+	}
 
 
 	@Override

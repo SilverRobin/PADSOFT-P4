@@ -12,7 +12,9 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import app.Controlador.ControladorVerOferta;
 import app.proyecto.Oferta.Oferta;
+import app.proyecto.Sistema.Sistema;
 
 /**
  * @author Laura Ramirez
@@ -25,20 +27,20 @@ public class ResultScreen extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JList lista;
-	private DefaultListModel listModel;
+	private JList<Oferta> lista;
+	private DefaultListModel<Oferta> listModel;
 	private JButton breservar;
 	
 	/**
 	 * 
 	 */
-	public ResultScreen() {
+	public ResultScreen(Sistema app) {
 		super(new BorderLayout());
-		listModel = new DefaultListModel();
-        listModel.addElement("Apartamento en la calle de la gominola. Soleado. 300€");
+		listModel = new DefaultListModel<>();
+		listModel.addElement(Oferta.generarOfertaTest());
 		
 		//Create the list and put it in a scroll pane.
-        lista = new JList(listModel);
+        lista = new JList<>(listModel);
         lista.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25)); //Nos quedamos con esta fuente, supongo
         lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         lista.setSelectedIndex(0);
@@ -47,6 +49,7 @@ public class ResultScreen extends JPanel {
         JScrollPane listScrollPane = new JScrollPane(lista);
         
         breservar = new JButton("Ver Oferta");
+        breservar.addActionListener(new ControladorVerOferta(app, this));
         //breservar.setVisible(false);
         breservar.setEnabled(false);
         
@@ -69,4 +72,8 @@ public class ResultScreen extends JPanel {
 		listModel.clear();
 	}
 
+	public Oferta getOferta() {
+		return (Oferta) lista.getSelectedValue();
+	}
+	
 }
