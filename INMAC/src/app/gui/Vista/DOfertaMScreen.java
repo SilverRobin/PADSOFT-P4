@@ -141,12 +141,12 @@ public class DOfertaMScreen extends JPanel{
 		volver = new JButton("Volver");
 		volver.addActionListener(new ControladorVolver(this));
 		volver.setAlignmentX(Component.CENTER_ALIGNMENT);
-		volver.setPreferredSize(new Dimension(125, 25));
-		volver.setMinimumSize(new Dimension(125, 25));
-		volver.setMaximumSize(new Dimension(125, 25));
-		reservar.setPreferredSize(new Dimension(125, 25));
-		reservar.setMinimumSize(new Dimension(125, 25));
-		reservar.setMaximumSize(new Dimension(125, 25));
+		volver.setPreferredSize(new Dimension(140, 25));
+		volver.setMinimumSize(new Dimension(140, 25));
+		volver.setMaximumSize(new Dimension(140, 25));
+		reservar.setPreferredSize(new Dimension(140, 25));
+		reservar.setMinimumSize(new Dimension(140, 25));
+		reservar.setMaximumSize(new Dimension(140, 25));
 		
 		comfield.setEditable(false);
 		prefield.setEditable(false);
@@ -216,9 +216,9 @@ public class DOfertaMScreen extends JPanel{
 		
 		if(t != TipoView.GERENTE) {
 			horizontallow.add(contratar, Component.CENTER_ALIGNMENT);
-			horizontallow.add(Box.createRigidArea(new Dimension(10, 0)));
+			horizontallow.add(Box.createRigidArea(new Dimension(0, 10)));
 			horizontallow.add(reservar, Component.CENTER_ALIGNMENT);
-			horizontallow.add(Box.createRigidArea(new Dimension(10, 0)));
+			horizontallow.add(Box.createRigidArea(new Dimension(0, 10)));
 		}
 		horizontallow.add(volver, Component.CENTER_ALIGNMENT);
 		mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
