@@ -10,6 +10,12 @@ import javax.swing.JPanel;
 import app.proyecto.Oferta.Reserva;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class DReservaMScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;

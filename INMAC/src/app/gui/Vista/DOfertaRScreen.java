@@ -23,6 +23,12 @@ import app.proyecto.Sistema.Sistema;
 import app.proyecto.Valorables.Comentario;
 import app.proyecto.Valorables.ElementoValorable;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class DOfertaRScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;

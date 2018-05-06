@@ -16,6 +16,12 @@ import app.Controlador.ControladorRechazarOferta;
 import app.Controlador.ControladorVerOGerente;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class GerenteRScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;

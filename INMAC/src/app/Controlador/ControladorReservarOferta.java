@@ -7,6 +7,12 @@ import app.gui.Vista.DOfertaMScreen;
 import app.proyecto.Oferta.Reserva;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorReservarOferta implements ActionListener{
 
 	private Sistema app;

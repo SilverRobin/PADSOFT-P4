@@ -14,6 +14,12 @@ import javax.swing.JTextField;
 import app.Controlador.ControladorCambiarTarjeta;
 import app.Controlador.ControladorVolver;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class GTarjetaRScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;

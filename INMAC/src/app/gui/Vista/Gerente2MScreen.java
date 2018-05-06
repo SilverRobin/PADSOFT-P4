@@ -17,6 +17,12 @@ import app.Controlador.Controlador2RechazarOferta;
 import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class Gerente2MScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;

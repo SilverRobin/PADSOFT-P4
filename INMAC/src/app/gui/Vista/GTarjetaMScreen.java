@@ -16,6 +16,12 @@ import app.Controlador.ControladorClienteSelected;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Usuarios.Cliente;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class GTarjetaMScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;

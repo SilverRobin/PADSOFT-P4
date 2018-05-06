@@ -7,6 +7,12 @@ import app.gui.Vista.DOfertaMScreen;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Valorables.Valoracion;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorAnadirValOferta implements ActionListener{
 
 	private Sistema app;

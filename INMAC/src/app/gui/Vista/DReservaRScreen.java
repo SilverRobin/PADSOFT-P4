@@ -12,6 +12,12 @@ import app.Controlador.ControladorGestionarReserva;
 import app.Controlador.ControladorVolver;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class DReservaRScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;

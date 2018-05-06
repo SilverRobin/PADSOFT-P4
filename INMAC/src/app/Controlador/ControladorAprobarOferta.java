@@ -6,6 +6,12 @@ import java.awt.event.ActionListener;
 import app.gui.Vista.GerenteMScreen;
 import app.proyecto.Oferta.Oferta;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorAprobarOferta implements ActionListener{
 
 	private GerenteMScreen ls;

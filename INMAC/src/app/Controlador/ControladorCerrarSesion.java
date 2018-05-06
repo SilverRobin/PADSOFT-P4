@@ -14,6 +14,12 @@ import app.gui.Vista.SearchScreen;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Sistema.TipoCliente;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorCerrarSesion implements ActionListener{
 
 	private Sistema app;

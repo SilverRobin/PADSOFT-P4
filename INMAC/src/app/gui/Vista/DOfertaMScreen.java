@@ -21,6 +21,12 @@ import app.proyecto.Oferta.Oferta;
 import app.proyecto.Oferta.Vacacional;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class DOfertaMScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;
@@ -230,6 +236,10 @@ public class DOfertaMScreen extends JPanel{
 		this.add(mainpanel);
 	}
 	
+	/**
+	 * Devuelve la oferta que se esta viendo actualmente
+	 * @return Oferta
+	 */
 	public Oferta getOferta() {
 		return oferta;
 	}

@@ -13,6 +13,12 @@ import app.gui.Vista.GTarjetaRScreen;
 import app.gui.Vista.GerenteRScreen;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorCTarjetasVer implements ActionListener{
 
 	private Sistema app;

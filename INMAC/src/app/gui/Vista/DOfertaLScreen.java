@@ -20,6 +20,12 @@ import javax.swing.event.ListSelectionEvent;
 import app.proyecto.Inmueble.Caracteristica;
 import app.proyecto.Oferta.Oferta;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class DOfertaLScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;

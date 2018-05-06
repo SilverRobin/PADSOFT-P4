@@ -7,6 +7,12 @@ import app.gui.Vista.GTarjetaMScreen;
 import app.gui.Vista.GTarjetaRScreen;
 import app.proyecto.Usuarios.Cliente;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorCambiarTarjeta implements ActionListener{
 
 	private GTarjetaMScreen ms;

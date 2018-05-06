@@ -8,6 +8,12 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import app.gui.Vista.DOfertaRScreen;
 import app.proyecto.Valorables.Comentario;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorComentarioEscogido implements TreeSelectionListener{
 
 	private JTree tree;

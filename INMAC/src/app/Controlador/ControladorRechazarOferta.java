@@ -13,6 +13,12 @@ import app.gui.Vista.GerenteMScreen;
 import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorRechazarOferta implements ActionListener{
 
 	private GerenteMScreen panel;

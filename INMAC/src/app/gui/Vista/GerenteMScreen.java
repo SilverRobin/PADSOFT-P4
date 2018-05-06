@@ -13,6 +13,12 @@ import app.proyecto.Oferta.EstadoOferta;
 import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class GerenteMScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;

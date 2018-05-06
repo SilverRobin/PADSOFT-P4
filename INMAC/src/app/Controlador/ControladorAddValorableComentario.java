@@ -11,6 +11,12 @@ import app.proyecto.Sistema.Sistema;
 import app.proyecto.Valorables.Comentario;
 import app.proyecto.Valorables.Valoracion;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorAddValorableComentario implements ActionListener{
 
 	private Sistema app;

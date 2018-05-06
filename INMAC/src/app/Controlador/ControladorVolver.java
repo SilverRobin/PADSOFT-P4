@@ -9,6 +9,12 @@ import javax.swing.SwingUtilities;
 
 import app.gui.MainGUI;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorVolver implements ActionListener{
 
 	JPanel panel;

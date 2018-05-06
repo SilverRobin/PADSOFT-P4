@@ -13,6 +13,12 @@ import app.gui.Vista.DReservaRScreen;
 import app.gui.Vista.PanelDScreen;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorVerReserva implements ActionListener{
 
 	private PanelDScreen panel;

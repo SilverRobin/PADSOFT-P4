@@ -12,6 +12,12 @@ import app.proyecto.Sistema.Pago;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Usuarios.Cliente;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorCNewOferta implements ActionListener{
 
 	private Sistema app;

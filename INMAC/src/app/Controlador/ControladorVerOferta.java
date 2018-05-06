@@ -13,6 +13,12 @@ import app.gui.Vista.DOfertaRScreen;
 import app.gui.Vista.ResultScreen;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorVerOferta implements ActionListener{
 
 	private Sistema app;

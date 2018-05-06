@@ -13,6 +13,12 @@ import app.proyecto.Inmueble.Inmueble;
 import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class Controlador2RechazarOferta implements ActionListener{
 
 	public enum TipoRechazo {

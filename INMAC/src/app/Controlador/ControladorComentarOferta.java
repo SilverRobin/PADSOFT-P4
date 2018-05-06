@@ -7,6 +7,12 @@ import app.gui.Vista.DOfertaRScreen;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Valorables.Comentario;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorComentarOferta implements ActionListener{
 
 	private DOfertaRScreen panel;

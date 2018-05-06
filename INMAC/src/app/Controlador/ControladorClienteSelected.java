@@ -5,6 +5,12 @@ import javax.swing.event.ListSelectionListener;
 
 import app.gui.Vista.GTarjetaMScreen;
 
+/**
+ * 
+ * @author Laura Ramirez
+ * @author Antonio Oliva
+ *
+ */
 public class ControladorClienteSelected implements ListSelectionListener{
 
 	private GTarjetaMScreen ms;
