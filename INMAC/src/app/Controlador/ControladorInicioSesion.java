@@ -20,7 +20,6 @@ import app.gui.Vista.OfertanteRScreen;
 import app.gui.Vista.PanelDScreen;
 import app.gui.Vista.ResultScreen;
 import app.gui.Vista.SearchScreen;
-import app.proyecto.Sistema.Aviso;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Sistema.TipoCliente;
 
@@ -92,13 +91,6 @@ public class ControladorInicioSesion implements ActionListener {
 				ventana.cambiaIzquierda(ols, "OLS"); //Cambiamos pantalla izquierda para ofertante
 				cl = (CardLayout) ventana.getIzquierda().getLayout();
 				cl.show(ventana.getIzquierda(), "OLS");
-				
-				for(Aviso a : app.getLogged().getOfertante().getRects()) {
-					JOptionPane.showMessageDialog(null,
-							a.getTexto(),
-							"Rectificacion de oferta", JOptionPane.INFORMATION_MESSAGE);
-					app.getLogged().getOfertante().removeRect(a);
-				}
 				
 			}else {
 				cl = (CardLayout) ventana.getDerecha().getLayout();
