@@ -28,6 +28,7 @@ import app.proyecto.Sistema.Sistema;
 import app.proyecto.Sistema.TipoCliente;
 
 /**
+ * Controlador del inicio de sesion
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -37,8 +38,11 @@ public class ControladorInicioSesion implements ActionListener {
 
 	private LogInScreen panel;
 	private Sistema app;
+
 	/**
-	 * 
+	 * Controlador del inicio de sesion
+	 * @param app Aplicacion
+	 * @param panel Panel de Login
 	 */
 	public ControladorInicioSesion(Sistema app, LogInScreen panel) {
 		this.panel = panel;
