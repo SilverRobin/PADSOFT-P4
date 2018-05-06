@@ -88,6 +88,7 @@ public class SearchScreen extends JPanel {
 		checkPanel.add(larButton);
 		checkPanel.add(vacButton);
 		disponibles = new JRadioButton("Disponibles");
+		//Nuevo
 		todas = new JRadioButton("Todas");
 		radios = new ButtonGroup();
 		this.radios.add(disponibles);
