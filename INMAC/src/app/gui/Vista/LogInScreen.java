@@ -2,11 +2,9 @@ package app.gui.Vista;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
 
 import javax.swing.*;
 import javax.swing.border.*;

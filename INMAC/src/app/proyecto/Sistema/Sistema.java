@@ -56,7 +56,7 @@ public class Sistema implements Serializable{
 	public boolean resolverPago(Pago p, String subject) {
 		pagos.add(p);
 		if(p.resolverPago(subject)) {
-			cuentas = p.getGanancia();
+			cuentas += p.getGanancia();
 			pagos.remove(p);
 			return true;
 		}
@@ -229,7 +229,7 @@ public class Sistema implements Serializable{
 	 * 
 	 * @return Tipo de Cliente de la sesion
 	 */
-	protected TipoCliente getTipoLogged() {
+	public TipoCliente getTipoLogged() {
 		return tipolog;
 	}
 	

@@ -12,6 +12,7 @@ import app.gui.Vista.LogInScreen;
 import app.gui.Vista.ResultScreen;
 import app.gui.Vista.SearchScreen;
 import app.proyecto.Sistema.Sistema;
+import app.proyecto.Sistema.TipoCliente;
 
 public class ControladorCerrarSesion implements ActionListener{
 
@@ -25,9 +26,16 @@ public class ControladorCerrarSesion implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		
+		MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(panel); //Obtenemos la ventana en la que esta contenido el panel
+		
+		if(app.getTipoLogged() == TipoCliente.OFERTANTE) {
+			ventana.volver();
+		}else {
+			ventana.volverD();
+		}
 		app.logOut();
 		CardLayout cl;
-		MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(panel); //Obtenemos la ventana en la que esta contenido el panel
 		
 		ventana.cambiaIzquierda(new SearchScreen(), "Search"); //Cambiamos pantalla izquierda para ofertante
 		ResultScreen rs = new ResultScreen(app);

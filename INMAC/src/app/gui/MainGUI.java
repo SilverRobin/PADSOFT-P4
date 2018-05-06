@@ -180,6 +180,15 @@ public class MainGUI extends JFrame{
 		return card;
 	}
 	
+	public void volverD() {
+		JPanel p = (JPanel) dcha.getComponent(dcha.getComponents().length - 1);
+		for(String d : ld.keySet()) {
+			if(ld.get(d).equals(p))
+				ld.remove(d, ld.get(d));
+		}
+		dcha.remove(p);
+	}
+	
 	public void volver() {
 		JPanel p = (JPanel) dcha.getComponent(dcha.getComponents().length - 1);
 		for(String d : ld.keySet()) {
