@@ -19,6 +19,7 @@ public class ControladorReservarOferta implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		panel.getOferta().reservar();
 		app.getLogged().getDemandante().addReserva(new Reserva(panel.getOferta()));
 		panel.getRButton().setText("Oferta Reservada");
 		panel.getRButton().setEnabled(false);

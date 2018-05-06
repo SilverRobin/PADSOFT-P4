@@ -43,4 +43,9 @@ public class Valoracion extends ElementoValorable{
 		return;
 	}
 
+	@Override
+	public boolean isComentario() {
+		return false;
+	}
+
 }

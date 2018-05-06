@@ -65,4 +65,25 @@ public class Comentario extends ElementoValorable{
 	public List<ElementoValorable> getValorables(){
 		return valorables;
 	}
+
+	@Override
+	public boolean isComentario() {
+		return true;
+	}
+	
+public double calcularMediaValoraciones() {
+		
+		int suma = 0, counter=0;
+		
+		for(ElementoValorable e : valorables) {
+			if(!e.isComentario()) {
+				counter++;
+				suma += ((Valoracion) e).getValor();
+			}
+		}
+		if(counter == 0)
+			return 0;
+		
+		return suma/counter;
+	}
 }

@@ -96,4 +96,9 @@ public class Vacacional extends Oferta {
 	public String toString() {
 		return "[Vacacional] (Del "+ this.getInicio().toString() + " al " + this.getFin() + "). Fianza: " + this.getFianza() + "€. Precio: "+this.getPrecio() + "€";
 	}
+	
+	@Override
+	public double getComision() {
+		return 0.02;
+	}
 }

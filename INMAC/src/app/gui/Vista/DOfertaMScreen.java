@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import app.Controlador.ControladorAnadirValOferta;
 import app.Controlador.ControladorReservarOferta;
 import app.Controlador.ControladorVolver;
+import app.proyecto.Oferta.EstadoOferta;
 import app.proyecto.Oferta.Oferta;
 import app.proyecto.Oferta.Vacacional;
 import app.proyecto.Sistema.Sistema;
@@ -137,6 +138,14 @@ public class DOfertaMScreen extends JPanel{
 		fifield.setEditable(false);
 		valfield.setEditable(false);
 		tipofield.setEditable(false);
+		if(app.getLogged() != null && of.getVisibilidad() != EstadoOferta.DISPONIBLE) {
+			reservar.setEnabled(false);
+			reservar.setText("Ya reservada");
+		}
+		if(app.getLogged() == null) {
+			reservar.setEnabled(false);
+			anabutton.setEnabled(false);
+		}
 		
 		hileft.setPreferredSize(new Dimension(130, 100));
 		hileft.setMinimumSize(new Dimension(130, 60));

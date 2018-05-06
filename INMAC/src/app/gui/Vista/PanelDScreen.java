@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import app.Controlador.ControladorCerrarSesion;
 import app.Controlador.ControladorVerOferta;
+import app.Controlador.ControladorVerReserva;
 import app.proyecto.Sistema.Sistema;
 
 public class PanelDScreen extends JPanel{
@@ -28,6 +29,7 @@ public class PanelDScreen extends JPanel{
 		vresb.setMinimumSize(new Dimension(150, 35));
 		vresb.setMaximumSize(new Dimension(150, 35));
 		vresb.setPreferredSize(new Dimension(150, 35));
+		vresb.addActionListener(new ControladorVerReserva(app, this));
 		loutb = new JButton("Cerrar sesión");
 		loutb.setMinimumSize(new Dimension(150, 35));
 		loutb.setMaximumSize(new Dimension(150, 35));

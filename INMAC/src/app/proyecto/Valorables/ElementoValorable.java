@@ -42,4 +42,11 @@ public abstract class ElementoValorable implements Serializable{
 		autor = nC;
 		return;
 	}
+	
+	public abstract boolean isComentario();
+	
+	@Override
+	public String toString() {
+		return autor.getNombre();
+	}
 }

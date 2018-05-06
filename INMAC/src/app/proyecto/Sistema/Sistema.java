@@ -53,6 +53,20 @@ public class Sistema implements Serializable{
 		tipolog = TipoCliente.NULL;
 	}
 	
+	public boolean resolverPago(Pago p, String subject) {
+		pagos.add(p);
+		if(p.resolverPago(subject)) {
+			cuentas = p.getGanancia();
+			pagos.remove(p);
+			return true;
+		}
+		if(p.getEstado() == Pago.EstadoPago.PORPAGAR) {
+			pagos.remove(p);
+			return false;
+		}
+		return true;
+	}
+	
 	public void checkPagos(Cliente c) {
 		for(Pago p : pagos) {
 			if(p.getOfertantes().equals(c)) {

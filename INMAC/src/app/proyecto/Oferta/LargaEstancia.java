@@ -82,8 +82,9 @@ public class LargaEstancia extends Oferta {
 		return "[Larga Estancia] " + this.getMinimaEstancia() + " meses. " + "Fianza: " + getFianza() + "€. Precio: " + getPrecio() + "€";
 	}
 	
-	
-	
-	
+	@Override
+	public double getComision() {
+		return 0.005;
+	}
 
 }

@@ -1,7 +1,5 @@
 package app.proyecto.Sistema;
 
-import java.util.List;
-
 import app.proyecto.Usuarios.Cliente;
 
 /**
@@ -56,7 +54,7 @@ public class Pago {
 				if(!(demandante.realizarPago(-1 * cantidad, subject)))
 					return false;
 			case ERROR:
-				if(!(ofertante.realizarPago((1-comision)*cantidad, subject))) {
+				if(!(ofertante.realizarPago(cantidad/(1+comision), subject))) {
 					estado = EstadoPago.ERROR;
 					return false;
 				}

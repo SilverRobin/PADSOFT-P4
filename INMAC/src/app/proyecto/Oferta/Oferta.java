@@ -51,7 +51,7 @@ public abstract class Oferta implements Serializable{
 	public int getPrecio() {
 		return precio;
 	}
-	
+
 	/**
 	 * Devuelve el inmueble que hace esta oferta
 	 * @return Inmueble padre
@@ -146,7 +146,7 @@ public abstract class Oferta implements Serializable{
 	}
 	
 	public void setDescripcion(String s) {
-		this.descripcion = descripcion;
+		this.descripcion = s;
 	}
 	
 	/**
@@ -173,7 +173,7 @@ public abstract class Oferta implements Serializable{
 		int suma = 0, counter=0;
 		
 		for(ElementoValorable e : valorables) {
-			if(e instanceof Valoracion) {
+			if(!e.isComentario()) {
 				counter++;
 				suma += ((Valoracion) e).getValor();
 			}
@@ -233,6 +233,8 @@ public abstract class Oferta implements Serializable{
 	public static Oferta generarOfertaTest() {
 		return new Vacacional(400, 30, LocalDate.now(), LocalDate.now(), Inmueble.generarInmuebleTest());
 	}
+	
+	public abstract double getComision();
 
 	@Override
 	public String toString() {

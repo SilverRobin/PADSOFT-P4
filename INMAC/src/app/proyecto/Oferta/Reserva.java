@@ -100,4 +100,10 @@ public class Reserva implements Serializable{
 			}
 			return false;
 		}
+		
+		@Override
+		public String toString() {
+			return Double.toString(oferta.getFianza()+oferta.getPrecio())
+					+ "€   " + oferta.getInmueble().getDireccion().getLocalidad();
+		}
 }
