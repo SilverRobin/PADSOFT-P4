@@ -16,7 +16,7 @@ import java.awt.Toolkit;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import app.Controlador.ControladorAddInmueble;
+import app.Controlador.ControladorMainScreenOfertante;
 import app.Controlador.ControladorCerrarSesion;
 import app.proyecto.Sistema.Sistema;
 
@@ -54,12 +54,14 @@ public class OfertanteMScreen extends JPanel {
 		addOferta.setActionCommand("addOferta");
 		if(app.getLogged().getOfertante().getInmuebles().isEmpty())
 			addOferta.setEnabled(false);
-		addOferta.addActionListener(new ControladorAddInmueble(app, this));
+		addOferta.addActionListener(new ControladorMainScreenOfertante(app, this));
 		addVivienda = new JButton("Añadir inmueble");
 		addVivienda.setFont(f);
 		addVivienda.setActionCommand("addInmueble");
-		addVivienda.addActionListener(new ControladorAddInmueble(app, this));
+		addVivienda.addActionListener(new ControladorMainScreenOfertante(app, this));
 		modOferta = new JButton("Modificar oferta");
+		modOferta.setActionCommand("modificar");
+		modOferta.addActionListener(new ControladorMainScreenOfertante(app, this));
 		modOferta.setFont(f);
 		verAvisos = new JButton("Ver avisos");
 		verAvisos.setFont(f);
@@ -92,5 +94,11 @@ public class OfertanteMScreen extends JPanel {
 	public JButton getAddOferta() {
 		return addOferta;
 	}
+	
+	public JButton getModificarOferta() {
+		return modOferta;	
+	}
+	
+	
 
 }

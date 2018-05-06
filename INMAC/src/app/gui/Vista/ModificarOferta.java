@@ -8,6 +8,9 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -20,9 +23,10 @@ import javax.swing.JPanel;
 
 import com.toedter.calendar.JDateChooser;
 
-import app.Controlador.ControladorAddOferta;
 import app.Controlador.ControladorModificarOferta;
+import app.proyecto.Oferta.LargaEstancia;
 import app.proyecto.Oferta.Oferta;
+import app.proyecto.Oferta.Vacacional;
 import app.proyecto.Sistema.Sistema;
 
 /**
@@ -33,7 +37,7 @@ import app.proyecto.Sistema.Sistema;
 public class ModificarOferta extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel label1, label2, label3, label4, label5, label6;
-	private JComboBox<String> tipoOferta;
+	private JLabel tipoOferta;
 	private JDateChooser inicio;
 	private JDateChooser fin;
 	private JFormattedTextField precio;
@@ -52,14 +56,7 @@ public class ModificarOferta extends JPanel{
 		/* ---- Panel de seleccion de tipo -----*/
 		JPanel top = new JPanel();
 		top.setLayout(new BoxLayout(top, BoxLayout.Y_AXIS));
-		top.setBorder(BorderFactory.createTitledBorder("Tipo de oferta"));
-		String[] tipo = { "Vacacional", "Larga estancia"};
-		label1 = new JLabel("Seleccionar tipo");
-		top.add(label1);
-		tipoOferta = new JComboBox(tipo);
-		
-		tipoOferta.setActionCommand("tipo");
-		tipoOferta.setSelectedIndex(0);
+		tipoOferta = new JLabel("Test");
 		top.add(tipoOferta);
 		
 		
@@ -81,8 +78,6 @@ public class ModificarOferta extends JPanel{
 		midL.add(meses);
 		midL.add(label4);
 		midL.add(fin);
-		label3.setVisible(false);
-		meses.setVisible(false);
 		
 		/* ---- PANEL DE PRECIO -----*/
 		JPanel midR = new JPanel();
@@ -108,9 +103,9 @@ public class ModificarOferta extends JPanel{
 		/*------ PANEL DE BOTONES  ----------*/
 		JPanel bot = new JPanel();
 		bot.setLayout(new BoxLayout(bot, BoxLayout.X_AXIS));
-		volver = new JButton("Cancelar");
+		volver = new JButton("    Cancelar     ");
 		
-		volver.setActionCommand("     Volver    ");
+		volver.setActionCommand("volver");
 		addOferta = new JButton("Guardar cambios");
 		
 		addOferta.setActionCommand("add");
@@ -118,7 +113,6 @@ public class ModificarOferta extends JPanel{
 		bot.add(Box.createRigidArea(new Dimension(5, 1)));
 		bot.add(addOferta);
 		
-		tipoOferta.addActionListener(new ControladorModificarOferta(app, this));
 		addOferta.addActionListener(new ControladorModificarOferta(app, this));
 		volver.addActionListener(new ControladorModificarOferta(app, this));
 		
@@ -141,9 +135,65 @@ public class ModificarOferta extends JPanel{
 	}
 	
 	public void recuperarDatosOferta(Oferta o) {
+		Date date = Date.from(o.getInicio().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		this.inicio.setDate(date);
+		this.fianza.setText(Integer.toString(o.getFianza()));
+		this.precio.setText(Integer.toString(o.getPrecio()));
 		if(o.isVacacional()) {
-			
+			Date date2 = Date.from(((Vacacional) o).getFin().atStartOfDay(ZoneId.systemDefault()).toInstant());
+			this.fin.setDate(date2);
+			modoVacacional();
+		}else {
+			meses.setText(Integer.toString(((LargaEstancia) o).getMinimaEstancia()));
+			modoLargaEstancia();
 		}
 	}
+	
+	   public void modoVacacional() {
+		   inicio.setEnabled(true);
+		   meses.setEnabled(false);
+		   fin.setEnabled(true);
+	   }
+	   
+	   public void modoLargaEstancia() {
+		   inicio.setEnabled(true);
+		   meses.setEnabled(true);
+		   fin.setEnabled(false);
+
+	   }
+	   
+		public LocalDate getInicio() {
+			return LocalDate.ofInstant(this.inicio.getDate().toInstant(), ZoneId.systemDefault());
+		}
+
+		public LocalDate getFin() {
+			// TODO Auto-generated method stub
+			return LocalDate.ofInstant(this.fin.getDate().toInstant(), ZoneId.systemDefault());
+		}
+		
+		public boolean isVacacional() {
+			if(this.tipoOferta.getText().equals("Vacacional"))
+				return true;
+			return false;
+		}
+
+		public String getMeses() {
+			return this.meses.getText();
+		}
+
+		public String getPrecio() {
+			// TODO Auto-generated method stub
+			return this.precio.getText();
+		}
+
+		public String getFianza() {
+			// TODO Auto-generated method stub
+			return this.fianza.getText();
+		}
+		
+		public JLabel getTipoLabel() {
+			return tipoOferta;
+		}
+
 
 }

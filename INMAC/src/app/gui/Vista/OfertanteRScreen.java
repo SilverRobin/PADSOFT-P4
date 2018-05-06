@@ -73,5 +73,13 @@ public class OfertanteRScreen extends JPanel {
 			listModel.removeAllElements();
 	}
 	
+	public void blockLista() {
+		this.lista.setEnabled(false);
+	}
+	
+	public JList getLista() {
+		return lista;
+	}
+	
 	
 }
