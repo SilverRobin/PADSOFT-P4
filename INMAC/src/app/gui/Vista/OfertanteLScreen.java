@@ -92,5 +92,13 @@ public class OfertanteLScreen extends JPanel {
 	public JList getLista() {
 		return lista;
 	}
+	
+	public List<Inmueble> getActualList(){
+		List<Inmueble> aux = new ArrayList<Inmueble>();
+		for(int i = 0; i<listModel.getSize(); i++) {
+			aux.add((Inmueble) listModel.get(i));
+		}
+		return aux;
+	}
 
 }

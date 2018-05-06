@@ -3,20 +3,26 @@
  */
 package app.gui.Vista;
 
-import com.toedter.calendar.JDateChooser;
-
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.time.LocalDate;
-import java.time.ZoneId;
 
-import javax.swing.*;
-import javax.swing.text.MaskFormatter;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import com.toedter.calendar.JDateChooser;
 
 import app.Controlador.ControladorAddOferta;
+import app.Controlador.ControladorModificarOferta;
+import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
@@ -24,7 +30,7 @@ import app.proyecto.Sistema.Sistema;
  * @author Antonio Oliva
  *
  */
-public class AddOferta extends JPanel {
+public class ModificarOferta extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel label1, label2, label3, label4, label5, label6;
 	private JComboBox<String> tipoOferta;
@@ -35,11 +41,12 @@ public class AddOferta extends JPanel {
 	private JFormattedTextField meses;
 	private JButton addOferta;
 	private JButton volver;
-	
-	
-	public AddOferta(Sistema app) {
+	/**
+	 * 
+	 */
+	public ModificarOferta(Sistema app) {
 		this.setLayout(new GridBagLayout());
-		this.setBorder(BorderFactory.createTitledBorder("Crear nueva oferta"));
+		this.setBorder(BorderFactory.createTitledBorder("Modificar oferta"));
 		GridBagConstraints gbc = new GridBagConstraints();
 		
 		/* ---- Panel de seleccion de tipo -----*/
@@ -54,7 +61,6 @@ public class AddOferta extends JPanel {
 		tipoOferta.setActionCommand("tipo");
 		tipoOferta.setSelectedIndex(0);
 		top.add(tipoOferta);
-		//tipoOferta.addActionListener();
 		
 		
 		/* --- PANEL DE FECHAS Y PERIODOS ----*/
@@ -104,17 +110,17 @@ public class AddOferta extends JPanel {
 		bot.setLayout(new BoxLayout(bot, BoxLayout.X_AXIS));
 		volver = new JButton("Cancelar");
 		
-		volver.setActionCommand("Volver");
-		addOferta = new JButton(" Añadir ");
+		volver.setActionCommand("     Volver    ");
+		addOferta = new JButton("Guardar cambios");
 		
 		addOferta.setActionCommand("add");
 		bot.add(volver);
 		bot.add(Box.createRigidArea(new Dimension(5, 1)));
 		bot.add(addOferta);
 		
-		tipoOferta.addActionListener(new ControladorAddOferta(app, this));
-		addOferta.addActionListener(new ControladorAddOferta(app, this));
-		volver.addActionListener(new ControladorAddOferta(app, this));
+		tipoOferta.addActionListener(new ControladorModificarOferta(app, this));
+		addOferta.addActionListener(new ControladorModificarOferta(app, this));
+		volver.addActionListener(new ControladorModificarOferta(app, this));
 		
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -132,66 +138,12 @@ public class AddOferta extends JPanel {
 		gbc.gridy = 2;
 		gbc.gridwidth = 2;
 		this.add(bot, gbc);	
-		
 	}
 	
-	   protected MaskFormatter createFormatter(String s) {
-	        MaskFormatter formatter = null;
-	        try {
-	            formatter = new MaskFormatter(s);
-	        } catch (java.text.ParseException exc) {
-	            System.err.println("formatter is bad: " + exc.getMessage());
-	            System.exit(-1);
-	        }
-	        return formatter;
-	    }
-	   
-	   public void modoVacacional() {
-		   label2.setVisible(true);
-		   inicio.setVisible(true);
-		   label3.setVisible(false);
-		   meses.setVisible(false);
-		   fin.setVisible(true);
-		   label4.setVisible(true);
-	   }
-	   
-	   public void modoLargaEstancia() {
-		   label2.setVisible(true);
-		   inicio.setVisible(true);
-		   label3.setVisible(true);
-		   meses.setVisible(true);
-		   fin.setVisible(false);
-		   label4.setVisible(false);
-	   }
-
-	public LocalDate getInicio() {
-		return LocalDate.ofInstant(this.inicio.getDate().toInstant(), ZoneId.systemDefault());
+	public void recuperarDatosOferta(Oferta o) {
+		if(o.isVacacional()) {
+			
+		}
 	}
-
-	public LocalDate getFin() {
-		// TODO Auto-generated method stub
-		return LocalDate.ofInstant(this.fin.getDate().toInstant(), ZoneId.systemDefault());
-	}
-
-	public boolean isVacacional() {
-		if(this.tipoOferta.getSelectedItem().equals("Vacacional"))
-			return true;
-		return false;
-	}
-
-	public String getMeses() {
-		return this.meses.getText();
-	}
-
-	public String getPrecio() {
-		// TODO Auto-generated method stub
-		return this.precio.getText();
-	}
-
-	public String getFianza() {
-		// TODO Auto-generated method stub
-		return this.fianza.getText();
-	}
-	   
 
 }
