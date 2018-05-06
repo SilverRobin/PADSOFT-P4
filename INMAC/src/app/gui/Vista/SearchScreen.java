@@ -39,6 +39,9 @@ public class SearchScreen extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JButton buscar;
+	private JRadioButton disponibles;
+	private JRadioButton todas;
+	private ButtonGroup radios;
 	private JFormattedTextField cp;
 	private JDateChooser inicio;
 	private JDateChooser fin;
@@ -78,11 +81,18 @@ public class SearchScreen extends JPanel {
 		codigo.add(cp);
 		
 		//Botonera de seleccion de tipo de estancia
-		checkPanel = new JPanel(new GridLayout(1, 2));
+		checkPanel = new JPanel(new GridLayout(2, 2));
 		larButton = new JCheckBox("Larga Estancia");
 		vacButton = new JCheckBox("Vacacional");
 		checkPanel.add(larButton);
 		checkPanel.add(vacButton);
+		disponibles = new JRadioButton("Disponibles");
+		todas = new JRadioButton("Todas");
+		radios = new ButtonGroup();
+		this.radios.add(disponibles);
+		this.radios.add(todas);
+		checkPanel.add(disponibles);
+		checkPanel.add(todas);
 		checkPanel.setVisible(false);
 		
 		//Panel de seleccion de fechas
@@ -115,7 +125,7 @@ public class SearchScreen extends JPanel {
 		//Selector de valoraciones
 		slider = new JPanel();
 		slider.setLayout(new BoxLayout(slider, BoxLayout.Y_AXIS));
-		valoracion = new JSlider(JSlider.HORIZONTAL, 0, 5, 3);
+		valoracion = new JSlider(JSlider.HORIZONTAL, 1, 5, 3);
 		labelv.setAlignmentX(Component.CENTER_ALIGNMENT);
 		valoracion.setAlignmentX(Component.CENTER_ALIGNMENT);
 		valoracion.setMajorTickSpacing(1);
