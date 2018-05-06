@@ -52,9 +52,7 @@ public class ControladorMainScreenOfertante implements ActionListener {
 			
 			cl = (CardLayout) ventana.getCentro().getLayout();
 			cl.show(ventana.getCentro(), "AddInmuebleScreen");
-			//ventana.cambiaIzquierda(ols, "OLS"); //Cambiamos pantalla izquierda para ofertante
-			//cl = (CardLayout) ventana.getIzquierda().getLayout();
-			//cl.show(ventana.getIzquierda(), "OLS");
+
 			return;
 		}else if(command.equals("addOferta")) {
 			if(((OfertanteLScreen) ventana.getCurrentCardL()).getLista().getSelectedIndex() == -1) {
