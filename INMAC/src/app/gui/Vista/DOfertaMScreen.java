@@ -158,11 +158,15 @@ public class DOfertaMScreen extends JPanel{
 			reservar.setText("Ya reservada");
 			contratar.setEnabled(false);
 			contratar.setText("Ya reservada");
-		}
-		if(app.getLogged() == null) {
+		}else if(app.getLogged() == null) {
 			contratar.setEnabled(false);
 			reservar.setEnabled(false);
 			anabutton.setEnabled(false);
+		}else if(app.getLogged() != null && app.getLogged().getAviso() != null) {
+			reservar.setEnabled(false);
+			reservar.setText("Error en tarjeta");
+			contratar.setEnabled(false);
+			contratar.setText("Error en tarjeta");
 		}
 		
 		hileft.setPreferredSize(new Dimension(130, 100));

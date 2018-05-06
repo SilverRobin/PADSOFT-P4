@@ -44,6 +44,7 @@ public class SearchScreen extends JPanel {
 	private JDateChooser fin;
 	private JCheckBox vacButton;
     private JCheckBox larButton;
+    private JRadioButton dispb;
     private JPanel checkPanel;
 	private JPanel basico;
 	private JPanel fechas;
@@ -85,6 +86,10 @@ public class SearchScreen extends JPanel {
 		checkPanel.add(vacButton);
 		checkPanel.setVisible(false);
 		
+		dispb = new JRadioButton("Filtrar no disponibles");
+		dispb.setSelected(false);
+		
+		
 		//Panel de seleccion de fechas
 		inicio = new JDateChooser(); 
 		fin = new JDateChooser();
@@ -115,7 +120,7 @@ public class SearchScreen extends JPanel {
 		//Selector de valoraciones
 		slider = new JPanel();
 		slider.setLayout(new BoxLayout(slider, BoxLayout.Y_AXIS));
-		valoracion = new JSlider(JSlider.HORIZONTAL, 0, 5, 3);
+		valoracion = new JSlider(JSlider.HORIZONTAL, 1, 5, 3);
 		labelv.setAlignmentX(Component.CENTER_ALIGNMENT);
 		valoracion.setAlignmentX(Component.CENTER_ALIGNMENT);
 		valoracion.setMajorTickSpacing(1);

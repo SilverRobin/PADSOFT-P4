@@ -2,10 +2,12 @@ package app.Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 import app.gui.Vista.DReservaMScreen;
 import app.proyecto.Inmueble.Inmueble;
 import app.proyecto.Oferta.Reserva;
+import app.proyecto.Sistema.Aviso;
 import app.proyecto.Sistema.Pago;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Usuarios.Cliente;
@@ -49,7 +51,8 @@ public class ControladorGestionarReserva implements ActionListener{
 								(res.getOferta().getFianza()+res.getOferta().getPrecio())
 								*(1+res.getOferta().getComision()), res.getOferta().getComision()),
 								"Reserva "+ res))
-							;//spawn error
+							app.getLogged().setAviso(new Aviso("Error en la tarjeta", LocalDate.now()));
+						//spawn error
 						else
 							res.getOferta().contratar();
 						rs.deleteReserva();

@@ -2,10 +2,12 @@ package app.Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 import app.gui.Vista.DOfertaMScreen;
 import app.proyecto.Inmueble.Inmueble;
 import app.proyecto.Oferta.Oferta;
+import app.proyecto.Sistema.Aviso;
 import app.proyecto.Sistema.Pago;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Usuarios.Cliente;
@@ -36,6 +38,7 @@ public class ControladorCNewOferta implements ActionListener{
 								"Oferta "+ o)) {
 							ms.getCButton().setText("Error al contr.");
 							ms.getRButton().setText("Error al contr.");
+							app.getLogged().setAviso(new Aviso("Error en la tarjeta", LocalDate.now()));
 							;//spawn error
 						}else {
 							ms.getCButton().setText("Ya contratada");
