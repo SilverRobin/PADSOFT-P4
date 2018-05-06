@@ -64,6 +64,8 @@ public class OfertanteMScreen extends JPanel {
 		modOferta.addActionListener(new ControladorMainScreenOfertante(app, this));
 		modOferta.setFont(f);
 		verAvisos = new JButton("Ver avisos");
+		verAvisos.setActionCommand("avisos");
+		verAvisos.addActionListener(new ControladorMainScreenOfertante(app, this));
 		verAvisos.setFont(f);
 		cerrarSesion = new JButton("Cerrar sesión");
 		cerrarSesion.setFont(f);
