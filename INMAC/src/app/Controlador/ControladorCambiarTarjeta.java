@@ -22,7 +22,8 @@ public class ControladorCambiarTarjeta implements ActionListener{
 		Cliente c = ms.getSelected();
 		if(c == null)
 			return;
-		c.cambiarTarjeta(rs.getNTarj());
+		if(c.cambiarTarjeta(rs.getNTarj()))
+			c.setAviso(null);
 		ms.refresh();
 		return;
 	}

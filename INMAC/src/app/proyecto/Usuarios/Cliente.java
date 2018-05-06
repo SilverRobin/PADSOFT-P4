@@ -1,12 +1,10 @@
 package app.proyecto.Usuarios;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 import es.uam.eps.padsof.telecard.*;
 import app.proyecto.Sistema.Aviso;
-import app.proyecto.Sistema.FechaSimulada;
 import app.proyecto.Sistema.Sistema;
 
 /**
@@ -23,7 +21,7 @@ public class Cliente implements Serializable{
 	private Ofertante ofertante;
 	private Demandante demandante;
 	private String creditCard;
-	private List<Aviso> avisos;
+	private Aviso aviso;
 	
 	/**
 	 * @param nombre nombre
@@ -36,7 +34,7 @@ public class Cliente implements Serializable{
 		this.nif = nif;
 		this.password = password;
 		this.creditCard = creditCard;
-		avisos = new ArrayList<Aviso>();
+		aviso = null;
 	}
 	
 	/**
@@ -107,28 +105,16 @@ public class Cliente implements Serializable{
 	 * Añade un aviso con un mensaje y la fecha en la que se genera
 	 * @param mensaje contenido del aviso
 	 */
-	public void addAviso(String mensaje) {
-		Aviso aviso = new Aviso(mensaje, FechaSimulada.getHoy());
-		avisos.add(aviso);
+	public void setAviso(Aviso a) {
+		aviso = a;
 	}
 
 	/**
 	 * Obtiene la lista de avisos
-	 * @return lista de avisos
+	 * @return Aviso del cliente
 	 */
-	public List<Aviso> getAvisos() {
-		return avisos;
-	}
-	
-	/**
-	 * Lee los avisos guardados
-	 */
-	public void leerAvisos() {
-
-		for (Aviso a : avisos) {
-			System.out.println(a);
-		}
-		avisos.clear(); //Limpiamos array porque ya se han leido todos
+	public Aviso getAviso() {
+		return aviso;
 	}
 	
 	/**
@@ -167,14 +153,14 @@ public class Cliente implements Serializable{
 			} catch(FailedInternetConnectionException e){
 				cont++;
 				if(cont == maxIntentos) {
-					addAviso("Fallo de conexión. Inténtalo más tarde");
+					setAviso(new Aviso("Fallo de conexión. Inténtalo más tarde", LocalDate.now()));
 					break;
 				}
 			} catch (InvalidCardNumberException e) {
-				addAviso("Tarjeta inválida. Contacta con el administrador");
+				setAviso(new Aviso("Tarjeta inválida. Contacta con el administrador", LocalDate.now()));
 				break;
 			} catch (OrderRejectedException e) {
-				addAviso("Transaccion rechazada");
+				setAviso(new Aviso("Transaccion rechazada", LocalDate.now()));
 				break;
 			}
 		}

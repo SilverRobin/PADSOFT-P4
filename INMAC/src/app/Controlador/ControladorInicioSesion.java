@@ -69,6 +69,7 @@ public class ControladorInicioSesion implements ActionListener {
 				ventana.cambiaDerecha(new GerenteRScreen(app, gms), "GRS");
 				cl = (CardLayout) ventana.getDerecha().getLayout();
 				cl.show(ventana.getDerecha(), "GRS");
+				return;
 				
 				
 				
@@ -102,11 +103,17 @@ public class ControladorInicioSesion implements ActionListener {
 			}
 			
 		}else {
-		JOptionPane.showMessageDialog(null,
+			JOptionPane.showMessageDialog(null,
 				"Por favor, compruebe el correo o la contraseña introducidos",
 				"Error al iniciar sesión", JOptionPane.ERROR_MESSAGE);
+			return;
 		}
 		
+		if(app.getLogged().getAviso() != null) {
+			JOptionPane.showMessageDialog(null,
+					app.getLogged().getAviso().getTexto(),
+					"Error", JOptionPane.ERROR_MESSAGE);
+		}
 
 	}
 

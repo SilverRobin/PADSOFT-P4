@@ -47,6 +47,7 @@ public class SearchScreen extends JPanel {
 	private JDateChooser fin;
 	private JCheckBox vacButton;
     private JCheckBox larButton;
+    private JRadioButton dispb;
     private JPanel checkPanel;
 	private JPanel basico;
 	private JPanel fechas;
@@ -94,6 +95,10 @@ public class SearchScreen extends JPanel {
 		checkPanel.add(disponibles);
 		checkPanel.add(todas);
 		checkPanel.setVisible(false);
+		
+		dispb = new JRadioButton("Filtrar no disponibles");
+		dispb.setSelected(false);
+		
 		
 		//Panel de seleccion de fechas
 		inicio = new JDateChooser(); 
