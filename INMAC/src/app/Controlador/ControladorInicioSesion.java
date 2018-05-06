@@ -107,11 +107,7 @@ public class ControladorInicioSesion implements ActionListener {
 							app.getLogged().getAviso().getTexto(),
 							"Avisos", JOptionPane.INFORMATION_MESSAGE);
 					return;
-				}else if(app.getLogged().getAviso() == null) {
-					JOptionPane.showMessageDialog(null,
-							"No tiene avisos pendientes",
-							"Avisos", JOptionPane.INFORMATION_MESSAGE);
-					return;
+				
 				}else if(app.getLogged().getOfertante().getInmuebles().isEmpty() == false) {
 					inmuebles.addAll(app.getLogged().getOfertante().getInmuebles());
 					for(Inmueble i : inmuebles) {
