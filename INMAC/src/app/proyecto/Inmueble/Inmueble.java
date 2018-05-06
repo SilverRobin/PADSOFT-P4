@@ -172,6 +172,20 @@ public class Inmueble implements Serializable{
 	public String toString() {
 		return this.getDireccion().getCP() + ", " + getDireccion().getLocalidad() + ". " + getDireccion().getCalle();
 	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object i) {
+		if (i instanceof Inmueble) {
+			return this.direccion.equals(((Inmueble) i).direccion);
+		}
+		return false;
+	}
+	
+	
 	
 	
 	

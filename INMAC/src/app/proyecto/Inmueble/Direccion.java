@@ -66,6 +66,14 @@ public class Direccion implements Serializable{
 		return this instanceof Direccion;
 	}
 	
+	
+	public boolean isEmpty() {
+		if(this.codigoPostal.isEmpty() || this.calle.isEmpty() || this.localidad.isEmpty())
+			return true;
+		return false;
+		
+	}
+	
 	@Override
 	public boolean equals (Object e) {
 		
