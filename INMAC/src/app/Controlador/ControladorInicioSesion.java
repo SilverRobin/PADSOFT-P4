@@ -20,6 +20,7 @@ import app.gui.Vista.OfertanteRScreen;
 import app.gui.Vista.PanelDScreen;
 import app.gui.Vista.ResultScreen;
 import app.gui.Vista.SearchScreen;
+import app.proyecto.Sistema.Aviso;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Sistema.TipoCliente;
 
@@ -92,6 +93,13 @@ public class ControladorInicioSesion implements ActionListener {
 				cl = (CardLayout) ventana.getIzquierda().getLayout();
 				cl.show(ventana.getIzquierda(), "OLS");
 				
+				for(Aviso a : app.getLogged().getOfertante().getRects()) {
+					JOptionPane.showMessageDialog(null,
+							a.getTexto(),
+							"Rectificacion de oferta", JOptionPane.INFORMATION_MESSAGE);
+					app.getLogged().getOfertante().removeRect(a);
+				}
+				
 			}else {
 				cl = (CardLayout) ventana.getDerecha().getLayout();
 				PanelDScreen pds = new PanelDScreen(app, (ResultScreen) ventana.getCurrentCardC());
@@ -112,7 +120,7 @@ public class ControladorInicioSesion implements ActionListener {
 		if(app.getLogged().getAviso() != null) {
 			JOptionPane.showMessageDialog(null,
 					app.getLogged().getAviso().getTexto(),
-					"Error", JOptionPane.ERROR_MESSAGE);
+					"Error de tarjeta", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}

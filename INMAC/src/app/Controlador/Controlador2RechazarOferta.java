@@ -50,6 +50,7 @@ public class Controlador2RechazarOferta implements ActionListener{
 			}
 		}else {
 			of.setRectificacion(panel.getRect());
+			app.getLogged().getOfertante().addRect(panel.getRect());
 			of.rectificar();
 		}
 		
