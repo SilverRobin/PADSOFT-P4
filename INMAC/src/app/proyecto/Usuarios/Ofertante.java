@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.proyecto.Inmueble.Inmueble;
+import app.proyecto.Sistema.Aviso;
 
 /**
  * @author Laura Ramirez
@@ -40,6 +41,6 @@ public class Ofertante implements Serializable{
 	 */
 	public boolean addInmueble(Inmueble inmueble) {
 		return inmuebles.add(inmueble);
-	}	
+	}
 
 }

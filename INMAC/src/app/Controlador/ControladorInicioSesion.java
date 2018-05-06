@@ -147,7 +147,7 @@ public class ControladorInicioSesion implements ActionListener {
 		if(app.getLogged().getAviso() != null) {
 			JOptionPane.showMessageDialog(null,
 					app.getLogged().getAviso().getTexto(),
-					"Error", JOptionPane.ERROR_MESSAGE);
+					"Error de tarjeta", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
