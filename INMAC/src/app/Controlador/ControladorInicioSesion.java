@@ -6,6 +6,7 @@ package app.Controlador;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -20,10 +21,14 @@ import app.gui.Vista.OfertanteRScreen;
 import app.gui.Vista.PanelDScreen;
 import app.gui.Vista.ResultScreen;
 import app.gui.Vista.SearchScreen;
+import app.proyecto.Inmueble.Inmueble;
+import app.proyecto.Oferta.EstadoOferta;
+import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Sistema.TipoCliente;
 
 /**
+ * Controlador del inicio de sesion
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -33,8 +38,11 @@ public class ControladorInicioSesion implements ActionListener {
 
 	private LogInScreen panel;
 	private Sistema app;
+
 	/**
-	 * 
+	 * Controlador del inicio de sesion
+	 * @param app Aplicacion
+	 * @param panel Panel de Login
 	 */
 	public ControladorInicioSesion(Sistema app, LogInScreen panel) {
 		this.panel = panel;
@@ -91,6 +99,33 @@ public class ControladorInicioSesion implements ActionListener {
 				ventana.cambiaIzquierda(ols, "OLS"); //Cambiamos pantalla izquierda para ofertante
 				cl = (CardLayout) ventana.getIzquierda().getLayout();
 				cl.show(ventana.getIzquierda(), "OLS");
+				
+				ArrayList<Inmueble> inmuebles = new ArrayList<Inmueble>();
+				if(app.getLogged().getAviso() != null) {
+					JOptionPane.showMessageDialog(null,
+							"[" + app.getLogged().getAviso().getFecha()+ "]" + 
+							app.getLogged().getAviso().getTexto(),
+							"Avisos", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				
+				}else if(app.getLogged().getOfertante().getInmuebles().isEmpty() == false) {
+					inmuebles.addAll(app.getLogged().getOfertante().getInmuebles());
+					for(Inmueble i : inmuebles) {
+						if(i.getOfertas().isEmpty())
+							continue;
+						for(Oferta o : i.getOfertas()) {
+							if(o.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
+								String cadena = "La oferta [" + o + "] del inmueble " + "[" + i + "] ha de ser modificada";
+								JOptionPane.showMessageDialog(null,
+										cadena,
+										"Avisos", JOptionPane.INFORMATION_MESSAGE);
+								return;
+							}
+							continue;
+						}
+					}
+					return;
+				}
 				
 			}else {
 				cl = (CardLayout) ventana.getDerecha().getLayout();

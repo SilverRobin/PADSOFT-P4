@@ -4,8 +4,10 @@
 package app.Controlador;
 
 import java.awt.CardLayout;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -94,6 +96,38 @@ public class ControladorMainScreenOfertante implements ActionListener {
 			ventana.cambiaCentro(modOfertaPanel, "modOferta");
 			cl = (CardLayout) ventana.getCentro().getLayout();
 			cl.show(ventana.getCentro(), "modOferta");
+		}else if(command.equals("avisos")) {
+			ArrayList<Inmueble> inmuebles = new ArrayList<Inmueble>();
+			if(app.getLogged().getAviso() != null) {
+				JOptionPane.showMessageDialog(null,
+						"[" + app.getLogged().getAviso().getFecha()+ "]" + 
+						app.getLogged().getAviso().getTexto(),
+						"Avisos", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}else if(app.getLogged().getAviso() == null) {
+				JOptionPane.showMessageDialog(null,
+						"No tiene avisos pendientes",
+						"Avisos", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}else if(app.getLogged().getOfertante().getInmuebles().isEmpty() == false) {
+				inmuebles.addAll(app.getLogged().getOfertante().getInmuebles());
+				for(Inmueble i : inmuebles) {
+					if(i.getOfertas().isEmpty())
+						continue;
+					for(Oferta o : i.getOfertas()) {
+						if(o.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
+							String cadena = "La oferta [" + o + "] del inmueble " + "[" + i + "] ha de ser modificada";
+							JOptionPane.showMessageDialog(null,
+									cadena,
+									"Avisos", JOptionPane.INFORMATION_MESSAGE);
+							return;
+						}
+						continue;
+					}
+				}
+				return;
+			}
+			
 		}
 		
 		
