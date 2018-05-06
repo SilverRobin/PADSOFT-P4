@@ -193,7 +193,10 @@ public abstract class Oferta implements Serializable{
 	 * @param fecha nueva o null si no se va a cambiar
 	 * @return true o false
 	 */
-	public abstract boolean modificarOferta(String dato, int precio, LocalDate fecha);
+	public boolean modificarOferta(String dato, int precio, LocalDate fecha) {
+		rectificacion = "";
+		return true;
+	}
 	
 	/**
 	 * Reserva una oferta
@@ -238,7 +241,9 @@ public abstract class Oferta implements Serializable{
 
 	@Override
 	public String toString() {
-		return this.descripcion + "		"+ this.precio + " €";
+		if(rectificacion.equals(""))
+			return this.descripcion + "		"+ this.precio + " €";
+		return "(R)" + rectificacion;
 	}
 	
 }

@@ -277,7 +277,8 @@ public class Sistema implements Serializable{
 	 * Logout del sistema
 	 */
 	public void logOut() {
-		this.guardarCliente(this.getLogged()); //Guardamos datos antes de salir
+		if(tipolog != TipoCliente.GERENTE)
+			this.guardarCliente(this.getLogged()); //Guardamos datos antes de salir
 		logeado = null;
 		tipolog = TipoCliente.NULL;
 		return;
@@ -426,7 +427,7 @@ public class Sistema implements Serializable{
 	 * @param c Cliente que guardar
 	 */
 	public void guardarCliente(Cliente c) {
-		String path = System.getProperty("payments.dir");
+		String path = System.getProperty("user.dir");
 		String barras = File.separator;
 		path += barras + "Datos" + barras + "Clientes" + barras
 				+ c.getNIF() + barras;
@@ -496,7 +497,7 @@ public class Sistema implements Serializable{
 	 * @throws ClassNotFoundException excepcion de clase
 	 */
 	public List<Pago> cargarPagos() throws IOException, ClassNotFoundException {
-		String path = System.getProperty("payments.dir");
+		String path = System.getProperty("user.dir");
 		String barras = File.separator;
 		String directorio = path;
 		List<Pago> aux = new ArrayList<Pago>();

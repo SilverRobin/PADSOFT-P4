@@ -24,6 +24,11 @@ public class DOfertaMScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
+	public enum TipoView{
+		USER,
+		GERENTE
+	}
+	
 	private JLabel toferta, comof, finof, preof, fiof, vaof;
 	private JTextField comfield;
 	private JTextField finfield;
@@ -38,7 +43,7 @@ public class DOfertaMScreen extends JPanel{
 	private JButton volver;
 	
 	
-	public DOfertaMScreen(Sistema app, Oferta of) {
+	public DOfertaMScreen(Sistema app, Oferta of, TipoView t) {
 		
 		this.setLayout(new GridBagLayout());
 		JPanel mainpanel = new JPanel();
@@ -185,16 +190,21 @@ public class DOfertaMScreen extends JPanel{
 		mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
 		mainpanel.add(horizontalhi, Component.CENTER_ALIGNMENT);
 		mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
-		mainpanel.add(vaof, Component.CENTER_ALIGNMENT);
-		mainpanel.add(Box.createRigidArea(new Dimension(0, 5)));
-		mainpanel.add(valfield, Component.CENTER_ALIGNMENT);
-		mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
-		mainpanel.add(nvalfield, Component.CENTER_ALIGNMENT);
+		if(t != TipoView.GERENTE) {
+			mainpanel.add(vaof, Component.CENTER_ALIGNMENT);
+			mainpanel.add(Box.createRigidArea(new Dimension(0, 5)));
+			mainpanel.add(valfield, Component.CENTER_ALIGNMENT);
+			mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
+			mainpanel.add(nvalfield, Component.CENTER_ALIGNMENT);
+		}
 		mainpanel.add(Box.createRigidArea(new Dimension(0, 25)));
-		mainpanel.add(anabutton, Component.CENTER_ALIGNMENT);
+		if(t != TipoView.GERENTE)
+			mainpanel.add(anabutton, Component.CENTER_ALIGNMENT);
 		horizontallow.add(volver, Component.CENTER_ALIGNMENT);
-		horizontallow.add(Box.createRigidArea(new Dimension(10, 0)));
-		horizontallow.add(reservar, Component.CENTER_ALIGNMENT);
+		if(t != TipoView.GERENTE) {
+			horizontallow.add(Box.createRigidArea(new Dimension(10, 0)));
+			horizontallow.add(reservar, Component.CENTER_ALIGNMENT);
+		}
 		mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
 		mainpanel.add(horizontallow, BorderLayout.CENTER);
 		this.add(mainpanel);
