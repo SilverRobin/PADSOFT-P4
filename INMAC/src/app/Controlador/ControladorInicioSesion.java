@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import app.gui.MainGUI;
+import app.gui.Vista.BlankScreen;
+import app.gui.Vista.GerenteMScreen;
+import app.gui.Vista.GerenteRScreen;
 import app.gui.Vista.LogInScreen;
 import app.gui.Vista.OfertanteLScreen;
 import app.gui.Vista.OfertanteMScreen;
@@ -52,7 +55,24 @@ public class ControladorInicioSesion implements ActionListener {
 		if(app.logIn(panel.getNIF(), panel.getPassword(), tipo)) {
 			CardLayout cl;
 			MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(panel); //Obtenemos la ventana en la que esta contenido el panel
-			if(tipo == TipoCliente.OFERTANTE) {
+			if(tipo == TipoCliente.GERENTE){
+				
+				ventana.cambiaIzquierda(new BlankScreen(), "BS");
+				cl = (CardLayout) ventana.getIzquierda().getLayout();
+				cl.show(ventana.getIzquierda(), "BS");
+				
+				GerenteMScreen gms = new GerenteMScreen(app);
+				ventana.cambiaCentro(gms, "GMS"); //Cambiamos pantalla izquierda para ofertante
+				cl = (CardLayout) ventana.getCentro().getLayout();
+				cl.show(ventana.getCentro(), "GMS");
+				
+				ventana.cambiaDerecha(new GerenteRScreen(app, gms), "GRS");
+				cl = (CardLayout) ventana.getDerecha().getLayout();
+				cl.show(ventana.getDerecha(), "GRS");
+				
+				
+				
+			}else if(tipo == TipoCliente.OFERTANTE) {
 				
 				ventana.cambiaCentro(new OfertanteMScreen(app), "OMS");
 				cl = (CardLayout) ventana.getCentro().getLayout();
