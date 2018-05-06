@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import app.gui.MainGUI;
+import app.proyecto.Sistema.Pago;
 import app.proyecto.Sistema.Sistema;
 import app.proyecto.Usuarios.Cliente;
 
@@ -31,11 +32,15 @@ public class Main {
 			for(Cliente c : app.getClientes()) {
 				app.guardarCliente(c);
 			}
+			for(Pago p : app.getPagos()) {
+				app.guardarPago(p);
+			}
 		}
 		
 		
 		try {
 			app.recuperarClientes(); //Cargamos los clientes de las carpetas
+			app.recuperarPagos();
 		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,6 +58,9 @@ public class Main {
 					
 					for (Cliente c : app.getClientes()) {
 						app.guardarCliente(c);
+					}
+					for(Pago p : app.getPagos()) {
+						app.guardarPago(p);
 					}
 					
 					System.exit(0);

@@ -22,11 +22,13 @@ public class ControladorRechazarOferta implements ActionListener{
 	public ControladorRechazarOferta(Oferta of, Sistema app, GerenteMScreen ms) {
 		panel = ms;
 		this.app = app;
-		this.of = of;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		
+		of = panel.getSelected();
+		if(of == null) return;
 		
 		CardLayout cl;
 		MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(panel); //Obtenemos la ventana en la que esta contenido el panel
