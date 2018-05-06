@@ -98,17 +98,13 @@ public class ControladorMainScreenOfertante implements ActionListener {
 			cl.show(ventana.getCentro(), "modOferta");
 		}else if(command.equals("avisos")) {
 			ArrayList<Inmueble> inmuebles = new ArrayList<Inmueble>();
-			if(app.getLogged().getAviso() != null) {
+			if(app.getLogged().getAviso().getTexto().isEmpty() == false) {
 				JOptionPane.showMessageDialog(null,
 						"[" + app.getLogged().getAviso().getFecha()+ "]" + 
 						app.getLogged().getAviso().getTexto(),
 						"Avisos", JOptionPane.INFORMATION_MESSAGE);
 				return;
-			}else if(app.getLogged().getAviso() == null) {
-				JOptionPane.showMessageDialog(null,
-						"No tiene avisos pendientes",
-						"Avisos", JOptionPane.INFORMATION_MESSAGE);
-				return;
+			
 			}else if(app.getLogged().getOfertante().getInmuebles().isEmpty() == false) {
 				inmuebles.addAll(app.getLogged().getOfertante().getInmuebles());
 				for(Inmueble i : inmuebles) {
@@ -117,6 +113,9 @@ public class ControladorMainScreenOfertante implements ActionListener {
 					for(Oferta o : i.getOfertas()) {
 						if(o.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
 							String cadena = "La oferta [" + o + "] del inmueble " + "[" + i + "] ha de ser modificada";
+							if(o.getRectificacion() != null || o.getRectificacion().isEmpty() == false) {
+								cadena = o.getRectificacion();
+							}
 							JOptionPane.showMessageDialog(null,
 									cadena,
 									"Avisos", JOptionPane.INFORMATION_MESSAGE);
@@ -126,8 +125,12 @@ public class ControladorMainScreenOfertante implements ActionListener {
 					}
 				}
 				return;
+			}else if(app.getLogged().getAviso().getTexto().isEmpty() == true) {
+				JOptionPane.showMessageDialog(null,
+						"No tiene avisos pendientes",
+						"Avisos", JOptionPane.INFORMATION_MESSAGE);
+				return;
 			}
-			
 		}
 		
 		

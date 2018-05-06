@@ -62,6 +62,7 @@ public class ControladorModificarOferta implements ActionListener {
 			}
 			o.setFianza(Integer.parseInt(fianza));
 			o.setPrecio(Integer.parseInt(precio));
+			o.modificarOferta();
 			((OfertanteRScreen) ventana.getCurrentCardR()).cleanList();
 			((OfertanteRScreen) ventana.getCurrentCardR()).addOfertas(i.getOfertas());
 			

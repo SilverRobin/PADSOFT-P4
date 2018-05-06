@@ -101,7 +101,7 @@ public class ControladorInicioSesion implements ActionListener {
 				cl.show(ventana.getIzquierda(), "OLS");
 				
 				ArrayList<Inmueble> inmuebles = new ArrayList<Inmueble>();
-				if(app.getLogged().getAviso() != null) {
+				if(app.getLogged().getAviso().getTexto().isEmpty() == false) {
 					JOptionPane.showMessageDialog(null,
 							"[" + app.getLogged().getAviso().getFecha()+ "]" + 
 							app.getLogged().getAviso().getTexto(),
@@ -116,6 +116,9 @@ public class ControladorInicioSesion implements ActionListener {
 						for(Oferta o : i.getOfertas()) {
 							if(o.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
 								String cadena = "La oferta [" + o + "] del inmueble " + "[" + i + "] ha de ser modificada";
+								if(o.getRectificacion() != null || o.getRectificacion().isEmpty() == false) {
+									cadena = o.getRectificacion();
+								}								
 								JOptionPane.showMessageDialog(null,
 										cadena,
 										"Avisos", JOptionPane.INFORMATION_MESSAGE);

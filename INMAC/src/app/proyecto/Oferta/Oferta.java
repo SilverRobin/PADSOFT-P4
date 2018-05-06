@@ -188,14 +188,11 @@ public abstract class Oferta implements Serializable{
 	
 	/**
 	 * Modifica parametros de una oferta
-	 * @param dato a cambiar
-	 * @param precio nuevo o 0 si no se va a cambiar
-	 * @param fecha nueva o null si no se va a cambiar
-	 * @return true o false
 	 */
-	public boolean modificarOferta(String dato, int precio, LocalDate fecha) {
+	public void modificarOferta() {
 		rectificacion = "";
-		return true;
+		visibilidad =EstadoOferta.NO_APROBADA;
+		
 	}
 	
 	/**
