@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import app.gui.MainGUI;
@@ -62,29 +63,42 @@ public class ControladorBotonBusqueda implements ActionListener {
 		} else { //Usuario no logueado
 			lista.addAll(app.getDisponibles()); // Si no esta logueado añadimos todas las ofertas
 		}
-
+		if(lista.isEmpty()) {
+			((ResultScreen) ventana.getCurrentCardC()).limpiarLista();
+			JOptionPane.showMessageDialog(null,
+					"No hay resultados",
+					"Avisos", JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+		aux.addAll(lista);
 		///// ** FILTROS APLICABLES POR TODOS LOS USUARIOS**//////
 		if (codigo != null) { // Filtro por codigo postal
 			for (Oferta o : lista) { // Recorremos la lista de ofertas filtradas por estancia
 				if (app.busquedaCP(codigo).contains(o) == false) { // Si la lista de busqueda por codigo no contiene la oferta del primer filtro												
-					lista.remove(o); // La eliminamos
+					aux.remove(o); // La eliminamos
 				}
 			}
 		} else if (inicio != null && fin != null) { // Filtro por fechas
 			for (Oferta o : lista) {
 				if (app.busquedaFecha(inicio, fin).contains(o) == false) 
-					lista.remove(o);	
+					aux.remove(o);	
 			}
 		} else {
 			for (Oferta o : lista) { // Filtro por valoracion
 				if (app.busquedaValoracion(valoracion).contains(o) == false) 
-					lista.remove(o);
+					aux.remove(o);
 			}
 		}
-		
+		if(aux.isEmpty()) {
+			((ResultScreen) ventana.getCurrentCardC()).limpiarLista();
+			JOptionPane.showMessageDialog(null,
+					"No hay resultados",
+					"Avisos", JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
 		///**CAMBIO DE ESTADO DEL PANEL CENTRAL**////
-		((ResultScreen) ventana.getCentro()).limpiarLista(); //Va, eliminamos todo para dejarlo limpico
-		((ResultScreen) ventana.getCentro()).addResultados(lista); //Si con esto no se actualiza hay que preguntar a Google
+		((ResultScreen) ventana.getCurrentCardC()).limpiarLista(); //Va, eliminamos todo para dejarlo limpico
+		((ResultScreen) ventana.getCurrentCardC()).addResultados(aux); //Si con esto no se actualiza hay que preguntar a Google
 		
 	}
 

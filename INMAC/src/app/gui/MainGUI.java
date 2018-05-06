@@ -57,7 +57,7 @@ public class MainGUI extends JFrame{
 		this.setLayout(layout);
 
 		ResultScreen rs = new ResultScreen(sistema);
-		izqda.add(new SearchScreen(), "Search");		
+		izqda.add(new SearchScreen(sistema), "Search");		
 		centro.add(rs, "Results");
 		dcha.add(new LogInScreen(app, rs), "LogIn");
 

@@ -44,7 +44,7 @@ public class ControladorCerrarSesion implements ActionListener{
 		app.logOut();
 		CardLayout cl;
 		
-		ventana.cambiaIzquierda(new SearchScreen(), "Search"); //Cambiamos pantalla izquierda para ofertante
+		ventana.cambiaIzquierda(new SearchScreen(app), "Search"); //Cambiamos pantalla izquierda para ofertante
 		ResultScreen rs = new ResultScreen(app);
 		cl = (CardLayout) ventana.getIzquierda().getLayout();
 		cl.show(ventana.getIzquierda(), "Search");

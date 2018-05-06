@@ -37,7 +37,6 @@ public class ResultScreen extends JPanel {
 	public ResultScreen(Sistema app) {
 		super(new BorderLayout());
 		listModel = new DefaultListModel<>();
-		listModel.addElement(Oferta.generarOfertaTest());
 		
 		//Create the list and put it in a scroll pane.
         lista = new JList<>(listModel);

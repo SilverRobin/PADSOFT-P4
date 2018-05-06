@@ -27,6 +27,9 @@ import javax.swing.text.MaskFormatter;
 
 import com.toedter.calendar.JDateChooser;
 
+import app.Controlador.ControladorBotonBusqueda;
+import app.proyecto.Sistema.Sistema;
+
 /**
  * @author Laura Ramirez
  * @author Antonio Oliva
@@ -57,7 +60,7 @@ public class SearchScreen extends JPanel {
 	/**
 	 * 
 	 */
-	public SearchScreen() {
+	public SearchScreen(Sistema app) {
 		super();
 		JLabel labelcp = new JLabel("Código postal");
 		JLabel labeli = new JLabel("Fecha de inicio:");
@@ -72,6 +75,7 @@ public class SearchScreen extends JPanel {
 
 		//Panel de codigo postal
 		buscar = new JButton("Buscar");
+		buscar.addActionListener(new ControladorBotonBusqueda(app, this));
 		cp = new JFormattedTextField(
 				createFormatter("#####"));
 		cp.setColumns(10);
@@ -198,10 +202,16 @@ public class SearchScreen extends JPanel {
     }
     
     public LocalDate getInicio() {
+    	if(this.inicio.getDate() == null) {
+    		return null;
+    	}
     	return LocalDate.ofInstant(this.inicio.getDate().toInstant(), ZoneId.systemDefault());
     }
     
     public LocalDate getFin() {
+    	if(this.fin.getDate() == null) {
+    		return null;
+    	}
     	return LocalDate.ofInstant(this.fin.getDate().toInstant(), ZoneId.systemDefault());
     }
     
