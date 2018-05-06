@@ -40,6 +40,8 @@ public class Vacacional extends Oferta {
 		if(this.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
 			return false;
 		}
+		super.modificarOferta(dato, precio, fecha);
+		
 		switch (dato.toLowerCase()) {
 		case "fechainicio":
 			this.setInicio(fecha);

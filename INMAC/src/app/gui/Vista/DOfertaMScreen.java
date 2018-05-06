@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import app.Controlador.ControladorAnadirValOferta;
+import app.Controlador.ControladorCNewOferta;
 import app.Controlador.ControladorReservarOferta;
 import app.Controlador.ControladorVolver;
 import app.proyecto.Oferta.EstadoOferta;
@@ -24,6 +25,11 @@ public class DOfertaMScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
+	public enum TipoView{
+		USER,
+		GERENTE
+	}
+	
 	private JLabel toferta, comof, finof, preof, fiof, vaof;
 	private JTextField comfield;
 	private JTextField finfield;
@@ -34,11 +40,12 @@ public class DOfertaMScreen extends JPanel{
 	private JTextField nvalfield;
 	private Oferta oferta;
 	private JButton anabutton;
+	private JButton contratar;
 	private JButton reservar;
 	private JButton volver;
 	
 	
-	public DOfertaMScreen(Sistema app, Oferta of) {
+	public DOfertaMScreen(Sistema app, Oferta of, TipoView t) {
 		
 		this.setLayout(new GridBagLayout());
 		JPanel mainpanel = new JPanel();
@@ -50,7 +57,7 @@ public class DOfertaMScreen extends JPanel{
 		JPanel hiright = new JPanel();
 		hiright.setLayout(new BoxLayout(hiright, BoxLayout.Y_AXIS));
 		JPanel horizontallow = new JPanel();
-		horizontallow.setLayout(new BoxLayout(horizontallow, BoxLayout.X_AXIS));
+		horizontallow.setLayout(new BoxLayout(horizontallow, BoxLayout.Y_AXIS));
 		this.oferta = of;
 		
 		horizontalhi.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -114,6 +121,14 @@ public class DOfertaMScreen extends JPanel{
 		nvalfield.setMaximumSize(new Dimension(50, 25));
 		nvalfield.setMinimumSize(new Dimension(50, 25));
 		nvalfield.setPreferredSize(new Dimension(50, 25));
+		
+		contratar = new JButton("Contratar Oferta");
+		contratar.addActionListener(new ControladorCNewOferta(app, of, this));
+		contratar.setAlignmentX(Component.CENTER_ALIGNMENT);
+		contratar.setPreferredSize(new Dimension(140, 25));
+		contratar.setMinimumSize(new Dimension(140, 25));
+		contratar.setMaximumSize(new Dimension(140, 25));
+		
 		anabutton = new JButton("Añadir Valoracion");
 		anabutton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		anabutton.addActionListener(new ControladorAnadirValOferta(app, this));
@@ -126,12 +141,12 @@ public class DOfertaMScreen extends JPanel{
 		volver = new JButton("Volver");
 		volver.addActionListener(new ControladorVolver(this));
 		volver.setAlignmentX(Component.CENTER_ALIGNMENT);
-		volver.setPreferredSize(new Dimension(125, 25));
-		volver.setMinimumSize(new Dimension(125, 25));
-		volver.setMaximumSize(new Dimension(125, 25));
-		reservar.setPreferredSize(new Dimension(125, 25));
-		reservar.setMinimumSize(new Dimension(125, 25));
-		reservar.setMaximumSize(new Dimension(125, 25));
+		volver.setPreferredSize(new Dimension(140, 25));
+		volver.setMinimumSize(new Dimension(140, 25));
+		volver.setMaximumSize(new Dimension(140, 25));
+		reservar.setPreferredSize(new Dimension(140, 25));
+		reservar.setMinimumSize(new Dimension(140, 25));
+		reservar.setMaximumSize(new Dimension(140, 25));
 		
 		comfield.setEditable(false);
 		prefield.setEditable(false);
@@ -141,8 +156,11 @@ public class DOfertaMScreen extends JPanel{
 		if(app.getLogged() != null && of.getVisibilidad() != EstadoOferta.DISPONIBLE) {
 			reservar.setEnabled(false);
 			reservar.setText("Ya reservada");
+			contratar.setEnabled(false);
+			contratar.setText("Ya reservada");
 		}
 		if(app.getLogged() == null) {
+			contratar.setEnabled(false);
 			reservar.setEnabled(false);
 			anabutton.setEnabled(false);
 		}
@@ -185,16 +203,24 @@ public class DOfertaMScreen extends JPanel{
 		mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
 		mainpanel.add(horizontalhi, Component.CENTER_ALIGNMENT);
 		mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
-		mainpanel.add(vaof, Component.CENTER_ALIGNMENT);
-		mainpanel.add(Box.createRigidArea(new Dimension(0, 5)));
-		mainpanel.add(valfield, Component.CENTER_ALIGNMENT);
-		mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
-		mainpanel.add(nvalfield, Component.CENTER_ALIGNMENT);
+		if(t != TipoView.GERENTE) {
+			mainpanel.add(vaof, Component.CENTER_ALIGNMENT);
+			mainpanel.add(Box.createRigidArea(new Dimension(0, 5)));
+			mainpanel.add(valfield, Component.CENTER_ALIGNMENT);
+			mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
+			mainpanel.add(nvalfield, Component.CENTER_ALIGNMENT);
+		}
 		mainpanel.add(Box.createRigidArea(new Dimension(0, 25)));
-		mainpanel.add(anabutton, Component.CENTER_ALIGNMENT);
+		if(t != TipoView.GERENTE)
+			mainpanel.add(anabutton, Component.CENTER_ALIGNMENT);
+		
+		if(t != TipoView.GERENTE) {
+			horizontallow.add(contratar, Component.CENTER_ALIGNMENT);
+			horizontallow.add(Box.createRigidArea(new Dimension(0, 10)));
+			horizontallow.add(reservar, Component.CENTER_ALIGNMENT);
+			horizontallow.add(Box.createRigidArea(new Dimension(0, 10)));
+		}
 		horizontallow.add(volver, Component.CENTER_ALIGNMENT);
-		horizontallow.add(Box.createRigidArea(new Dimension(10, 0)));
-		horizontallow.add(reservar, Component.CENTER_ALIGNMENT);
 		mainpanel.add(Box.createRigidArea(new Dimension(0, 15)));
 		mainpanel.add(horizontallow, BorderLayout.CENTER);
 		this.add(mainpanel);
@@ -214,6 +240,10 @@ public class DOfertaMScreen extends JPanel{
 	
 	public JButton getAnadir() {
 		return anabutton;
+	}
+	
+	public JButton getCButton() {
+		return contratar;
 	}
 	
 	public JButton getRButton() {

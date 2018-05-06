@@ -191,4 +191,9 @@ public class Cliente implements Serializable{
 				"alpaca", "0000111122223333");
 	}
 	
+	@Override
+	public String toString() {
+		return nif;
+	}
+	
 }

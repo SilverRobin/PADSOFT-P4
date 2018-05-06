@@ -1,5 +1,9 @@
 package app.gui.Vista;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -18,6 +22,7 @@ public class GerenteMScreen extends JPanel{
 	
 	public GerenteMScreen(Sistema app) {
 		
+		this.setLayout(new GridBagLayout());
 		model = new DefaultListModel<Oferta>();
 		
 		for(Inmueble i : app.getInmuebles()) {
@@ -27,6 +32,10 @@ public class GerenteMScreen extends JPanel{
 			}
 		}
 		olist = new JList<Oferta>(model);
+		olist.setAlignmentX(Component.CENTER_ALIGNMENT);
+		olist.setMinimumSize(new Dimension(200, 200));
+		olist.setMaximumSize(new Dimension(200, 200));
+		olist.setPreferredSize(new Dimension(200, 200));
 		this.add(olist);
 	}
 	

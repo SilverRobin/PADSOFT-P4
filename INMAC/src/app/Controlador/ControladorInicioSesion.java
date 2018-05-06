@@ -55,7 +55,7 @@ public class ControladorInicioSesion implements ActionListener {
 		if(app.logIn(panel.getNIF(), panel.getPassword(), tipo)) {
 			CardLayout cl;
 			MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(panel); //Obtenemos la ventana en la que esta contenido el panel
-			if(tipo == TipoCliente.GERENTE){
+			if(app.getTipoLogged() == TipoCliente.GERENTE){
 				
 				ventana.cambiaIzquierda(new BlankScreen(), "BS");
 				cl = (CardLayout) ventana.getIzquierda().getLayout();

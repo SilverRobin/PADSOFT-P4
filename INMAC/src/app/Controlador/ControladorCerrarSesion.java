@@ -29,7 +29,8 @@ public class ControladorCerrarSesion implements ActionListener{
 		
 		MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(panel); //Obtenemos la ventana en la que esta contenido el panel
 		
-		if(app.getTipoLogged() == TipoCliente.OFERTANTE) {
+		if(app.getTipoLogged() == TipoCliente.OFERTANTE
+				|| app.getTipoLogged() == TipoCliente.GERENTE) {
 			ventana.volver();
 		}else {
 			ventana.volverD();

@@ -111,6 +111,10 @@ public class Sistema implements Serializable{
 		return logeado;
 	}
 	
+	public List<Pago> getPagos() {
+		return pagos;
+	}
+	
 	/**
 	 * Obtiene la lista de ofertas disponibles
 	 * @return lista de ofertas disponibles
@@ -273,7 +277,8 @@ public class Sistema implements Serializable{
 	 * Logout del sistema
 	 */
 	public void logOut() {
-		this.guardarCliente(this.getLogged()); //Guardamos datos antes de salir
+		if(tipolog != TipoCliente.GERENTE)
+			this.guardarCliente(this.getLogged()); //Guardamos datos antes de salir
 		logeado = null;
 		tipolog = TipoCliente.NULL;
 		return;
@@ -306,6 +311,8 @@ public class Sistema implements Serializable{
 		
 		return true;
 	}
+	
+	
 	
 	/**
 	 * Lectura de la linea de fichero de clientes
@@ -368,13 +375,51 @@ public class Sistema implements Serializable{
 		
 		while((datos = buffer.readLine()) != null) {
 			leerCliente(datos);
-			
 		}
 		
 		if(buffer != null) {
 			buffer.close();
 		}
 		return true;
+	}
+	
+	/**
+	 * Guarda un pago en disco
+	 * @param p Pago que guardar
+	 */
+	public void guardarPago(Pago p) {
+		String path = System.getProperty("user.dir");
+		String barras = File.separator;
+		path += barras + "Datos" + barras + "Pagos" + barras
+				+ p + barras;
+		File folder = new File(path);
+		if(!folder.exists()) {
+			folder.mkdirs();
+			
+			try {
+				FileOutputStream file = new FileOutputStream(path + "payment.ser");
+				ObjectOutputStream obj = new ObjectOutputStream(file);
+				obj.writeObject(p);
+				obj.close();
+				file.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			File borrado = new File(path + "payment.ser");
+			borrado.delete();
+			try {
+				FileOutputStream file = new FileOutputStream(path + "payment.ser");
+				ObjectOutputStream obj = new ObjectOutputStream(file);
+				obj.writeObject(p);
+				obj.close();
+				file.close();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		
 	}
 	
 	/**
@@ -430,6 +475,61 @@ public class Sistema implements Serializable{
 				this.inmuebles.addAll(c.getOfertante().getInmuebles());
 			}
 		}
+	}
+	
+	/**
+	 * Recupera los clientes del archivo y los carga en el sistema junto con los inmuebles
+	 * @throws ClassNotFoundException Excepcion
+	 * @throws IOException Excepcion
+	 */
+	public void recuperarPagos() throws ClassNotFoundException, IOException {
+		
+		for(Pago c : cargarPagos()) {
+			pagos.add(c);
+			resolverPago(c, "Pago congelado");
+		}
+	}
+	
+	/**
+	 * Carga los clientes del disco
+	 * @return Lista de clientes
+	 * @throws IOException excepcion de E/S
+	 * @throws ClassNotFoundException excepcion de clase
+	 */
+	public List<Pago> cargarPagos() throws IOException, ClassNotFoundException {
+		String path = System.getProperty("user.dir");
+		String barras = File.separator;
+		String directorio = path;
+		List<Pago> aux = new ArrayList<Pago>();
+		Pago objeto = null;
+		FileInputStream fichero = null;
+		ObjectInputStream ois = null;
+		
+		//Directorio de clientes
+		directorio  += barras + "Datos" + barras + "Pagos" + barras;
+		
+		File dirOfertantes = new File(directorio);
+		
+		if(dirOfertantes.exists()) {
+			File[] verCarpetas = dirOfertantes.listFiles();
+			
+			for(File f : verCarpetas) {
+				String direccion = directorio;
+				direccion += f.getName();
+				File carpe = new File(direccion);
+				File[] ficheros = carpe.listFiles();
+				
+				for(File obj : ficheros) {
+					fichero = new FileInputStream(obj);
+					ois = new ObjectInputStream(fichero);
+					objeto = (Pago) ois.readObject();
+					ois.close();
+					aux.add(objeto);
+				}
+			}
+		}
+		
+		return aux;
 	}
 	
 	/**
