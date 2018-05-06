@@ -22,6 +22,8 @@ public class ControladorReservarOferta implements ActionListener{
 		panel.getOferta().reservar();
 		app.getLogged().getDemandante().addReserva(new Reserva(panel.getOferta()));
 		panel.getRButton().setText("Oferta Reservada");
+		panel.getCButton().setText("Oferta Reservada");
+		panel.getCButton().setEnabled(false);
 		panel.getRButton().setEnabled(false);
 		return;
 	}
