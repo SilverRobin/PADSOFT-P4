@@ -47,7 +47,9 @@ public class ControladorListaOL implements ListSelectionListener {
 		MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(panel);
 		Inmueble i = (Inmueble) panel.getLista().getSelectedValue();
 		((OfertanteRScreen) ventana.getCurrentCardR()).cleanList();
-		((OfertanteRScreen) ventana.getCurrentCardR()).addOfertas((ArrayList<Oferta>) i.getOfertas());
+		if(i.getOfertas().isEmpty() == false) {
+			((OfertanteRScreen) ventana.getCurrentCardR()).addOfertas((ArrayList<Oferta>) i.getOfertas());
+		}
 		if (ventana.getCurrentCardC() instanceof OfertanteMScreen)
 			((OfertanteMScreen) ventana.getCurrentCardC()).getAddOferta().setEnabled(true);
 

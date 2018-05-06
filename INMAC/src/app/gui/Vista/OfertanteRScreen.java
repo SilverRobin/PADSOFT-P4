@@ -58,14 +58,13 @@ public class OfertanteRScreen extends JPanel {
 		this.setBorder(BorderFactory.createTitledBorder("Lista de ofertas"));
 	}
 	
-	public void addOfertas(ArrayList<Oferta> list) {
+	public void addOfertas(List<Oferta> list) {
 		for(Oferta o : list) {
 			listModel.addElement(o);
 		}
 	}
 	
 	public Oferta getSelectedOferta() {
-		
 		return (Oferta) lista.getSelectedValue();
 	}
 	

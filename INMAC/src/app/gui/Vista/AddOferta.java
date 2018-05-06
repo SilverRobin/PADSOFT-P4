@@ -5,14 +5,18 @@ package app.gui.Vista;
 
 import com.toedter.calendar.JDateChooser;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 
+import app.Controlador.ControladorAddOferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
@@ -22,7 +26,7 @@ import app.proyecto.Sistema.Sistema;
  */
 public class AddOferta extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private JLabel label1, label2, label3, label4, label5;
+	private JLabel label1, label2, label3, label4, label5, label6;
 	private JComboBox<String> tipoOferta;
 	private JDateChooser inicio;
 	private JDateChooser fin;
@@ -46,6 +50,8 @@ public class AddOferta extends JPanel {
 		label1 = new JLabel("Seleccionar tipo");
 		top.add(label1);
 		tipoOferta = new JComboBox(tipo);
+		
+		tipoOferta.setActionCommand("tipo");
 		tipoOferta.setSelectedIndex(0);
 		top.add(tipoOferta);
 		//tipoOferta.addActionListener();
@@ -58,17 +64,16 @@ public class AddOferta extends JPanel {
 		label2 = new JLabel("Fecha de inicio");
 		inicio = new JDateChooser();
 		label3 = new JLabel("Meses");
-		meses = new JFormattedTextField(
-				createFormatter("##"));
+		meses = new JFormattedTextField(Integer.valueOf("0"));
 		meses.setColumns(2);
 		meses.setMaximumSize(meses.getPreferredSize());
-		label3 = new JLabel("Fecha de fin");
+		label4 = new JLabel("Fecha de fin");
 		fin = new JDateChooser();
 		midL.add(label2);
 		midL.add(inicio);
 		midL.add(label3);
 		midL.add(meses);
-		midL.add(label3);
+		midL.add(label4);
 		midL.add(fin);
 		label3.setVisible(false);
 		meses.setVisible(false);
@@ -77,33 +82,39 @@ public class AddOferta extends JPanel {
 		JPanel midR = new JPanel();
 		midR.setLayout(new BoxLayout(midR, BoxLayout.Y_AXIS)); 
 		midR.setBorder(BorderFactory.createTitledBorder("Precio"));
-		label4 = new JLabel("Precio");
-		label4.setAlignmentX(CENTER_ALIGNMENT);
-		precio = new JFormattedTextField(
-				createFormatter("#####"));
+		label5 = new JLabel("Precio");
+		label5.setAlignmentX(Component.CENTER_ALIGNMENT);
+		precio = new JFormattedTextField(Integer.valueOf("0"));
 		precio.setColumns(10);
 		precio.setMaximumSize(precio.getPreferredSize());
-		precio.setAlignmentX(CENTER_ALIGNMENT);
-		label5 = new JLabel("Fianza");
-		label5.setAlignmentX(CENTER_ALIGNMENT);
-		fianza = new JFormattedTextField(
-				createFormatter("#####"));
+		precio.setAlignmentX(Component.CENTER_ALIGNMENT);
+		label6 = new JLabel("Fianza");
+		label6.setAlignmentX(Component.CENTER_ALIGNMENT);
+		fianza = new JFormattedTextField(Integer.valueOf("0"));
 		fianza.setColumns(10);
 		fianza.setMaximumSize(fianza.getPreferredSize());
-		fianza.setAlignmentX(CENTER_ALIGNMENT);
-		midR.add(label4);
-		midR.add(precio);
+		fianza.setAlignmentX(Component.CENTER_ALIGNMENT);
 		midR.add(label5);
+		midR.add(precio);
+		midR.add(label6);
 		midR.add(fianza);
 		
 		/*------ PANEL DE BOTONES  ----------*/
 		JPanel bot = new JPanel();
 		bot.setLayout(new BoxLayout(bot, BoxLayout.X_AXIS));
 		volver = new JButton("Cancelar");
+		
+		volver.setActionCommand("Volver");
 		addOferta = new JButton(" Añadir ");
+		
+		addOferta.setActionCommand("add");
 		bot.add(volver);
 		bot.add(Box.createRigidArea(new Dimension(5, 1)));
 		bot.add(addOferta);
+		
+		tipoOferta.addActionListener(new ControladorAddOferta(app, this));
+		addOferta.addActionListener(new ControladorAddOferta(app, this));
+		volver.addActionListener(new ControladorAddOferta(app, this));
 		
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -134,5 +145,53 @@ public class AddOferta extends JPanel {
 	        }
 	        return formatter;
 	    }
+	   
+	   public void modoVacacional() {
+		   label2.setVisible(true);
+		   inicio.setVisible(true);
+		   label3.setVisible(false);
+		   meses.setVisible(false);
+		   fin.setVisible(true);
+		   label4.setVisible(true);
+	   }
+	   
+	   public void modoLargaEstancia() {
+		   label2.setVisible(true);
+		   inicio.setVisible(true);
+		   label3.setVisible(true);
+		   meses.setVisible(true);
+		   fin.setVisible(false);
+		   label4.setVisible(false);
+	   }
+
+	public LocalDate getInicio() {
+		return LocalDate.ofInstant(this.inicio.getDate().toInstant(), ZoneId.systemDefault());
+	}
+
+	public LocalDate getFin() {
+		// TODO Auto-generated method stub
+		return LocalDate.ofInstant(this.fin.getDate().toInstant(), ZoneId.systemDefault());
+	}
+
+	public boolean isVacacional() {
+		if(this.tipoOferta.getSelectedItem().equals("Vacacional"))
+			return true;
+		return false;
+	}
+
+	public String getMeses() {
+		return this.meses.getText();
+	}
+
+	public String getPrecio() {
+		// TODO Auto-generated method stub
+		return this.precio.getText();
+	}
+
+	public String getFianza() {
+		// TODO Auto-generated method stub
+		return this.fianza.getText();
+	}
+	   
 
 }
