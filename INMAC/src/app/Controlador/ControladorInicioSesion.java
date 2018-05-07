@@ -61,6 +61,7 @@ public class ControladorInicioSesion implements ActionListener {
 			tipo = TipoCliente.DEMANDANTE;
 		}
 		if(app.logIn(panel.getNIF(), panel.getPassword(), tipo)) {
+			app.refresh();
 			CardLayout cl;
 			MainGUI ventana = (MainGUI) SwingUtilities.getWindowAncestor(panel); //Obtenemos la ventana en la que esta contenido el panel
 			if(app.getTipoLogged() == TipoCliente.GERENTE){
