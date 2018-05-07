@@ -4,8 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import app.gui.Vista.DOfertaMScreen;
+import app.proyecto.Oferta.Oferta;
 import app.proyecto.Oferta.Reserva;
 import app.proyecto.Sistema.Sistema;
+import app.proyecto.Usuarios.Demandante;
 
 /**
  * Controlador de reservar oferta
@@ -30,6 +32,12 @@ public class ControladorReservarOferta implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		Oferta a = panel.getOferta();
+		Demandante d = app.getLogged().getDemandante();
+		for(Reserva r : d.getReservas()) {
+			if(r.getOferta().isVacacional() == a.isVacacional())
+				return;
+		}
 		panel.getOferta().reservar();
 		app.getLogged().getDemandante().addReserva(new Reserva(panel.getOferta()));
 		panel.getRButton().setText("Oferta Reservada");
