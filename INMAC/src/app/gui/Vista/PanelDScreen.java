@@ -14,7 +14,7 @@ import app.Controlador.ControladorVerReserva;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Panel de demandante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -27,6 +27,11 @@ public class PanelDScreen extends JPanel{
 	private JButton loutb;
 	private JButton vofer;
 
+	/**
+	 * Constructor del demandante
+	 * @param app Aplicacion del sistema
+	 * @param rs panel de resultados
+	 */
 	public PanelDScreen(Sistema app, ResultScreen rs) {
 		this.setLayout(new GridBagLayout());
 		JPanel mainpanel = new JPanel();

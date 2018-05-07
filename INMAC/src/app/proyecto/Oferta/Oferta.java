@@ -29,10 +29,12 @@ public abstract class Oferta implements Serializable{
 	private String rectificacion;
 	private Inmueble in;
 	
+
 	/**
 	 * @param nP Precio
 	 * @param nF Fianza
 	 * @param nD Fecha 
+	 * @param nI inmueble
 	 */
 	public Oferta (int nP, int nF, LocalDate nD, Inmueble nI) {
 		this.precio = nP;

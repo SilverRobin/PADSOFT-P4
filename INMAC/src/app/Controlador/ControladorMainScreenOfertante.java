@@ -25,6 +25,7 @@ import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Controlador de la pantalla principal del ofertante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -32,8 +33,11 @@ import app.proyecto.Sistema.Sistema;
 public class ControladorMainScreenOfertante implements ActionListener {
 	private OfertanteMScreen oms;
 	private Sistema app;
+
 	/**
-	 * 
+	 * Constructor del controlador
+	 * @param app Aplicacion del sistema
+	 * @param oms Panel central del Ofertante
 	 */
 	public ControladorMainScreenOfertante(Sistema app, OfertanteMScreen oms) {
 		this.oms = oms;

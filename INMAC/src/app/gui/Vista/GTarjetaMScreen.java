@@ -17,7 +17,7 @@ import app.proyecto.Sistema.Sistema;
 import app.proyecto.Usuarios.Cliente;
 
 /**
- * 
+ * Pantalla del gerente derecha sobre la tarjeta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -32,6 +32,10 @@ public class GTarjetaMScreen extends JPanel{
 	private JLabel al;
 	private DefaultListModel<Cliente> model;
 	
+	/**
+	 * Constructor de la pantalla del gerente derecha sobre la tarjeta
+	 * @param app APlicacion del sistema
+	 */
 	public GTarjetaMScreen(Sistema app) {
 		
 		this.setLayout(new GridBagLayout());
@@ -73,11 +77,18 @@ public class GTarjetaMScreen extends JPanel{
 		this.add(mainpanel);
 	}
 	
+	/**
+	 * Refresca el texto de la tarea
+	 */
 	public void refresh() {
 		tarea.setText(clist.getSelectedValue().getCreditCard());
 		return;
 	}
 	
+	/**
+	 * Obtiene el cliente seleccionado
+	 * @return cliente seleccionado
+	 */
 	public Cliente getSelected() {
 		return clist.getSelectedValue();
 	}

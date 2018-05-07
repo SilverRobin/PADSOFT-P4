@@ -9,7 +9,7 @@ import app.gui.Vista.DOfertaRScreen;
 import app.proyecto.Valorables.Comentario;
 
 /**
- * 
+ * Controlador de comentario escogido
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -19,6 +19,11 @@ public class ControladorComentarioEscogido implements TreeSelectionListener{
 	private JTree tree;
 	private DOfertaRScreen panel;
 	
+	/**
+	 * Constructor del controlador
+	 * @param tree Arbol de comentarios
+	 * @param rs Panel de Oferta Derecho
+	 */
 	public ControladorComentarioEscogido(JTree tree, DOfertaRScreen rs) {
 		this.tree = tree;
 		panel = rs;

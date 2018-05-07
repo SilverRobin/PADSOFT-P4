@@ -31,6 +31,7 @@ import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Pantalla izquierda de ofertante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -44,8 +45,10 @@ public class OfertanteLScreen extends JPanel {
 	private DefaultListModel listModel;
 	private Dimension tamanyo = Toolkit.getDefaultToolkit().getScreenSize();
 	private int height, width;
+
 	/**
-	 * 
+	 * Constructor de pantalla izquierda de ofertante
+	 * @param app Aplicacion del sistema
 	 */
 	public OfertanteLScreen(Sistema app) {
 		JPanel minipanel = new JPanel();
@@ -72,27 +75,49 @@ public class OfertanteLScreen extends JPanel {
 		
 	}
 	
+	/**
+	 * Añade inmuebles a la lista visible
+	 * @param list lista de inmuebles
+	 */
 	public void addInmuebles(List<Inmueble> list) {
 		for(Inmueble i : list) {
 			listModel.addElement(i);
 		}
 	}
 	
+	/**
+	 * Limpia la lista visible
+	 */
 	public void cleanList() {
 		listModel.removeAllElements();
 	}
 	
+	/**
+	 * Obtiene el inmueble seleccionado
+	 * @return inmueble seleccionado
+	 */
 	public Inmueble getSelectedInmueble() {
 		return (Inmueble) lista.getSelectedValue();
 	}
 	
+	/**
+	 * Bloquea la lista de inmuebles
+	 */
 	public void blockLista() {
 		lista.setEnabled(false);
 	}
+	/**
+	 * Obtiene el JList de inmuebles
+	 * @return JList
+	 */
 	public JList getLista() {
 		return lista;
 	}
 	
+	/**
+	 * Obtiene la lista de inmuebles
+	 * @return List con inmuebles
+	 */
 	public List<Inmueble> getActualList(){
 		List<Inmueble> aux = new ArrayList<Inmueble>();
 		for(int i = 0; i<listModel.getSize(); i++) {

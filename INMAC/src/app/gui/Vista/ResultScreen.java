@@ -17,22 +17,22 @@ import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Panel de resultados de busqueda
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
  */
 public class ResultScreen extends JPanel {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JList<Oferta> lista;
 	private DefaultListModel<Oferta> listModel;
 	private JButton breservar;
 	
 	/**
-	 * 
+	 * Constructor del panel de resultados
+	 * @param app Aplicacion del sistema
 	 */
 	public ResultScreen(Sistema app) {
 		super(new BorderLayout());
@@ -51,16 +51,27 @@ public class ResultScreen extends JPanel {
         this.setBorder(BorderFactory.createTitledBorder("Resultados de busqueda"));
 	}
 	
+	/**
+	 * Añade resultados a la lista
+	 * @param lista de ofertas
+	 */
 	public void addResultados(ArrayList<Oferta> lista) {
 		for(Oferta o : lista) {
 			listModel.addElement(o);
 		}
 	}
 	
+	/**
+	 * Limpia la lista visible
+	 */
 	public void limpiarLista() {
 		listModel.clear();
 	}
 
+	/**
+	 * Obtiene la oferta seleccionada
+	 * @return oferta seleccionada
+	 */
 	public Oferta getOferta() {
 		return (Oferta) lista.getSelectedValue();
 	}

@@ -21,6 +21,7 @@ import app.Controlador.ControladorCerrarSesion;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Obtiene la pantalla central de ofertante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -35,7 +36,8 @@ public class OfertanteMScreen extends JPanel {
 	private int height, width;
 	
 	/**
-	 * 
+	 * Constructor de pantalla central de ofertante
+	 * @param app Aplicacion del sistema
 	 */
 	public OfertanteMScreen(Sistema app) {
 		height = tamanyo.height;
@@ -91,12 +93,17 @@ public class OfertanteMScreen extends JPanel {
 	}
 
 	/**
+	 * Obtiene el JButton de añadir oferta
 	 * @return the addOferta
 	 */
 	public JButton getAddOferta() {
 		return addOferta;
 	}
 	
+	/**
+	 * Obtiene el boton de modificar oferta
+	 * @return boton de modificar oferta
+	 */
 	public JButton getModificarOferta() {
 		return modOferta;	
 	}

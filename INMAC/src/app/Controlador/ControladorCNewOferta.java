@@ -13,7 +13,7 @@ import app.proyecto.Sistema.Sistema;
 import app.proyecto.Usuarios.Cliente;
 
 /**
- * 
+ * Controlador de contrato de oferta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -24,6 +24,12 @@ public class ControladorCNewOferta implements ActionListener{
 	private Oferta o;
 	private DOfertaMScreen ms;
 	
+	/**
+	 * Constructor del controlador
+	 * @param app Aplicacion del sistema
+	 * @param o Oferta
+	 * @param ms Panel de Oferta de demandante central
+	 */
 	public ControladorCNewOferta(Sistema app, Oferta o,
 			DOfertaMScreen ms) {
 		this.app = app;

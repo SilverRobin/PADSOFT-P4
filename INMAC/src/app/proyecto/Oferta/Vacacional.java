@@ -27,40 +27,13 @@ public class Vacacional extends Oferta {
 	 * @param nF Fianza
 	 * @param nD Fecha de inicio
 	 * @param fechaFin Fecha de fin
+	 * @param in inmueble
 	 */
 	public Vacacional(int nP, int nF, LocalDate nD, LocalDate fechaFin, Inmueble in) {
 		super(nP, nF, nD, in);
 		this.fechaFin = fechaFin;
 	}
-	/* (non-Javadoc)
-	 * @see Oferta.Oferta#modificarOferta(java.lang.String, int, Sistema.FechaSimulada)
-	 */
-	@Override
-	public boolean modificarOferta(String dato, int precio, LocalDate fecha) {
-		if(this.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
-			return false;
-		}
-		super.modificarOferta(dato, precio, fecha);
-		
-		switch (dato.toLowerCase()) {
-		case "fechainicio":
-			this.setInicio(fecha);
-			break;
-		case "fechafin":
-			this.fechaFin = fecha;
-			break;
-		case "fianza":
-			this.setFianza(precio);
-			break;
-		case "precio":
-			this.setPrecio(precio);
-			break;
-		default:
-			return false;
-		}
-		return true;
-		
-	}
+
 	/**
 	 * Establece la fecha de fin
 	 * @param fecha nueva fecha de fin

@@ -13,7 +13,7 @@ import app.proyecto.Sistema.Sistema;
 import app.proyecto.Usuarios.Cliente;
 
 /**
- * 
+ * Controlador de gestion de reserva
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -30,6 +30,12 @@ public class ControladorGestionarReserva implements ActionListener{
 	private Sistema app;
 	private DReservaMScreen rs;
 	
+	/**
+	 * Constructor del controlador
+	 * @param app Aplicacion del sistema
+	 * @param ac Accion de reserva
+	 * @param rs Panel  de reserva central
+	 */
 	public ControladorGestionarReserva(Sistema app,
 			AccionReserva ac, DReservaMScreen rs) {
 		this.app = app;

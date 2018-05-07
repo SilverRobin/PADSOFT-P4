@@ -15,7 +15,7 @@ import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Controlador de ver Ofertas del gerente
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -26,6 +26,12 @@ public class ControladorVerOGerente implements ActionListener{
 	private GerenteRScreen panel;
 	private Sistema app;
 	
+	/**
+	 * Constructor del controlador
+	 * @param app Aplicacion del sistema
+	 * @param panel Panel derecho del gerente
+	 * @param ms Panel central del gerente
+	 */
 	public ControladorVerOGerente(Sistema app, GerenteRScreen panel, GerenteMScreen ms) {
 		this.panel = panel;
 		this.ms = ms;

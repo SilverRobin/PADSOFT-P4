@@ -31,11 +31,11 @@ public class CtrlBAddInmuebleScreen implements ActionListener {
 	private AddInmuebleScreen panel;
 	private Sistema app;
 
+
 	/**
 	 * Constructor del controlador
-	 * 
-	 * @param panel,
-	 *            panel de AddInmuebleScreen para acceder a todos los componentes
+	 * @param panel, panel de AddInmuebleScreen para acceder a todos los componentes
+	 * @param app Aplicacion del sistema
 	 */
 	public CtrlBAddInmuebleScreen(AddInmuebleScreen panel, Sistema app) {
 		this.panel = panel;

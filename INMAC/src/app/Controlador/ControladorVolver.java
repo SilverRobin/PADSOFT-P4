@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 import app.gui.MainGUI;
 
 /**
- * 
+ * Controlador del boton de volver
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -19,6 +19,10 @@ public class ControladorVolver implements ActionListener{
 
 	JPanel panel;
 	
+	/**
+	 * Constructor del controlador
+	 * @param panel Panel actual
+	 */
 	public ControladorVolver(JPanel panel) {
 		this.panel = panel;
 	}

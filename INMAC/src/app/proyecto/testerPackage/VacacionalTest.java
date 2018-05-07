@@ -27,9 +27,6 @@ public class VacacionalTest {
 		v = new Vacacional(200, 50, new FechaSimulada(), new FechaSimulada());
 	}
 
-	/**
-	 * Test method for {@link proyecto.Oferta.Vacacional#modificarOferta(java.lang.String, int, proyecto.Sistema.FechaSimulada)}.
-	 */
 	@Test
 	public void testModificarOferta() {
 		v.rectificar();

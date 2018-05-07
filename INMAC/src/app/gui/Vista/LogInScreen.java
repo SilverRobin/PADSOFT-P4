@@ -15,10 +15,10 @@ import app.proyecto.Sistema.Sistema;
 
 
 /**
- * Elemento de GUI que muestra la ventana de
- * inicio de sesion
+ * Pantalla de inicio de sesion
  * 
  * @author Antonio Oliva
+ * @author Laura Ramirez
  *
  */
 public class LogInScreen extends JPanel{
@@ -38,6 +38,11 @@ public class LogInScreen extends JPanel{
 	private JButton breservar;
 	
 	
+	/**
+	 * Constructor de pantalla de inicio de sesion
+	 * @param app Aplicacion del sistema
+	 * @param rs Panel de resultados
+	 */
 	public LogInScreen(Sistema app, ResultScreen rs) {
 		super();
 		JPanel pover = new JPanel();
@@ -116,12 +121,24 @@ public class LogInScreen extends JPanel{
 		this.setBorder(BorderFactory.createTitledBorder("Inicio de sesión"));
 	}
 	
+	/**
+	 * Obtiene el campo del NIF
+	 * @return texto con NIF
+	 */
 	public String getNIF() {
 		return this.niffield.getText();
 	}
+	/**
+	 * Obtiene la contraseña introducida
+	 * @return texto con la contraseña
+	 */
 	public String getPassword() {
 		return String.valueOf(this.passfield.getPassword());
 	}
+	/**
+	 * Determina si se ha seleccionado entrar como ofertante
+	 * @return true o false
+	 */
 	public boolean isOfertante() {
 		if(oButton.isSelected()) {
 			return true;

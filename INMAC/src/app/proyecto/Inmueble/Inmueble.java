@@ -27,8 +27,9 @@ public class Inmueble implements Serializable{
 	private Cliente ofertante;
 	
 	/**
-	 * @param nD Descripcion
+	 * @param nD descripcion
 	 * @param nDir Direccion
+	 * @param nO Cliente
 	 */
 	public Inmueble(String nD, Direccion nDir, Cliente nO) {
 		this.descripcion = nD;
@@ -74,6 +75,20 @@ public class Inmueble implements Serializable{
 		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
 		for(Oferta o : this.ofertas) {
 			if(o.getVisibilidad() == EstadoOferta.DISPONIBLE || o.getVisibilidad() == EstadoOferta.RESERVADA) {
+				ofertas.add(o);
+			}
+		}
+		return ofertas;
+	}
+	
+	/**
+	 * Obtiene las ofertas que no estan reservadas
+	 * @return lista de ofertas no reservadas
+	 */
+	public ArrayList<Oferta> getNoReservadas(){
+		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+		for(Oferta o : this.ofertas) {
+			if(o.getVisibilidad() == EstadoOferta.DISPONIBLE) {
 				ofertas.add(o);
 			}
 		}

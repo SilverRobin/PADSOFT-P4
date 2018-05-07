@@ -21,7 +21,7 @@ import app.proyecto.Inmueble.Caracteristica;
 import app.proyecto.Oferta.Oferta;
 
 /**
- * 
+ * Panel de oferta izquierdo de Demandante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -39,6 +39,10 @@ public class DOfertaLScreen extends JPanel{
 	private JList<String> lcars;
 	private List<Caracteristica> cars;
 
+	/**
+	 * Constructor del panel
+	 * @param of Oferta a mostrar
+	 */
 	public DOfertaLScreen(Oferta of) {
 		this.setLayout(new GridBagLayout());
 		cars = of.getInmueble().getCaracteristicas();

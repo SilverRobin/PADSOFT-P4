@@ -23,6 +23,7 @@ import app.proyecto.Oferta.Vacacional;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Controlador de añadir oferta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -30,8 +31,11 @@ import app.proyecto.Sistema.Sistema;
 public class ControladorAddOferta implements ActionListener {
 	private AddOferta ao;
 	private Sistema app;
+
 	/**
-	 * 
+	 * Constructor del controlador de añadir oferta
+	 * @param app Aplicacion
+	 * @param ao Panel de añadir oferta
 	 */
 	public ControladorAddOferta(Sistema app, AddOferta ao) {
 		this.ao = ao;

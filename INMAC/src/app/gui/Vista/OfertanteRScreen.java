@@ -24,6 +24,7 @@ import app.proyecto.Inmueble.Inmueble;
 import app.proyecto.Oferta.Oferta;
 
 /**
+ * Pantalla derecha de ofertante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -34,8 +35,10 @@ public class OfertanteRScreen extends JPanel {
 	private DefaultListModel listModel;
 	private Dimension tamanyo = Toolkit.getDefaultToolkit().getScreenSize();
 	private int height, width;
+	
+	
 	/**
-	 * 
+	 * Constructor de la pantalla derecha del ofertante
 	 */
 	public OfertanteRScreen() {
 		
@@ -58,25 +61,43 @@ public class OfertanteRScreen extends JPanel {
 		this.setBorder(BorderFactory.createTitledBorder("Lista de ofertas"));
 	}
 	
+	/**
+	 * Añade las ofertas a la lista
+	 * @param list lista de ofertas
+	 */
 	public void addOfertas(List<Oferta> list) {
 		for(Oferta o : list) {
 			listModel.addElement(o);
 		}
 	}
 	
+	/**
+	 * Obtiene la oferta seleccionada
+	 * @return oferta seleccionada
+	 */
 	public Oferta getSelectedOferta() {
 		return (Oferta) lista.getSelectedValue();
 	}
 	
+	/**
+	 * Limpia la lista de ofertas visible
+	 */
 	public void cleanList() {
 		if(listModel.isEmpty() == false)
 			listModel.removeAllElements();
 	}
 	
+	/**
+	 * Bloquea la lista de ofertas
+	 */
 	public void blockLista() {
 		this.lista.setEnabled(false);
 	}
 	
+	/**
+	 * Obtiene el JList de la lista
+	 * @return JList de ofertas
+	 */
 	public JList getLista() {
 		return lista;
 	}

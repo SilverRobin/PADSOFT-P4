@@ -17,7 +17,7 @@ import app.Controlador.ControladorVerOGerente;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Pantalla derecha del gerente
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -32,6 +32,11 @@ public class GerenteRScreen extends JPanel{
 	private JButton volverb;
 	private JButton verb;
 	
+	/**
+	 * Constructor de la pantalla
+	 * @param app APlicacion del sistema
+	 * @param ms Pantalla central del gerente
+	 */
 	public GerenteRScreen(Sistema app, GerenteMScreen ms) {
 		
 		this.setLayout(new GridBagLayout());

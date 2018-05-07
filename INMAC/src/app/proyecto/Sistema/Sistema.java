@@ -77,8 +77,8 @@ public class Sistema implements Serializable{
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Obtiene el sistema
+	 * @return aplicacion del sistema
 	 */
 	public static Sistema getSistema() {
 		return singleton;
@@ -123,6 +123,19 @@ public class Sistema implements Serializable{
 		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
 		for(Inmueble i : this.inmuebles) {
 			ofertas.addAll(i.getDisponibles());
+		}
+		
+		return ofertas;
+	}
+	
+	/**
+	 * Obtiene la lista de ofertas no reservadas
+	 * @return lista de ofertas no reservadas
+	 */
+	public ArrayList<Oferta> getNoReservadas(){
+		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+		for(Inmueble i : this.inmuebles) {
+			ofertas.addAll(i.getNoReservadas());
 		}
 		
 		return ofertas;

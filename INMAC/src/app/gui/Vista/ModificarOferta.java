@@ -30,6 +30,7 @@ import app.proyecto.Oferta.Vacacional;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Pantalla de modificacion de oferta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -45,8 +46,10 @@ public class ModificarOferta extends JPanel{
 	private JFormattedTextField meses;
 	private JButton addOferta;
 	private JButton volver;
+
 	/**
-	 * 
+	 * Constructor de pantalla de modificacion de oferta
+	 * @param app Aplicacion del sistema
 	 */
 	public ModificarOferta(Sistema app) {
 		this.setLayout(new GridBagLayout());
@@ -134,6 +137,10 @@ public class ModificarOferta extends JPanel{
 		this.add(bot, gbc);	
 	}
 	
+	/**
+	 * Recopera los datos de la oferta y los pone en sus correspondientes campos
+	 * @param o Oferta
+	 */
 	public void recuperarDatosOferta(Oferta o) {
 		Date date = Date.from(o.getInicio().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		this.inicio.setDate(date);
@@ -149,48 +156,82 @@ public class ModificarOferta extends JPanel{
 		}
 	}
 	
-	   public void modoVacacional() {
+	/**
+	 * Establece el panel en modo vacacional
+	 */
+	public void modoVacacional() {
 		   inicio.setEnabled(true);
 		   meses.setEnabled(false);
 		   fin.setEnabled(true);
 	   }
 	   
-	   public void modoLargaEstancia() {
+	/**
+	 * Establece el panel en modo larga estancia
+	 */
+	public void modoLargaEstancia() {
 		   inicio.setEnabled(true);
 		   meses.setEnabled(true);
 		   fin.setEnabled(false);
 
 	   }
 	   
+		/**
+		 * Obtiene la fecha de inicio
+		 * @return fecha de inicio
+		 */
 		public LocalDate getInicio() {
 			return LocalDate.ofInstant(this.inicio.getDate().toInstant(), ZoneId.systemDefault());
 		}
 
+		/**
+		 * Obtiene la fecha de fin
+		 * @return fecha de fin
+		 */
 		public LocalDate getFin() {
 			// TODO Auto-generated method stub
 			return LocalDate.ofInstant(this.fin.getDate().toInstant(), ZoneId.systemDefault());
 		}
 		
+		/**
+		 * Determina si la oferta es vacacional
+		 * @return true o false
+		 */
 		public boolean isVacacional() {
 			if(this.tipoOferta.getText().equals("Vacacional"))
 				return true;
 			return false;
 		}
 
+		/**
+		 * Obtiene los meses
+		 * @return meses de duracion
+		 */
 		public String getMeses() {
 			return this.meses.getText();
 		}
 
+		/**
+		 * Obtiene el precio de la oferta
+		 * @return precio de la oferta
+		 */
 		public String getPrecio() {
 			// TODO Auto-generated method stub
 			return this.precio.getText();
 		}
 
+		/**
+		 * Obtiene la fianza de la oferta
+		 * @return fianza de la oferta
+		 */
 		public String getFianza() {
 			// TODO Auto-generated method stub
 			return this.fianza.getText();
 		}
 		
+		/**
+		 * Obtiene la etiqueta del tipo de oferta
+		 * @return etiqueta
+		 */
 		public JLabel getTipoLabel() {
 			return tipoOferta;
 		}

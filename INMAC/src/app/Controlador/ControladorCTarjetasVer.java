@@ -14,7 +14,7 @@ import app.gui.Vista.GerenteRScreen;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Controlador de cambio de paneles
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -24,6 +24,11 @@ public class ControladorCTarjetasVer implements ActionListener{
 	private Sistema app;
 	private GerenteRScreen panel;
 	
+	/**
+	 * Constructor del controlador
+	 * @param app Aplicacion del sistema
+	 * @param panel Panel de gerente central
+	 */
 	public ControladorCTarjetasVer(Sistema app, GerenteRScreen panel) {
 		this.app = app;
 		this.panel = panel;

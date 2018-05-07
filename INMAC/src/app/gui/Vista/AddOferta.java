@@ -20,6 +20,7 @@ import app.Controlador.ControladorAddOferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Panel de añadir oferta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -37,6 +38,10 @@ public class AddOferta extends JPanel {
 	private JButton volver;
 	
 	
+	/**
+	 * Constructor del panel
+	 * @param app Aplicacion del sistema
+	 */
 	public AddOferta(Sistema app) {
 		this.setLayout(new GridBagLayout());
 		this.setBorder(BorderFactory.createTitledBorder("Crear nueva oferta"));
@@ -135,7 +140,12 @@ public class AddOferta extends JPanel {
 		
 	}
 	
-	   protected MaskFormatter createFormatter(String s) {
+	/**
+	 * Formateador
+	 * @param s String a formatear
+	 * @return String formateada
+	 */
+	protected MaskFormatter createFormatter(String s) {
 	        MaskFormatter formatter = null;
 	        try {
 	            formatter = new MaskFormatter(s);
@@ -146,7 +156,10 @@ public class AddOferta extends JPanel {
 	        return formatter;
 	    }
 	   
-	   public void modoVacacional() {
+	/**
+	 * Establece el panel en modo vacacional
+	 */
+	public void modoVacacional() {
 		   label2.setVisible(true);
 		   inicio.setVisible(true);
 		   label3.setVisible(false);
@@ -155,7 +168,10 @@ public class AddOferta extends JPanel {
 		   label4.setVisible(true);
 	   }
 	   
-	   public void modoLargaEstancia() {
+	/**
+	 * Establece el panel en modo larga estancia
+	 */
+	public void modoLargaEstancia() {
 		   label2.setVisible(true);
 		   inicio.setVisible(true);
 		   label3.setVisible(true);
@@ -164,30 +180,54 @@ public class AddOferta extends JPanel {
 		   label4.setVisible(false);
 	   }
 
+	/**
+	 * Obtiene la fecha de inicio introducida
+	 * @return fecha de inicio
+	 */
 	public LocalDate getInicio() {
 		return LocalDate.ofInstant(this.inicio.getDate().toInstant(), ZoneId.systemDefault());
 	}
 
+	/**
+	 * Obtiene la fecha de fin introducida
+	 * @return fecha de fin
+	 */
 	public LocalDate getFin() {
 		// TODO Auto-generated method stub
 		return LocalDate.ofInstant(this.fin.getDate().toInstant(), ZoneId.systemDefault());
 	}
 
+	/**
+	 * Determina si la oferta selecionada es vacacional
+	 * @return true o false
+	 */
 	public boolean isVacacional() {
 		if(this.tipoOferta.getSelectedItem().equals("Vacacional"))
 			return true;
 		return false;
 	}
 
+	/**
+	 * Obtiene los meses introducidos
+	 * @return texto con los meses
+	 */
 	public String getMeses() {
 		return this.meses.getText();
 	}
 
+	/**
+	 * Obtiene el precio introducido
+	 * @return texto con el precio
+	 */
 	public String getPrecio() {
 		// TODO Auto-generated method stub
 		return this.precio.getText();
 	}
 
+	/**
+	 * Obtiene la fianza introducida
+	 * @return texto con la fianza
+	 */
 	public String getFianza() {
 		// TODO Auto-generated method stub
 		return this.fianza.getText();

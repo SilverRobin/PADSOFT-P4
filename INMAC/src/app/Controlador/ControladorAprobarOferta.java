@@ -7,7 +7,7 @@ import app.gui.Vista.GerenteMScreen;
 import app.proyecto.Oferta.Oferta;
 
 /**
- * 
+ * Controlador de aprobar oferta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -16,6 +16,10 @@ public class ControladorAprobarOferta implements ActionListener{
 
 	private GerenteMScreen ls;
 	
+	/**
+	 * Constructor del controlador
+	 * @param panel panel central del gerente
+	 */
 	public ControladorAprobarOferta(GerenteMScreen panel) {
 		this.ls = panel;
 	}

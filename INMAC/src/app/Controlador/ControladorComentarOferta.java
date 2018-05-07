@@ -8,7 +8,7 @@ import app.proyecto.Sistema.Sistema;
 import app.proyecto.Valorables.Comentario;
 
 /**
- * 
+ * Controlador de comentar oferta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -18,6 +18,11 @@ public class ControladorComentarOferta implements ActionListener{
 	private DOfertaRScreen panel;
 	private Sistema app;
 	
+	/**
+	 * Constructor del controlador
+	 * @param app Aplicacion del sistema
+	 * @param s Panel derecho de Oferta
+	 */
 	public ControladorComentarOferta(Sistema app, DOfertaRScreen s){
 		panel = s;
 		this.app = app;

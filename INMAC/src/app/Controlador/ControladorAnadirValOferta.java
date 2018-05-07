@@ -8,7 +8,7 @@ import app.proyecto.Sistema.Sistema;
 import app.proyecto.Valorables.Valoracion;
 
 /**
- * 
+ * Controlador de añadir valoracion
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -18,6 +18,11 @@ public class ControladorAnadirValOferta implements ActionListener{
 	private Sistema app;
 	private DOfertaMScreen panel;
 	
+	/**
+	 * Constructor del controlador
+	 * @param app Aplicacion del sistema
+	 * @param panel Panel central del Demandante
+	 */
 	public ControladorAnadirValOferta(Sistema app, DOfertaMScreen panel) {
 		this.panel = panel;
 		this.app = app;

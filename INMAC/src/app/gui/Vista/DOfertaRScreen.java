@@ -24,7 +24,7 @@ import app.proyecto.Valorables.Comentario;
 import app.proyecto.Valorables.ElementoValorable;
 
 /**
- * 
+ * Panel derecho de oferta de demandante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -45,6 +45,11 @@ public class DOfertaRScreen extends JPanel{
 	private Oferta of;
 	private DefaultMutableTreeNode c;
 	
+	/**
+	 * Constructor de Panel de oferta derecho de Demandante
+	 * @param app Aplicacion del sistema
+	 * @param of Oferta
+	 */
 	public DOfertaRScreen(Sistema app, Oferta of) {
 	
 		this.of = of;
@@ -153,14 +158,25 @@ public class DOfertaRScreen extends JPanel{
 		this.add(mainpanel);
 	}
 	
+	/**
+	 * Obtiene el texto del nuevo comentario
+	 * @return texto del nuevo comentario
+	 */
 	public String newComment() {
 		return ncomarea.getText();
 	}
 	
+	/**
+	 * Obtiene la oferta
+	 * @return oferta actual
+	 */
 	public Oferta getOf() {
 		return of;
 	}
 	
+	/**
+	 * Refresca el arbol del comentarios
+	 */
 	public void refreshTree() {
 		c.removeAllChildren();
 		for(ElementoValorable e : of.getValorables()) {
@@ -172,6 +188,11 @@ public class DOfertaRScreen extends JPanel{
 		return;
 	}
 	
+	/**
+	 * Inserta un nodo en el arbol
+	 * @param j Arbol
+	 * @param r Comantario
+	 */
 	public void insertNode(DefaultMutableTreeNode j, Comentario r) {
 		DefaultMutableTreeNode d = new DefaultMutableTreeNode(r);
 		for(ElementoValorable e : r.getValorables()) {
@@ -183,6 +204,9 @@ public class DOfertaRScreen extends JPanel{
 		return;
 	}
 	
+	/**
+	 * Expande todos los nodos
+	 */
 	public void expandAll() {
         int row = 0;
         DefaultTreeModel model = (DefaultTreeModel) coms.getModel();
@@ -193,20 +217,36 @@ public class DOfertaRScreen extends JPanel{
         }
     }
 	
+	/**
+	 * Obtiene el texto del valor
+	 * @return  texto del campo
+	 */
 	public String getNVal() {
 		return nvalfield.getText();
 	}
 	
+	/**
+	 * Obtiene el comentario
+	 * @return Comentario en forma de nodo
+	 */
 	public DefaultMutableTreeNode getComment() {
 		return (DefaultMutableTreeNode) coms.getLastSelectedPathComponent();
 	}
 	
+	/**
+	 * Actualiza el comentario
+	 * @param h Comentario nuevo
+	 */
 	public void updateComment(Comentario h) {
 		comarea.setText(h.getTexto());
 		valfield.setText(String.format("%.2f", h.calcularMediaValoraciones()));
 		return;
 	}
 	
+	/**
+	 * Obtiene la raiz del nodo
+	 * @return raiz del nodo
+	 */
 	public DefaultMutableTreeNode getRoot() {
 		return c;
 	}

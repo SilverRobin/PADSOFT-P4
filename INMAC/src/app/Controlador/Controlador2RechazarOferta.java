@@ -27,11 +27,22 @@ public class Controlador2RechazarOferta implements ActionListener{
 	}
 	
 	private Gerente2MScreen panel;
+
 	private GerenteMScreen mpanel;
+
 	private Oferta of;
+
 	private Sistema app;
+
 	private TipoRechazo tipo;
 	
+	/**
+	 * @param of Oferta
+	 * @param panel Panel central del gerente
+	 * @param tipo Tipo de rechazo
+	 * @param app Aplicacion del sistema
+	 * @param ms Panel central de Gerente
+	 */
 	public Controlador2RechazarOferta(Oferta of,
 			Gerente2MScreen panel, TipoRechazo tipo,
 			Sistema app, GerenteMScreen ms) {
@@ -42,6 +53,9 @@ public class Controlador2RechazarOferta implements ActionListener{
 		this.mpanel = ms;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		

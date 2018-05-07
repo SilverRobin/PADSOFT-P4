@@ -14,7 +14,7 @@ import app.gui.Vista.PanelDScreen;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Controlador de ver reserva
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -24,6 +24,11 @@ public class ControladorVerReserva implements ActionListener{
 	private PanelDScreen panel;
 	private Sistema app;
 	
+	/**
+	 * Constructor del controlador
+	 * @param app Aplicacion del sistema
+	 * @param panel Panel derecho del demandante
+	 */
 	public ControladorVerReserva(Sistema app, PanelDScreen panel) {
 		this.panel = panel;
 		this.app = app;

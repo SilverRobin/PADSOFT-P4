@@ -72,6 +72,7 @@ public class Cliente implements Serializable{
 	
 	/**
 	 * Comprueba la validez de la tarjeta de credito
+	 * @param cc numero de tarjeta
 	 * @return true si la tarjeta es valida o false en caso contrario
 	 */
 	public static boolean comprobarTarjeta(String cc) {
@@ -103,7 +104,7 @@ public class Cliente implements Serializable{
 	
 	/**
 	 * Añade un aviso con un mensaje y la fecha en la que se genera
-	 * @param mensaje contenido del aviso
+	 * @param a contenido del aviso
 	 */
 	public void setAviso(Aviso a) {
 		aviso = a;
@@ -140,7 +141,7 @@ public class Cliente implements Serializable{
 	 * 
 	 * @param cantidad Cantidad a cobrar/ingresar
 	 * @param subject Motivo de la transaccion
-	 * @return
+	 * @return true o false si se ha realizado o no
 	 */
 	public boolean realizarPago(Double cantidad, String subject) {
 		int cont = 0;

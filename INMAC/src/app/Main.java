@@ -9,12 +9,17 @@ import app.proyecto.Sistema.Sistema;
 import app.proyecto.Usuarios.Cliente;
 
 /**
- * 
+ * Programa principal. La aplicacion se lanza desde aqui
  * @author Laura Ramírez
  *
  */
 public class Main {
 	
+	/**
+	 * Metodo para lanzar la aplicacion
+	 * @param args argumentos
+	 * @throws IOException Excepcion de Entrada Salida
+	 */
 	public static void main(String[] args) throws IOException {
 		String path = System.getProperty("user.dir");
 		String barras = File.separator;

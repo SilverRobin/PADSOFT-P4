@@ -14,7 +14,7 @@ import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Pantalla central del gerente
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -26,6 +26,10 @@ public class GerenteMScreen extends JPanel{
 	private JList<Oferta> olist;
 	private DefaultListModel<Oferta> model;
 	
+	/**
+	 * Constructor de la pantalla central
+	 * @param app APlicacion del sistema
+	 */
 	public GerenteMScreen(Sistema app) {
 		
 		this.setLayout(new GridBagLayout());
@@ -45,10 +49,17 @@ public class GerenteMScreen extends JPanel{
 		this.add(olist);
 	}
 	
+	/**
+	 * Obtiene la oferta seleccionada
+	 * @return oferta selecionada en lista
+	 */
 	public Oferta getSelected() {
 		return olist.getSelectedValue();
 	}
 	
+	/**
+	 * Borra la oferta selecionada de la lista
+	 */
 	public void deleteSelected() {
 		model.remove(olist.getSelectedIndex());
 		return;

@@ -20,6 +20,7 @@ import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Controlador de lista de ofertante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -28,8 +29,10 @@ public class ControladorListaOL implements ListSelectionListener {
 	private OfertanteLScreen panel;
 	private Sistema app;
 
+
 	/**
-	 * 
+	 * @param panel Panel izquierdo de ofertante
+	 * @param app Aplicacion del sistema
 	 */
 	public ControladorListaOL(OfertanteLScreen panel, Sistema app) {
 		this.panel = panel;

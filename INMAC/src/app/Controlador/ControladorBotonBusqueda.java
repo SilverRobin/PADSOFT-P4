@@ -19,6 +19,7 @@ import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Controlador del boton de busqueda
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -27,8 +28,11 @@ public class ControladorBotonBusqueda implements ActionListener {
 	private SearchScreen panel;
 	private Sistema app;
 
+	
 	/**
-	 * 
+	 * Constructor del controlador
+	 * @param app aplicacion del sistema
+	 * @param panel panel de búsqueda
 	 */
 	public ControladorBotonBusqueda(Sistema app, SearchScreen panel) {
 		this.app = app;
@@ -71,6 +75,14 @@ public class ControladorBotonBusqueda implements ActionListener {
 			return;
 		}
 		aux.addAll(lista);
+		
+		if(app.getLogged() != null && panel.isTodasSelected() == false) {
+			for(Oferta o : lista) { //Obtenemos la lista completa
+				if(app.getNoReservadas().contains(o) == false) { //Miramos si la oferta esta entre las solo disponibles
+					aux.remove(o); //Eliminamos las reservadas
+				}
+			}
+		}
 		///// ** FILTROS APLICABLES POR TODOS LOS USUARIOS**//////
 		if (codigo != null) { // Filtro por codigo postal
 			for (Oferta o : lista) { // Recorremos la lista de ofertas filtradas por estancia

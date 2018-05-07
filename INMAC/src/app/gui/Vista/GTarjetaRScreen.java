@@ -15,7 +15,7 @@ import app.Controlador.ControladorCambiarTarjeta;
 import app.Controlador.ControladorVolver;
 
 /**
- * 
+ * Pantalla de tarjeta derecha del gerente
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -29,6 +29,10 @@ public class GTarjetaRScreen extends JPanel{
 	private JTextField narea;
 	private JLabel nl;
 	
+	/**
+	 * Constructor de pantalla de tarjeta derecha del gerente
+	 * @param ms pantalla central de tarjeta
+	 */
 	public GTarjetaRScreen(GTarjetaMScreen ms) {
 		
 		this.setLayout(new GridBagLayout());
@@ -66,6 +70,10 @@ public class GTarjetaRScreen extends JPanel{
 		this.add(mainpanel);
 	}
 	
+	/**
+	 * Obtiene el numero de tarjeta
+	 * @return cadena de tarjeta
+	 */
 	public String getNTarj() {
 		return narea.getText();
 	}

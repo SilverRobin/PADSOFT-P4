@@ -14,7 +14,7 @@ import app.gui.Vista.ResultScreen;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Controlador de ver Oferta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -24,6 +24,11 @@ public class ControladorVerOferta implements ActionListener{
 	private Sistema app;
 	private ResultScreen panel;
 	
+	/**
+	 * Controlador de ver Oferta
+	 * @param app Aplicacion del sistema
+	 * @param rs Panel de resultados de busqueda
+	 */
 	public ControladorVerOferta(Sistema app, ResultScreen rs) {
 		this.panel = rs;
 		this.app = app;

@@ -15,7 +15,7 @@ import app.proyecto.Sistema.Sistema;
 import app.proyecto.Sistema.TipoCliente;
 
 /**
- * 
+ * Controlador de cierre de sesion
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -25,6 +25,11 @@ public class ControladorCerrarSesion implements ActionListener{
 	private Sistema app;
 	private JPanel panel;
 	
+	/**
+	 * Constructor del controlador
+	 * @param app Aplicacion del sistema
+	 * @param panel panel actual
+	 */
 	public ControladorCerrarSesion(Sistema app, JPanel panel) {
 		this.app = app;
 		this.panel = panel;

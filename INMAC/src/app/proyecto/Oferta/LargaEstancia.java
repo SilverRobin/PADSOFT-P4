@@ -22,42 +22,14 @@ public class LargaEstancia extends Oferta {
 	 * @param nF Fianza
 	 * @param nD Fecha de inicio
 	 * @param minimaEstancia meses de estancia
+	 * @param in inmueble
 	 */
 	public LargaEstancia(int nP, int nF, LocalDate nD, int minimaEstancia, Inmueble in) {
 		super(nP, nF, nD, in);
 		this.minimaEstancia = minimaEstancia;
 	}
 
-	/* (non-Javadoc)
-	 * @see Oferta.Oferta#modificarOferta(java.lang.String, int, Sistema.FechaSimulada)
-	 */
-	@Override
-	public boolean modificarOferta(String dato, int precio, LocalDate fecha) {
-		if(this.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
-			return false;
-		}
-		
-		super.modificarOferta(dato, precio, fecha);
-		
-		switch (dato.toLowerCase()) {
-		case "fechainicio":
-			this.setInicio(fecha);
-			break;
-		case "minimaestancia":
-			this.setMinimaEstancia(precio);
-			break;
-		case "fianza":
-			this.setFianza(precio);
-			break;
-		case "precio":
-			this.setPrecio(precio);
-			break;
-		default:
-			return false;
-		}
-		return true;
 
-	}
 
 	/**
 	 * Obtiene los meses de estancia

@@ -17,6 +17,7 @@ import app.proyecto.Inmueble.Caracteristica;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Panel de añadir inmueble
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -45,8 +46,10 @@ public class AddInmuebleScreen extends JPanel {
 	private JButton addInmueble;
 	
 	
+
 	/**
-	 * 
+	 * Constructor del panel
+	 * @param app Aplicacion del sistema
 	 */
 	public AddInmuebleScreen(Sistema app) {
 		this.setLayout(new BorderLayout());
@@ -195,39 +198,65 @@ public class AddInmuebleScreen extends JPanel {
         return formatter;
     }
     
+    /**
+     * Obtiene el listModel de la lista
+     * @return listModel en uso
+     */
     public DefaultListModel getListModel() {
     	return this.listModel;
     }
     
+    /**
+     * Obtiene el titulo de la caracteristica
+     * @return cadena con el titulo
+     */
     public String getTituloC() {
     	return this.nombreCaracteristica.getText();
     }
     
+    /**
+     * Obtiene la descripcion de la caracteristica
+     * @return texto de la caracteristica
+     */
     public String getDescC() {
     	return this.descCaracteristica.getText();
     }
     
+    /**
+     * Obtiene la lista en la que se guardan las caracteristicas
+     * @return JList de las caracteristicas
+     */
     public JList getList() {
     	return this.lista;
     }
     
+    /**
+     * Obtiene el codigo postal introducido
+     * @return texto con el codigo postal
+     */
     public String getCP() {
     	return this.codigo.getText();
     }
     
+    /**
+     * Obtiene la localidad inttroducida
+     * @return texto con la localidad
+     */
     public String getLocalidad() {
     	return this.localidad.getText();
     }
 
 	/**
-	 * @return the direccion
+	 * Obtiene la direccion introducida
+	 * @return texto con la direccion
 	 */
 	public String getDireccion() {
 		return direccion.getText();
 	}
 
 	/**
-	 * @return the descripcion
+	 * Obtiene la descripcion introducida
+	 * @return texto con la descripcion
 	 */
 	public String getDescripcion() {
 		return descripcion.getText();

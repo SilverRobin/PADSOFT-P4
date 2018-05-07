@@ -108,6 +108,7 @@ public class Demandante implements Serializable{
 	
 	/**
 	 * Elimina las reservas caducadas
+	 * @return lista de reservas eliminadas
 	 */
 	public List<Oferta> eliminarReservaCaducada() {
 

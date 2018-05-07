@@ -22,6 +22,7 @@ import app.proyecto.Oferta.Vacacional;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Controlador del panel de modificar oferta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -29,8 +30,11 @@ import app.proyecto.Sistema.Sistema;
 public class ControladorModificarOferta implements ActionListener {
 	private ModificarOferta panel;
 	private Sistema app;
+
 	/**
-	 * 
+	 * Constructor del controlador
+	 * @param app Aplicacion del sistema
+	 * @param panel Panel de modificar oferta
 	 */
 	public ControladorModificarOferta(Sistema app, ModificarOferta panel) {
 		this.panel = panel;

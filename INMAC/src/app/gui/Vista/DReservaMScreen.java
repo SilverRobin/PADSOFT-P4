@@ -11,7 +11,7 @@ import app.proyecto.Oferta.Reserva;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Pantalla central de reserva del demandante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -23,6 +23,10 @@ public class DReservaMScreen extends JPanel{
 	private JList<Reserva> rlist;
 	DefaultListModel<Reserva> model;
 	
+	/**
+	 * Constructor de pantalla central de reserva del demandante
+	 * @param app Aplicacion del sistema
+	 */
 	public DReservaMScreen(Sistema app) {
 		
 		this.setLayout(new GridBagLayout());
@@ -39,10 +43,17 @@ public class DReservaMScreen extends JPanel{
 		this.add(rlist);
 	}
 	
+	/**
+	 * Obtiene la reserva selecionada
+	 * @return reserva selecionada en lista
+	 */
 	public Reserva getSelected() {
 		return rlist.getSelectedValue();
 	}
 	
+	/**
+	 * Borra la reserva seleccionada
+	 */
 	public void deleteReserva() {
 		model.remove(rlist.getSelectedIndex());
 		return;

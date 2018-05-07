@@ -14,7 +14,7 @@ import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Controlador de rechazar oferta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -25,6 +25,12 @@ public class ControladorRechazarOferta implements ActionListener{
 	private Sistema app;
 	private Oferta of;
 	
+	/**
+	 * Constructor de Rechazar oferta
+	 * @param of Oferta
+	 * @param app Aplicacion del sistema
+	 * @param ms Panel central del gerente
+	 */
 	public ControladorRechazarOferta(Oferta of, Sistema app, GerenteMScreen ms) {
 		panel = ms;
 		this.app = app;

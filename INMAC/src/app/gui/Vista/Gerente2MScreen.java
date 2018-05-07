@@ -18,7 +18,7 @@ import app.proyecto.Oferta.Oferta;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Pantalla central del gerente
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -33,6 +33,12 @@ public class Gerente2MScreen extends JPanel{
 	private JButton modificarb;
 	private JLabel nl;
 	
+	/**
+	 * Pantalla central del gerente
+	 * @param app Aplicacion del sistema
+	 * @param of Oferta
+	 * @param ms Pantalla central del gerente 1
+	 */
 	public Gerente2MScreen(Sistema app, Oferta of, GerenteMScreen ms) {
 		
 		this.setLayout(new GridBagLayout());
@@ -89,6 +95,10 @@ public class Gerente2MScreen extends JPanel{
 		this.add(mainpanel);
 	}
 	
+	/**
+	 * Obtiene la rectificacion
+	 * @return texto de rectificacion
+	 */
 	public String getRect() {
 		return modarea.getText();
 	}

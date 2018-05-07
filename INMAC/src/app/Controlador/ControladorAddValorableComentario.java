@@ -12,7 +12,7 @@ import app.proyecto.Valorables.Comentario;
 import app.proyecto.Valorables.Valoracion;
 
 /**
- * 
+ * Controlador de ñadir comentario
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -23,6 +23,12 @@ public class ControladorAddValorableComentario implements ActionListener{
 	private DOfertaRScreen panel;
 	private boolean comentario;
 	
+	/**
+	 * Constructor de añadir comentario
+	 * @param app Aplicacion
+	 * @param s Pantalla derecha del ofertante
+	 * @param com comentario true o false
+	 */
 	public ControladorAddValorableComentario(Sistema app, DOfertaRScreen s, boolean com){
 		panel = s;
 		this.app = app;

@@ -19,7 +19,7 @@ import app.gui.Vista.*;
 import app.proyecto.Sistema.*;
 
 /**
- * 
+ * Ventana de la aplicacion
  * @author Antonio Oliva
  *
  */
@@ -36,6 +36,10 @@ public class MainGUI extends JFrame{
 	private int height, width;
 	private Sistema app;
 	
+	/**
+	 * Constructor de la ventana
+	 * @param sistema Aplicacion del sistema
+	 */
 	public MainGUI(Sistema sistema) {
 		super("INMAC");
 		

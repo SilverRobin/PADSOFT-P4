@@ -13,7 +13,7 @@ import app.Controlador.ControladorVolver;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Pantalla derecha de reserva del demandante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -26,6 +26,11 @@ public class DReservaRScreen extends JPanel{
 	private JButton volverb;
 	private JButton cancelarb;
 	
+	/**
+	 * Constructor de Pantalla derecha de reserva del demandante
+	 * @param app Aplicacion del sistema
+	 * @param rs Pantalla central de reserva del demandante
+	 */
 	public DReservaRScreen(Sistema app, DReservaMScreen rs) {
 		
 		JPanel mainpanel = new JPanel();

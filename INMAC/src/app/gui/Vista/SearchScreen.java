@@ -31,15 +31,14 @@ import app.Controlador.ControladorBotonBusqueda;
 import app.proyecto.Sistema.Sistema;
 
 /**
+ * Pantalla con los filtros de búsqueda
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
  */
 public class SearchScreen extends JPanel {
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JButton buscar;
 	private JRadioButton disponibles;
@@ -57,8 +56,10 @@ public class SearchScreen extends JPanel {
 	private JPanel codigo;
 	private JPanel slider;
 	private JSlider valoracion;
+
 	/**
-	 * 
+	 * Constructor del panel
+	 * @param app Aplicacion del sistema
 	 */
 	public SearchScreen(Sistema app) {
 		super();
@@ -94,6 +95,7 @@ public class SearchScreen extends JPanel {
 		disponibles = new JRadioButton("Disponibles");
 		//Nuevo
 		todas = new JRadioButton("Todas");
+		todas.setSelected(true);
 		radios = new ButtonGroup();
 		this.radios.add(disponibles);
 		this.radios.add(todas);
@@ -193,14 +195,26 @@ public class SearchScreen extends JPanel {
         return formatter;
     }
     
+    /**
+     * Hace visible o invisible el checkBox de tipos
+     * @param b valor true o false
+     */
     public void desbloquearPanel(boolean b) {
     	this.checkPanel.setVisible(b);
     }
     
+    /**
+     * Obtiene el codigo postal introducido
+     * @return String con el codigo postal
+     */
     public String getCP() {
     	return this.cp.getText();
     }
     
+    /**
+     * Obtiene la fecha de inicio introducida
+     * @return fecha de inicio
+     */
     public LocalDate getInicio() {
     	if(this.inicio.getDate() == null) {
     		return null;
@@ -208,6 +222,10 @@ public class SearchScreen extends JPanel {
     	return LocalDate.ofInstant(this.inicio.getDate().toInstant(), ZoneId.systemDefault());
     }
     
+    /**
+     * Obtiene la fecha de fin introducida
+     * @return fecha de fin
+     */
     public LocalDate getFin() {
     	if(this.fin.getDate() == null) {
     		return null;
@@ -215,15 +233,35 @@ public class SearchScreen extends JPanel {
     	return LocalDate.ofInstant(this.fin.getDate().toInstant(), ZoneId.systemDefault());
     }
     
+    /**
+     * Determina si se ha selecionado el filtro de Larga Estancia
+     * @return true o false
+     */
     public boolean isLESelected() {
     	return this.larButton.isSelected();
     }
     
+    /**
+     * Determina si se ha selecionado el filtro Vacacional
+     * @return true o false
+     */
     public boolean isVacSelected() {
     	return this.vacButton.isSelected();
     }
     
+    /**
+     * Obtiene la valoracion seleccionada
+     * @return valoracion
+     */
     public int valoracion() {
     	return this.valoracion.getValue();
+    }
+    
+    /**
+     * Determina si se ha selecionado el radiobutton de filtro de ofertas disponibles
+     * @return true o false
+     */
+    public boolean isTodasSelected() {
+    	return todas.isSelected();
     }
 }

@@ -8,7 +8,7 @@ import app.gui.Vista.GTarjetaRScreen;
 import app.proyecto.Usuarios.Cliente;
 
 /**
- * 
+ * Controlador del cambio de tarjeta
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -18,6 +18,11 @@ public class ControladorCambiarTarjeta implements ActionListener{
 	private GTarjetaMScreen ms;
 	private GTarjetaRScreen rs;
 	
+	/**
+	 * Constructor del controlador
+	 * @param rs panel de tarjeta derecho
+	 * @param ms panel de tarjeta central
+	 */
 	public ControladorCambiarTarjeta(GTarjetaRScreen rs, GTarjetaMScreen ms){
 		this.ms = ms;
 		this.rs = rs;

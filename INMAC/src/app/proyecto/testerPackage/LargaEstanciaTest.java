@@ -29,9 +29,7 @@ public class LargaEstanciaTest {
 		l = new LargaEstancia(200, 100, FechaSimulada.getHoy(), 2);
 	}
 
-	/**
-	 * Test method for {@link proyecto.Oferta.LargaEstancia#modificarOferta(java.lang.String, int, proyecto.Sistema.FechaSimulada)}.
-	 */
+
 	@Test
 	public void testModificarOferta() {
 		l.rectificar();

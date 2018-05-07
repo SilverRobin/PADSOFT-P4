@@ -22,7 +22,7 @@ import app.proyecto.Oferta.Vacacional;
 import app.proyecto.Sistema.Sistema;
 
 /**
- * 
+ * Panel de oferta central de Demandante
  * @author Laura Ramirez
  * @author Antonio Oliva
  *
@@ -51,6 +51,12 @@ public class DOfertaMScreen extends JPanel{
 	private JButton volver;
 	
 	
+	/**
+	 * Consructor de panel de oferta izquierdo de Demandante
+	 * @param app Aplicacion del sistema
+	 * @param of Oferta a mostrar
+	 * @param t tipo de vista
+	 */
 	public DOfertaMScreen(Sistema app, Oferta of, TipoView t) {
 		
 		this.setLayout(new GridBagLayout());
@@ -244,22 +250,42 @@ public class DOfertaMScreen extends JPanel{
 		return oferta;
 	}
 	
+	/**
+	 * Obtiene el valor
+	 * @return cadena con valor
+	 */
 	public String getVal() {
 		return nvalfield.getText();
 	}
 	
+	/**
+	 * Obtiene el campo del valor
+	 * @return campo del valor
+	 */
 	public JTextField getVals() {
 		return valfield;
 	}
 	
+	/**
+	 * Obtiene el boton de añadir
+	 * @return boton de añadir
+	 */
 	public JButton getAnadir() {
 		return anabutton;
 	}
 	
+	/**
+	 * Obtiene el boton de contratar
+	 * @return boton de contratar
+	 */
 	public JButton getCButton() {
 		return contratar;
 	}
 	
+	/**
+	 * Obtiene el boton de reservar
+	 * @return boton de reservar
+	 */
 	public JButton getRButton() {
 		return reservar;
 	}
