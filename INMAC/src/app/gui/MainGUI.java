@@ -193,6 +193,15 @@ public class MainGUI extends JFrame{
 		dcha.remove(p);
 	}
 	
+	public void volverC() {
+		JPanel p = (JPanel) centro.getComponent(centro.getComponents().length - 1);
+		for(String d : lc.keySet()) {
+			if(lc.get(d).equals(p))
+				lc.remove(d, lc.get(d));
+		}
+		centro.remove(p);
+	}
+	
 	public void volver() {
 		JPanel p = (JPanel) dcha.getComponent(dcha.getComponents().length - 1);
 		for(String d : ld.keySet()) {

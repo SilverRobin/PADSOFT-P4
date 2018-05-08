@@ -596,10 +596,12 @@ public class Sistema implements Serializable{
 		List<Oferta> rets;
 		
 		for(Cliente c : this.getClientes()) {
-			rets = c.getDemandante().eliminarReservaCaducada();
-			for(Oferta r : rets) {
-				for(Inmueble i : inmuebles)
-					i.removeOferta(r);
+			if(c.getDemandante() != null) {
+				rets = c.getDemandante().eliminarReservaCaducada();
+				for(Oferta r : rets) {
+					for(Inmueble i : inmuebles)
+						i.removeOferta(r);
+					}
 			}
 		}
 		

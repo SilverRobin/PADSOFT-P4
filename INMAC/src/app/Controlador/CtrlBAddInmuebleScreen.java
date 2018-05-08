@@ -89,6 +89,7 @@ public class CtrlBAddInmuebleScreen implements ActionListener {
 		ventana.getDerecha().setVisible(true);
 
 		cl = (CardLayout) ventana.getCentro().getLayout();
+		ventana.volverC();
 		cl.show(ventana.getCentro(), "OMS"); // Recuperamos el panel central previo
 		if(flag == 1) {
 			if (ventana.getCurrentCardC() instanceof OfertanteMScreen)
